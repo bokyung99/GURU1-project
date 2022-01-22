@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class PlayerHp : MonoBehaviour
 {
     //플레이어 체력 변수 (수정)
-    public int hp = 10;
+    public int playerHp = 10;
     //최대 체력 변수 (수정)
-    int maxHp = 10;
+    int PlayerMaxHp = 10;
     //hp 슬라이더 변수
     public Slider hpSlider;
 
@@ -18,9 +18,9 @@ public class PlayerHp : MonoBehaviour
     void Update()
     {
         //현재 플레이어 hp(%)를 hp 슬라이더의 value에 반영한다.
-        hpSlider.value = (float)hp / (float)maxHp;
+        hpSlider.value = (float)playerHp / (float)PlayerMaxHp;
         //hp가 0이 되면 플레이어 사망, 게임 종료
-        if (hp == 0)
+        if (playerHp == 0)
         {
 
         }
@@ -30,7 +30,7 @@ public class PlayerHp : MonoBehaviour
     public void DamageAction(int damage)
     {
         //에너미의 공격력만큼 플레이어의 체력 감소
-        hp -= damage;
+        playerHp -= damage;
     }
 
     //충돌 감지
@@ -42,7 +42,7 @@ public class PlayerHp : MonoBehaviour
             //hpPack 제거
             Destroy(hpPack);
             //플레이어 체력 회복 (수정)
-            hp += 2;
+            playerHp += 2;
         }
     }
 }
