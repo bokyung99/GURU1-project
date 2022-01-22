@@ -36,7 +36,7 @@ public class PlayerHp : MonoBehaviour
     //충돌 감지
     private void OnCollisionEnter(Collision collision)
     {
-        //충돌한 게임 오브젝트의 태그가 healPack일 때
+        //충돌한 게임 오브젝트의 태그가 HealPack일 때
         if (collision.gameObject.tag == "HealPack")
         {
             //hpPack 제거
