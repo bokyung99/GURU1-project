@@ -20,8 +20,8 @@ public class PlayerMovementScript : MonoBehaviour {
 	 */
 	void Awake(){
 		rb = GetComponent<Rigidbody>();
-		cameraMain = transform.Find("Main Camera").transform;
-		bulletSpawn = cameraMain.Find ("BulletSpawn").transform;
+		cameraMain = transform.FindChild("Main Camera").transform;
+		bulletSpawn = cameraMain.FindChild ("BulletSpawn").transform;
 		ignoreLayer = 1 << LayerMask.NameToLayer ("Player");
 
 	}
