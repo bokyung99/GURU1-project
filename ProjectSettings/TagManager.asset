@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - FxTemporaire
+  - Weapon
+  - HealPack
+  - SecondCamera
+  - BulletSpawn
+  - EnemyBullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -13,10 +19,10 @@ TagManager:
   - Water
   - UI
   - 
-  - 
+  - Enemy
   - Player
   - Bomb
-  - 
+  - EnemyBullet
   - 
   - 
   - 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465791, g: 0.49641293, b: 0.5748184, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657964, g: 0.49641365, b: 0.57481945, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -47075,6 +47075,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedebdaeae12a6743b39120d2f5156b0, type: 3}
+--- !u!1001 &1131809308220852118
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1131809308590904414, guid: a77e362b7fa037b4f8f946f5c2b610cb, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1656206106}
+    - target: {fileID: 6020659270096317515, guid: a77e362b7fa037b4f8f946f5c2b610cb, type: 3}
+      propertyPath: m_Name
+      value: LEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020659270096317517, guid: a77e362b7fa037b4f8f946f5c2b610cb, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020659270096317517, guid: a77e362b7fa037b4f8f946f5c2b610cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020659270096317517, guid: a77e362b7fa037b4f8f946f5c2b610cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020659270096317517, guid: a77e362b7fa037b4f8f946f5c2b610cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020659270096317517, guid: a77e362b7fa037b4f8f946f5c2b610cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020659270096317517, guid: a77e362b7fa037b4f8f946f5c2b610cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020659270096317517, guid: a77e362b7fa037b4f8f946f5c2b610cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020659270096317517, guid: a77e362b7fa037b4f8f946f5c2b610cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020659270096317517, guid: a77e362b7fa037b4f8f946f5c2b610cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020659270096317517, guid: a77e362b7fa037b4f8f946f5c2b610cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020659270096317517, guid: a77e362b7fa037b4f8f946f5c2b610cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a77e362b7fa037b4f8f946f5c2b610cb, type: 3}
 --- !u!1001 &1326718434709150347
 PrefabInstance:
   m_ObjectHideFlags: 0
