@@ -144,7 +144,7 @@ public class EnemyFSM : MonoBehaviour
             currentTime += Time.deltaTime;
             if (currentTime > attackDelay)
             {
-                //player.GetComponent<PlayerMove>().DamageAction(attackPower);
+                player.GetComponent<PlayerHp>().DamageAction(attackPower);
                 print("АјАн");
                 currentTime = 0;
             }
