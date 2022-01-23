@@ -18,17 +18,26 @@ public class PlayerFire : MonoBehaviour
     //피격 효과 파티클 시스템
     ParticleSystem ps;
 
+    //총구 효과 오브젝트
+    public GameObject gunFire;
+
+    //총구 효과 파티클 시스템
+    ParticleSystem gf;
+
 
     void Start()
     {
         //피격 효과 오브젝트에서 파티클 시스템 컴포넌트 가져오기
         ps = P_bulletEffect.GetComponent<ParticleSystem>();
 
+        //총구 효과 오브젝트에서 파티클 시스템 컴포넌트 가져오기
+        gf = gunFire.GetComponent<ParticleSystem>();
     }
 
     void Update()
     {
         UpdateA();
+        UpdateB();
     }
 
     void UpdateA()
@@ -48,7 +57,7 @@ public class PlayerFire : MonoBehaviour
         }
 
         //마우스 왼쪽 버튼을 누르면 총알 발사
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             //레이를 생성한 후 발사될 위치와 진행 방향 설정
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
@@ -68,7 +77,15 @@ public class PlayerFire : MonoBehaviour
                 //피격 효과 플레이
                 ps.Play();
             }
+        }
+    }
 
+    void UpdateB()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            //총구 효과 플레이
+            gf.Play();
         }
     }
 }
