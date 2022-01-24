@@ -1,25 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class LEnemyFSM : MonoBehaviour
 {
-    public int maxHealth;
-    public int curHealth;
-    public Transform target;
-    public BoxCollider meleeArea;
-    public GameObject bullet;
-    public bool isChase;
-    public bool isAttack;
-
-    Rigidbody rigid;
-    BoxCollider boxCollider;
-    Material mat;
-    NavMeshAgent nav;
-    Animator anim;
-
+    // 에너미 상태 상수
     enum EnemyState
     {
         Idle,
@@ -29,6 +15,7 @@ public class LEnemyFSM : MonoBehaviour
         Damaged,
         Die
     }
+
     // 공격 가능 범위
     public float attackDistance = 2f;
 
@@ -59,6 +46,7 @@ public class LEnemyFSM : MonoBehaviour
 
     // 초기 위치 저장용 변수
     Vector3 originPos;
+    Quaternion originRot;
 
     // 이동 가능 범위
     public float moveDistance = 20f;
@@ -71,6 +59,10 @@ public class LEnemyFSM : MonoBehaviour
 
     // 에너미 hp Slider 변수
     public Slider hpSlider;
+
+    // 애니메이터 변수
+    Animator anim;
+
 
     // Start is called before the first frame update
     void Start()
@@ -86,6 +78,13 @@ public class LEnemyFSM : MonoBehaviour
 
         // 자신의 초기 위치 저장하기
         originPos = transform.position;
+
+        // 자신의 초기 위치와 회전 값을 저장하기
+        originPos = transform.position;
+        originRot = transform.rotation;
+
+        // 자식 오브젝트로부터 애니메이터 변수 받아오기
+        anim = transform.GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -126,6 +125,8 @@ public class LEnemyFSM : MonoBehaviour
         {
             m_State = EnemyState.Move;
             print("상태 전환: Idle -> Move");
+
+            anim.SetTrigger("IdleToMove");
         }
     }
 
@@ -146,6 +147,12 @@ public class LEnemyFSM : MonoBehaviour
 
             // 캐릭터 콘트롤러를 이용해 이동하기
             cc.Move(dir * moveSpeed * Time.deltaTime);
+
+            // 플레이어를 향해 방향을 전환한다.
+            transform.forward = dir;
+
+            // 공격 대기 애니메이션 플레이
+            anim.SetTrigger("MoveToAttackDelay");
         }
     }
 
@@ -158,9 +165,12 @@ public class LEnemyFSM : MonoBehaviour
             currentTime += Time.deltaTime;
             if (currentTime > attackDelay)
             {
-                player.GetComponent<PlayerHp>().E_DamageAction(attackPower);
+                //player.GetComponent<PlayerHp>().E_DamageAction(attackPower);
                 print("공격");
                 currentTime = 0;
+
+                // 공격 애니메이션 플레이
+                anim.SetTrigger("StartAttack");
             }
         }
         // 그렇지 않다면, 현재 상태를 이동(Move)으로 전환한다(재추격 실시)
@@ -169,7 +179,15 @@ public class LEnemyFSM : MonoBehaviour
             m_State = EnemyState.Move;
             print("상태 전환: Attack -> Move");
             currentTime = 0;
+
+            // 이동 애니메이션 플레이
+            anim.SetTrigger("AttackToMove");
         }
+    }
+
+    public void AttackAction()
+    {
+        player.GetComponent<PlayerHp>().E_DamageAction(attackPower);
     }
 
     void Return()
@@ -179,16 +197,25 @@ public class LEnemyFSM : MonoBehaviour
         {
             Vector3 dir = (originPos - transform.position).normalized;
             cc.Move(dir * moveSpeed * Time.deltaTime);
+
+            // 복귀 지점으로 방향을 전환한다.
+            transform.forward = dir;
         }
         // 그렇지 않다면, 자신의 위치를 초기 위치로 조정하고 현재 상태를 대기로 전환한다.
         else
         {
+            // 위치 값과 회전 값을 초기 상태로 변환한다.
             transform.position = originPos;
+            transform.rotation = originRot;
 
             // hp를 다시 회복한다.
             hp = maxHp;
+
             m_State = EnemyState.Idle;
             print("상태 전환: Return -> Idle");
+
+            // 대기 애니메이션으로 전환하는 트랜지션을 호출한다.
+            anim.SetTrigger("MoveToIdle");
         }
     }
 
@@ -202,7 +229,7 @@ public class LEnemyFSM : MonoBehaviour
     IEnumerator DamageProcess()
     {
         // 피격 모션 시간만큼 기다린다
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
 
         // 현재 상태를 이동 상태로 전환한다.
         m_State = EnemyState.Move;
@@ -226,6 +253,9 @@ public class LEnemyFSM : MonoBehaviour
         {
             m_State = EnemyState.Damaged;
             print("상태 전환: Any State -> Damaged");
+
+            // 피격 애니메이션을 플레이한다.
+            anim.SetTrigger("Damaged");
             Damaged();
         }
         // 그렇지 않다면 죽음 상태로 전환한다.
@@ -233,7 +263,11 @@ public class LEnemyFSM : MonoBehaviour
         {
             m_State = EnemyState.Die;
             print("상태 전환: Any state -> Die");
+
+            // 죽음 애니메이션을 플레이한다.
+            anim.SetTrigger("Die");
             Die();
+
         }
     }
 
@@ -256,28 +290,4 @@ public class LEnemyFSM : MonoBehaviour
         print("소멸!");
         Destroy(gameObject);
     }
-
-    void Targerting()
-    {
-        float targetRadius = 0.5f;
-        float targetRange = 25f;
-
-        RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, targetRadius, transform.forward, targetRange, LayerMask.GetMask("Player"));
-
-        if (rayHits.Length > 0 && !isAttack)
-        {
-            StartCoroutine(DamageProcess());
-        }
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Bullet")
-        {
-            E_Bullet bullet = other.GetComponent<E_Bullet>();
-            curHealth -= bullet.damage;
-            Vector3 reactVec = transform.position - other.transform.position;
-        }
-    }
-
 }
