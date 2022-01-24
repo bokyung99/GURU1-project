@@ -175,6 +175,9 @@ public class EnemyFSM : MonoBehaviour
             m_State = EnemyState.Move;
             print("상태 전환: Attack -> Move");
             currentTime = 0;
+
+            // 이동 애니메이션 플레이
+            anim.SetTrigger("AttackToMove");
         }
     }
 
@@ -217,7 +220,7 @@ public class EnemyFSM : MonoBehaviour
     IEnumerator DamageProcess()
     {
         // 피격 모션 시간만큼 기다린다
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
 
         // 현재 상태를 이동 상태로 전환한다.
         m_State = EnemyState.Move;
@@ -241,6 +244,9 @@ public class EnemyFSM : MonoBehaviour
         {
             m_State = EnemyState.Damaged;
             print("상태 전환: Any State -> Damaged");
+
+            // 피격 애니메이션을 플레이한다.
+            anim.SetTrigger("Damaged");
             Damaged();
         }
         // 그렇지 않다면 죽음 상태로 전환한다.
@@ -248,6 +254,9 @@ public class EnemyFSM : MonoBehaviour
         {
             m_State = EnemyState.Die;
             print("상태 전환: Any state -> Die");
+
+            // 죽음 애니메이션을 플레이한다.
+            anim.SetTrigger("Die");
             Die();
         }
     }
