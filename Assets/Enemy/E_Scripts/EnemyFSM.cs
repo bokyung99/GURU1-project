@@ -15,6 +15,9 @@ public class EnemyFSM : MonoBehaviour
         Damaged,
         Die
     }
+
+    Animator anim;
+
     // 공격 가능 범위
     public float attackDistance = 2f;
 
@@ -45,6 +48,7 @@ public class EnemyFSM : MonoBehaviour
 
     // 초기 위치 저장용 변수
     Vector3 originPos;
+    Quaternion originRot;
 
     // 이동 가능 범위
     public float moveDistance = 20f;
@@ -57,6 +61,7 @@ public class EnemyFSM : MonoBehaviour
 
     // 에너미 hp Slider 변수
     public Slider hpSlider;
+
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +77,10 @@ public class EnemyFSM : MonoBehaviour
 
         // 자신의 초기 위치 저장하기
         originPos = transform.position;
+
+        // 자신의 초기 위치와 회전 값을 저장하기
+        originPos = transform.position;
+        originRot = transform.rotation;
     }
 
     // Update is called once per frame
@@ -112,6 +121,8 @@ public class EnemyFSM : MonoBehaviour
         {
             m_State = EnemyState.Move;
             print("상태 전환: Idle -> Move");
+
+            anim.SetTrigger("IdleToMove");
         }
     }
 
@@ -132,6 +143,12 @@ public class EnemyFSM : MonoBehaviour
 
             // 캐릭터 콘트롤러를 이용해 이동하기
             cc.Move(dir * moveSpeed * Time.deltaTime);
+
+            // 플레이어를 향해 방향을 전환한다.
+            transform.forward = dir;
+
+            // 공격 대기 애니메이션 플레이
+            anim.SetTrigger("MoveToAttackDelay");
         }
     }
 
@@ -147,6 +164,9 @@ public class EnemyFSM : MonoBehaviour
                 player.GetComponent<PlayerHp>().E_DamageAction(attackPower);
                 print("공격");
                 currentTime = 0;
+
+                // 공격 애니메이션 플레이
+                anim.SetTrigger("StartAttack");
             }
         }
         // 그렇지 않다면, 현재 상태를 이동(Move)으로 전환한다(재추격 실시)
@@ -165,16 +185,25 @@ public class EnemyFSM : MonoBehaviour
         {
             Vector3 dir = (originPos - transform.position).normalized;
             cc.Move(dir * moveSpeed * Time.deltaTime);
+
+            // 복귀 지점으로 방향을 전환한다.
+            transform.forward = dir;
         }
         // 그렇지 않다면, 자신의 위치를 초기 위치로 조정하고 현재 상태를 대기로 전환한다.
         else
         {
+            // 위치 값과 회전 값을 초기 상태로 변환한다.
             transform.position = originPos;
+            transform.rotation = originRot;
 
             // hp를 다시 회복한다.
             hp = maxHp;
+
             m_State = EnemyState.Idle;
             print("상태 전환: Return -> Idle");
+
+            // 대기 애니메이션으로 전환하는 트랜지션을 호출한다.
+            anim.SetTrigger("MoveToIdle");
         }
     }
 
