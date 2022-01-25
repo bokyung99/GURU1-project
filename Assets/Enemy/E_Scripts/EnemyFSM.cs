@@ -66,6 +66,9 @@ public class EnemyFSM : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // 애니메이터 컴포넌트를 anim 변수에 불러온다.
+        anim = GetComponent<Animator>();
+
         // 최초의 에너미 상태는 대기로 한다.
         m_State = EnemyState.Idle;
 
@@ -122,7 +125,7 @@ public class EnemyFSM : MonoBehaviour
             m_State = EnemyState.Move;
             print("상태 전환: Idle -> Move");
 
-            //anim.SetTrigger("IdleToMove");
+            anim.SetTrigger("IdleToMove");
         }
     }
 
@@ -150,6 +153,16 @@ public class EnemyFSM : MonoBehaviour
             // 공격 대기 애니메이션 플레이
             //anim.SetTrigger("MoveToAttackDelay");
         }
+        else
+        {
+            m_State = EnemyState.Attack;
+            print("상태 전환: Move -> Attack");
+
+            currentTime = attackDelay;
+
+            anim.SetTrigger("MoveToAttackDelay");
+        }
+
     }
 
     void Attack()
