@@ -36,6 +36,10 @@ public class PlayerFire : MonoBehaviour
     //총구 효과 파티클 시스템
     ParticleSystem gf;
 
+    //총구 효과 위치
+    public GameObject MuzzlePosition;
+
+
   
 
 
@@ -68,7 +72,7 @@ public class PlayerFire : MonoBehaviour
     void Update()
     {
         UpdateA();
-        UpdateB();
+      
     }
 
     void UpdateA()
@@ -96,13 +100,22 @@ public class PlayerFire : MonoBehaviour
         //마우스 왼쪽 버튼을 누르면 총알 발사
         if (Input.GetMouseButtonDown(0) && !isReload)
         {
+
             //레이를 생성한 후 발사될 위치와 진행 방향 설정
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
             //레이가 부딪힌 대상의 정보를 저장할 변수를 생성
             RaycastHit hitInfo = new RaycastHit();
 
-            
+            //레이를 발사하면 총구효과 표시
+            if (Physics.Raycast(ray))
+            {
+                //총구효과의 위치를 총구로 이동
+                gunFire.transform.position = MuzzlePosition.transform.position;
+
+                //총구 효과 플레이
+                gf.Play();
+            }
 
 
             //레이를 발사한 후 만일 부딪힌 물체가 있으면 피격 효과 표시
@@ -111,6 +124,7 @@ public class PlayerFire : MonoBehaviour
                 //총 발사가 enemy를 맞는다면
                 if (hitInfo.transform.tag == "Enemy")
                 {
+                   
                     //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
                     P2_bulletEffect.transform.position = hitInfo.point;
 
@@ -125,6 +139,7 @@ public class PlayerFire : MonoBehaviour
                 }
                 else
                 {
+                
                     //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
                     P1_bulletEffect.transform.position = hitInfo.point;
 
@@ -145,12 +160,23 @@ public class PlayerFire : MonoBehaviour
         //마우스 휠 누르면 총 연사
         if (Input.GetMouseButton(2) && !isReload)
         {
+
             //레이를 생성한 후 발사될 위치와 진행 방향 설정
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
             //레이가 부딪힌 대상의 정보를 저장할 변수를 생성
             RaycastHit hitInfo = new RaycastHit();
 
+            //레이를 발사하면 총구효과 표시
+            if (Physics.Raycast(ray))
+            {
+                //총구효과의 위치를 총구로 이동
+                gunFire.transform.position = MuzzlePosition.transform.position;
+
+                //총구 효과 플레이
+                gf.Play();
+            }
+           
 
             //레이를 발사한 후 만일 부딪힌 물체가 있으면 피격 효과 표시
             if (Physics.Raycast(ray, out hitInfo))
@@ -158,6 +184,7 @@ public class PlayerFire : MonoBehaviour
                 //총 발사가 enemy를 맞는다면
                 if (hitInfo.transform.tag == "Enemy")
                 {
+             
                     //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
                     P2_bulletEffect.transform.position = hitInfo.point;
 
@@ -172,6 +199,7 @@ public class PlayerFire : MonoBehaviour
                 }
                 else
                 {
+     
                     //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
                     P1_bulletEffect.transform.position = hitInfo.point;
 
@@ -191,12 +219,5 @@ public class PlayerFire : MonoBehaviour
 
     }
 
-    void UpdateB()
-    {
-       if (Input.GetMouseButtonDown(0))
-        {
-            //총구 효과 플레이
-            gf.Play();
-        }
-    }
+   
 }
