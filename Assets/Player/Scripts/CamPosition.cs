@@ -19,6 +19,11 @@ public class CamPosition : MonoBehaviour
 
     public void UpdateRotate(float mouseX, float mouseY)
     {
+        // 게임 상태가 ‘게임 중’ 상태일 때만 조작할 수 있게 한다.
+        if (GameManager.gm.gState != GameManager.GameState.Run)
+        {
+            return;
+        }
         //마우스 좌우 이동으로 카메라 y축 회전
         eulerAngleY += mouseX * rotCamYAxisSpeed;
         //마우스 상하 이동으로 카메라 x축 회전

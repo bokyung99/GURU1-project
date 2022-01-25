@@ -10,8 +10,8 @@
  
      // Use this for initialization
      void Start () {
- 
-         StartAudio ();
+
+        StartAudio();
      }
  
  

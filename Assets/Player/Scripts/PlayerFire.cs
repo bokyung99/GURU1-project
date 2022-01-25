@@ -77,6 +77,12 @@ public class PlayerFire : MonoBehaviour
 
     void Update()
     {
+        // 게임 상태가 '게임 중'이 아니라면 조작 불가
+        if (GameManager.gm.gState != GameManager.GameState.Run)
+        {
+            return;
+        }
+
         UpdateA();
     }
 
