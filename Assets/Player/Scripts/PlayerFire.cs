@@ -30,11 +30,10 @@ public class PlayerFire : MonoBehaviour
     public float reloadTime = 1.0f;
     //재장전 할 때 총 발사 x
     private bool isReload = false;
-    //총구 효과 오브젝트
-    public GameObject gunFire;
 
-    //총구 효과 파티클 시스템
-    ParticleSystem gf;
+    //총구 효과 오브젝트 배열
+    public GameObject[] eff_Flash;
+
 
   
 
@@ -53,6 +52,19 @@ public class PlayerFire : MonoBehaviour
         isReload = false;
     }
 
+    //총구 효과 코루틴 함수
+    IEnumerator ShootEffectOn(float duration)
+    {
+        //랜덤하게 숫자 뽑음
+        int num = Random.Range(0, eff_Flash.Length - 1);
+        //이펙트 오브젝트 배열에서 뽑힌 숫자에 해당하는 이펙트 오브젝트 활성화
+        eff_Flash[num].SetActive(true);
+        //지정한 시간만큼 대기
+        yield return new WaitForSeconds(duration);
+        //이펙트 오브젝트 비활성화
+        eff_Flash[num].SetActive(false);
+    }
+
 
     void Start()
     {
@@ -61,14 +73,11 @@ public class PlayerFire : MonoBehaviour
         //피격 효과2 오브젝트에서 파티클 시스템 컴포넌트 가져오기
         ps2 = P2_bulletEffect.GetComponent<ParticleSystem>();
 
-        //총구 효과 오브젝트에서 파티클 시스템 컴포넌트 가져오기
-        gf = gunFire.GetComponent<ParticleSystem>();
     }
 
     void Update()
     {
         UpdateA();
-        UpdateB();
     }
 
     void UpdateA()
@@ -96,6 +105,9 @@ public class PlayerFire : MonoBehaviour
         //마우스 왼쪽 버튼을 누르면 총알 발사
         if (Input.GetMouseButtonDown(0) && !isReload)
         {
+            //총구 효과 플레이
+            StartCoroutine(ShootEffectOn(0.05f));
+
             //레이를 생성한 후 발사될 위치와 진행 방향 설정
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
@@ -145,6 +157,9 @@ public class PlayerFire : MonoBehaviour
         //마우스 휠 누르면 총 연사
         if (Input.GetMouseButton(2) && !isReload)
         {
+            //총구 효과 플레이
+            StartCoroutine(ShootEffectOn(0.05f));
+
             //레이를 생성한 후 발사될 위치와 진행 방향 설정
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
@@ -191,12 +206,5 @@ public class PlayerFire : MonoBehaviour
 
     }
 
-    void UpdateB()
-    {
-       if (Input.GetMouseButtonDown(0))
-        {
-            //총구 효과 플레이
-            gf.Play();
-        }
-    }
+  
 }
