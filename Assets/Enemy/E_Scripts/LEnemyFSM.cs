@@ -122,7 +122,7 @@ public class LEnemyFSM : MonoBehaviour
             m_State = EnemyState.Move;
             print("상태 전환: Idle -> Move");
 
-            //anim.SetTrigger("IdleToMove");
+            anim.SetTrigger("IdleToMove");
         }
     }
 
@@ -147,8 +147,16 @@ public class LEnemyFSM : MonoBehaviour
             // 플레이어를 향해 방향을 전환한다.
             transform.forward = dir;
 
-            // 공격 대기 애니메이션 플레이
-            //anim.SetTrigger("MoveToAttackDelay");
+            
+        }
+        else
+        {
+            m_State = EnemyState.Attack;
+            print("상태 전환: Move -> Attack");
+
+            currentTime = attackDelay;
+
+            anim.SetTrigger("MoveToAttackDelay");
         }
     }
 
