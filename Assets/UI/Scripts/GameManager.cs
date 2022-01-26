@@ -38,7 +38,10 @@ public class GameManager : MonoBehaviour
     // 옵션 화면 UI 오브젝트 변수
     public GameObject gameOption;
 
-    // playerHp 클래스 변수 
+    // 게임 오버 화면 UI 오브젝트 변수
+   public GameObject gameOverOpt;
+
+    // playerHp 클래스 변수
     PlayerHp playerHpMng;
 
     void Update()
@@ -46,7 +49,8 @@ public class GameManager : MonoBehaviour
         // 게임 오버 상태일 때 적용할 코드
         // 플레이어 hp 감소를 다루는 코드에서 hp 가지고 와서 
         // 그 hp가 0이하일 경우, 아래와 같이 코드 작성
-        /*
+
+        /* 
         if (Input.GetMouseButton(1))
         {
             // 상태 텍스트를 활성화한다.
@@ -70,31 +74,18 @@ public class GameManager : MonoBehaviour
 
         */
 
-        // 만일, 플레이어의 hp가 0 이하라면...
         if (playerHpMng.playerHp <= 0)
         {
-            // 상태 텍스트를 활성화한다.
-            gameLabel.SetActive(true);
+            // 게임 오버 메뉴를 킨다
+            gameOverOpt.SetActive(true);
 
-            // 상태 텍스트의 내용을 ‘Game Over’로 한다.
-            gameText.text = "Game Over";
-
-            // 상태 텍스트의 색상을 붉은색으로 한다.
-            gameText.color = new Color32(255, 0, 0, 255);
-
-            // 상태 텍스트의 자식 오브젝트의 트랜스폼 컴포넌트를 가져온다.
-            Transform buttons = gameText.transform.GetChild(0);
-
-            // 버튼 오브젝트를 활성화한다.
-            buttons.gameObject.SetActive(true);
-
-            // 상태를 ‘게임 오버’ 상태로 변경한다.
+            // 게임 상태를 게임 오버 상태로 변경한다.
             gState = GameState.GameOver;
+
         }
 
-
-        // f1 키를 눌렀을 때 옵션 메뉴 켜짐
-        if (Input.GetKeyDown(KeyCode.F1))
+            // f1 키를 눌렀을 때 옵션 메뉴 켜짐
+            if (Input.GetKeyDown(KeyCode.F1))
         {
             // 만약 이미 옵션 메뉴가 켜진 상황이라면 
             if (gState == GameState.Pause)
@@ -136,9 +127,8 @@ public class GameManager : MonoBehaviour
         // 게임 상태 UI 오브젝트에서 Text 컴포넌트를 가져온다.
         gameText = gameLabel.GetComponent<Text>();
 
-        // 플레이어 오브젝트를 찾은 후 플레이어의 PlayerMove 컴포넌트 받아오기
+        // 플레이어 오브젝트를 찾은 후, playreHp 컴포넌트 받아오기
         playerHpMng = GameObject.Find("Player").GetComponent<PlayerHp>();
-
 
     }
 
@@ -169,6 +159,12 @@ public class GameManager : MonoBehaviour
         // 애플리케이션을 종료한다.
         Application.Quit();
         Debug.Log("끝!");
+    }
+
+    public void returnToMain()
+    {
+        // 게임 속도를 1배속으로 전환한다.
+        SceneManager.LoadScene("TitleMenu");
     }
 
 }
