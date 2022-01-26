@@ -30,10 +30,14 @@ public class PlayerHp : MonoBehaviour
 
     void UpdateB()
     {
-        //int 변수 playerHp를 string으로 변환
-        string php = playerHp.ToString();
-        //플레이어 hp 텍스트로 나타내기
-        textHp.text = php;
+        //플레이어의 체력이 0 이상일 때
+        if (playerHp >= 0)
+        {
+            //int 변수 playerHp를 string으로 변환
+            string php = playerHp.ToString();
+            //플레이어 hp 텍스트로 나타내기
+            textHp.text = php;
+        }
 
         //현재 플레이어 hp(%)를 hp 슬라이더의 value에 반영
         hpSlider.value = (float)playerHp / (float)playerMaxHp;
@@ -87,7 +91,7 @@ public class PlayerHp : MonoBehaviour
         if (other.CompareTag ("HealPack"))
         {
             //플레이어 체력이 0이 아니고 최대가 아닐 때
-            //if (playerHp != 0 && playerHp < playerMaxHp)
+            if (playerHp < playerMaxHp && playerHp > 0) 
             {
                 //2초 후 hpPlus 함수 실행
                 Invoke("hpPlus", 2f);
