@@ -29,10 +29,10 @@ public class PlayerHp : MonoBehaviour
 
         //현재 플레이어 hp(%)를 hp 슬라이더의 value에 반영한다.
         hpSlider.value = (float)playerHp / (float)playerMaxHp;
-        //hp가 0이 되면 플레이어 사망, 게임 종료
+        //hp가 0이 되면 게임 오버 나오는 것으로 대체. 플레이어 사라질 시 카메라 사라짐.
         if (playerHp == 0)
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
 
     }
