@@ -11,6 +11,8 @@ TagManager:
   - BulletSpawn
   - EnemyBullet
   - Enemy
+  - Floor
+  - Wall
   layers:
   - Default
   - TransparentFX
