@@ -34,8 +34,8 @@ public class PlayerFire : MonoBehaviour
     //총구 효과 오브젝트 배열
     public GameObject[] eff_Flash;
 
-
-  
+    //정조준 상태 확인 변수
+    private bool isFineSightMode = false;
 
 
     //재장전 함수
@@ -63,6 +63,30 @@ public class PlayerFire : MonoBehaviour
         yield return new WaitForSeconds(duration);
         //이펙트 오브젝트 비활성화
         eff_Flash[num].SetActive(false);
+    }
+
+    //정조준 함수
+    private void TryFineSight()
+    {
+        //마우스 오른쪽 버튼을 누르면 정조준
+        if(Input.GetMouseButton(1))
+        {
+            //정조준 상태 변환
+            isFineSightMode = !isFineSightMode;
+
+            if(isFineSightMode)
+            {
+                //정조준 실행
+                Camera.main.fieldOfView = 15f;
+            }
+            else
+            {
+                //정조준 취소
+                Camera.main.fieldOfView = 60f;
+            }
+           
+
+        }
     }
 
 
@@ -210,6 +234,9 @@ public class PlayerFire : MonoBehaviour
             }
         }
 
+        //정조준 함수
+        TryFineSight();
+    
     }
 
   
