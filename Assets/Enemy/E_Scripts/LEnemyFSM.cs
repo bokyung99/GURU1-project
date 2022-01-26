@@ -33,7 +33,7 @@ public class LEnemyFSM : MonoBehaviour
     EnemyState m_State;
 
     // 플레이어 발견 범위
-    public float findDistance = 8f;
+    public float findDistance = 25f;
 
     // 플레이어 트랜스폼
     Transform player;
@@ -65,6 +65,10 @@ public class LEnemyFSM : MonoBehaviour
 
     // 내비게이션 에이전트 변수
     NavMeshAgent smith;
+
+    // 미사일 프리펩을 담아둘 변수 생성
+    public GameObject bullet;
+    public Transform bulletPos;
 
 
     // Start is called before the first frame update
@@ -194,6 +198,7 @@ public class LEnemyFSM : MonoBehaviour
 
                 // 공격 애니메이션 플레이
                 anim.SetTrigger("StartAttack");
+                StartCoroutine("Shot");
             }
         }
         // 그렇지 않다면, 현재 상태를 이동(Move)으로 전환한다(재추격 실시)
@@ -206,6 +211,18 @@ public class LEnemyFSM : MonoBehaviour
             // 이동 애니메이션 플레이
             anim.SetTrigger("AttackToMove");
         }
+    }
+
+    IEnumerator Shot()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        // 미사일 인스턴스화
+        GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
+        Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
+        rigidBullet.velocity = transform.forward * 20;
+
+        yield return new WaitForSeconds(1.5f);
     }
 
     void Return()
