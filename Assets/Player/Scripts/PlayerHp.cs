@@ -89,12 +89,16 @@ public class PlayerHp : MonoBehaviour
             //플레이어 체력이 0이 아니고 최대가 아닐 때
             //if (playerHp != 0 && playerHp < playerMaxHp)
             {
-                //플레이어 체력 회복 (수정)
-                playerHp += 1;
-                //hpPack 제거 (사운드 구현 후 제거 시간 조절)
-                Destroy(hpPack, 1);
+                //2초 후 hpPlus 함수 실행
+                Invoke("hpPlus", 2f);
             }
         }
     }
-
+    void hpPlus() //(사운드 구현 후 시간 조절)
+    {
+        //플레이어 체력 회복 (수정)
+        playerHp += 1;
+        //hpPack 제거
+        Destroy(hpPack);
+    }
 }
