@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class PlayerHp : MonoBehaviour
 {
-
     //Hit 효과 오브젝트
     public GameObject hitEffect;
+
 
     //플레이어 체력 변수 (수정)
     public int playerHp = 10;
@@ -73,18 +74,18 @@ public class PlayerHp : MonoBehaviour
     }
 
     //충돌 감지
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         //충돌한 게임 오브젝트의 태그가 HealPack일 때
-        if (collision.gameObject.tag == "HealPack")
+        if (other.CompareTag ("HealPack"))
         {
             //플레이어 체력이 0이 아니고 최대가 아닐 때
-            if (playerHp != 0 && playerHp < playerMaxHp)
+            //if (playerHp != 0 && playerHp < playerMaxHp)
             {
-                //hpPack 제거
-                Destroy(hpPack);
                 //플레이어 체력 회복 (수정)
                 playerHp += 1;
+                //hpPack 제거
+                Destroy(hpPack, 0.2f);
             }
         }
     }
