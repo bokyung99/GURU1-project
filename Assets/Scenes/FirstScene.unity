@@ -3245,7 +3245,7 @@ GameObject:
   - component: {fileID: 175920995}
   - component: {fileID: 175920994}
   m_Layer: 5
-  m_Name: totalNum
+  m_Name: Max Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13639,7 +13639,7 @@ GameObject:
   - component: {fileID: 672000933}
   - component: {fileID: 672000932}
   m_Layer: 5
-  m_Name: bulletsIcon
+  m_Name: bulletIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14455,7 +14455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 707482501}
   m_Layer: 5
-  m_Name: WeaponsIcon
+  m_Name: WeaponIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19844,7 +19844,7 @@ GameObject:
   - component: {fileID: 897133098}
   - component: {fileID: 897133097}
   m_Layer: 5
-  m_Name: textHp
+  m_Name: Text Hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24645,7 +24645,7 @@ GameObject:
   - component: {fileID: 1095445534}
   - component: {fileID: 1095445533}
   m_Layer: 5
-  m_Name: bulletsBg
+  m_Name: bulletBg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27930,7 +27930,7 @@ GameObject:
   - component: {fileID: 1237038115}
   - component: {fileID: 1237038114}
   m_Layer: 5
-  m_Name: hpBG
+  m_Name: hpBg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31779,7 +31779,7 @@ GameObject:
   - component: {fileID: 1409518043}
   - component: {fileID: 1409518042}
   m_Layer: 5
-  m_Name: currentNum
+  m_Name: Current Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32447,7 +32447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1437681862}
   m_Layer: 5
-  m_Name: Panel_bulletsNum
+  m_Name: Panel_bulletNum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36912,12 +36912,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7598bd4f90ce1cf458a9dd9ddcc3cdbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curBullet: {fileID: 1409518042}
+  maxBullet: {fileID: 175920994}
   firePosition: {fileID: 1811713782}
   bombFactory: {fileID: 3386928725455276746, guid: ebfedbc4c32ac4c45a83e624de22b05a, type: 3}
   throwPower: 15
   P1_bulletEffect: {fileID: 268975153}
   P2_bulletEffect: {fileID: 2122388288}
   currentBulletCount: 10
+  maxBulletCount: 10
   reloadTime: 1
   eff_Flash:
   - {fileID: 1504687498}
