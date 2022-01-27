@@ -9,14 +9,18 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 8f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
-    public Transform groundCheck;
-    public float groundDistance = 0.4f;
-    public LayerMask groundMask;
+    //public Transform groundCheck;
+    //public float groundDistance = 1f;
+    //public LayerMask groundMask;
     Vector3 velocity;
     bool isGrounded;
 
-    
-     public AudioClip footStepSound;
+    // 점프 상태 변수
+    public bool isJumping = false;
+
+
+
+    public AudioClip footStepSound;
      public float footStepDelay;
  
      private float nextFootstep = 0;
@@ -24,12 +28,20 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        // 1-1. 만일, 점프 중이었고, 다시 바닥에 착지했다면...
+        if (isJumping && controller.collisionFlags == CollisionFlags.Below)
+        {
+            // 점프 전 상태로 초기화한다.
+            isJumping = false;
+        }
 
-        if (isGrounded && velocity.y <0)
+
+        /* if (isGrounded && velocity.y <0)
             {
             velocity.y = -2f;
             }
+        */
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -37,8 +49,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 motion = transform.right * x + transform.forward * z;
         controller.Move(motion * speed * Time.deltaTime);
 
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        // 점프 상태가 아닐 때 점프 가능함 (무한 점프 X)
+        if(Input.GetButtonDown("Jump") && !isJumping)
         {
+            // 점프 상태로 전환
+            isJumping = true;
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 

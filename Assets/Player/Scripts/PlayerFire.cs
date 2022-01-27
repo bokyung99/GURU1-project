@@ -1,9 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerFire : MonoBehaviour
 {
+    //현재 총알 텍스트
+    [SerializeField]
+    private Text curBullet;
+    //최대 총알 텍스트
+    [SerializeField]
+    private Text maxBullet;
+
     //발사 위치
     public GameObject firePosition;
     //투척 무기
@@ -26,6 +34,8 @@ public class PlayerFire : MonoBehaviour
 
     //현재 탄알집에 남아있는 총알의 개수
     public int currentBulletCount = 10;
+    //최대 총알의 개수 (수정)
+    public int maxBulletCount = 10;
     //재장전 속도
     public float reloadTime = 1.0f;
     //재장전 할 때 총 발사 x
@@ -84,12 +94,14 @@ public class PlayerFire : MonoBehaviour
     private void TryFineSight()
     {
         //마우스 오른쪽 버튼을 누르면 정조준
+
         if(Input.GetMouseButtonDown(1))
+
         {
             //정조준 상태 변환
             isFineSightMode = !isFineSightMode;
 
-            if(isFineSightMode)
+            if (isFineSightMode)
             {
                 //정조준 실행
                 Camera.main.fieldOfView = 15f;
@@ -99,8 +111,6 @@ public class PlayerFire : MonoBehaviour
                 //정조준 취소
                 Camera.main.fieldOfView = 60f;
             }
-           
-
         }
     }
 
@@ -149,6 +159,7 @@ public class PlayerFire : MonoBehaviour
         }
 
         UpdateA();
+        UpdateB();
     }
 
     void UpdateA()
@@ -167,7 +178,7 @@ public class PlayerFire : MonoBehaviour
 
         }
 
-        //만약 총알이 0개이하면 재장전
+        //만약 총알이 0개 이하면 재장전
         if (currentBulletCount <= 0)
         {
             StartCoroutine(ReloadCoroutine());
@@ -188,11 +199,11 @@ public class PlayerFire : MonoBehaviour
             //레이가 부딪힌 대상의 정보를 저장할 변수를 생성
             RaycastHit hitInfo = new RaycastHit();
 
-            
+
 
 
             //레이를 발사한 후 만일 부딪힌 물체가 있으면 피격 효과 표시
-            if (Physics.Raycast(ray,out hitInfo))
+            if (Physics.Raycast(ray, out hitInfo))
             {
                 //총 발사가 enemy를 맞는다면
                 if (hitInfo.transform.tag == "Enemy")
@@ -227,10 +238,8 @@ public class PlayerFire : MonoBehaviour
 
                 }
             }
-
-          
-            
         }
+
 
         //마우스 휠 누르면 총 연사
         if (Input.GetMouseButton(2) && !isReload)
@@ -284,8 +293,16 @@ public class PlayerFire : MonoBehaviour
 
         //정조준 함수
         TryFineSight();
-    
     }
 
-  
+    void UpdateB()
+    {
+        //int 변수 currentBulletCount를 string으로 변환
+        string cBC = currentBulletCount.ToString();
+        //현재 총알의 개수 텍스트로 나타내기
+        curBullet.text = cBC;
+        //int 변수 maxBulletCount string으로 변환
+        string mBC = maxBulletCount.ToString();
+        maxBullet.text = mBC;
+    }
 }

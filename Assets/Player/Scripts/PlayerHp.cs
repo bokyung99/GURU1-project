@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class PlayerHp : MonoBehaviour
 {
-
     //Hit 효과 오브젝트
     public GameObject hitEffect;
+
+    //플레이어 hp 텍스트
+    [SerializeField]
+    private Text textHp;
 
     //플레이어 체력 변수 (수정)
     public int playerHp = 10;
@@ -26,10 +30,18 @@ public class PlayerHp : MonoBehaviour
 
     void UpdateB()
     {
+        //플레이어의 체력이 0 이상일 때
+        if (playerHp >= 0)
+        {
+            //int 변수 playerHp를 string으로 변환
+            string php = playerHp.ToString();
+            //플레이어 hp 텍스트로 나타내기
+            textHp.text = php;
+        }
 
-        //현재 플레이어 hp(%)를 hp 슬라이더의 value에 반영한다.
+        //현재 플레이어 hp(%)를 hp 슬라이더의 value에 반영
         hpSlider.value = (float)playerHp / (float)playerMaxHp;
-        //hp가 0이 되면 게임 오버 나오는 것으로 대체. 플레이어 사라질 시 카메라 사라짐.
+        //hp가 0이 되면 게임 오버 나오는 것으로 대체. 플레이어 사라질 시 카메라 사라짐
         if (playerHp == 0)
         {
             //gameObject.SetActive(false);
@@ -73,19 +85,24 @@ public class PlayerHp : MonoBehaviour
     }
 
     //충돌 감지
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         //충돌한 게임 오브젝트의 태그가 HealPack일 때
-        if (collision.gameObject.tag == "HealPack")
+        if (other.CompareTag ("HealPack"))
         {
             //플레이어 체력이 0이 아니고 최대가 아닐 때
-            if (playerHp != 0 && playerHp < playerMaxHp)
+            if (playerHp < playerMaxHp && playerHp > 0) 
             {
-                //hpPack 제거
-                Destroy(hpPack);
-                //플레이어 체력 회복 (수정)
-                playerHp += 1;
+                //2초 후 hpPlus 함수 실행
+                Invoke("hpPlus", 2f);
             }
         }
+    }
+    void hpPlus() //(사운드 구현 후 시간 조절)
+    {
+        //플레이어 체력 회복 (수정)
+        playerHp += 1;
+        //hpPack 제거
+        Destroy(hpPack);
     }
 }
