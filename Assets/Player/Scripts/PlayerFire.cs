@@ -48,6 +48,21 @@ public class PlayerFire : MonoBehaviour
     private bool isFineSightMode = false;
 
 
+    //현재 총 종류
+    public Gun currentGun;
+
+    //본래 포지션 값
+    [SerializeField]
+    private Vector3 originPos;
+
+    //총 데미지
+    public int attackPower = 10;
+
+    Transform Enemy;
+
+
+
+
     //재장전 함수
     IEnumerator ReloadCoroutine()
     {
@@ -79,7 +94,9 @@ public class PlayerFire : MonoBehaviour
     private void TryFineSight()
     {
         //마우스 오른쪽 버튼을 누르면 정조준
-        if (Input.GetMouseButton(1))
+
+        if(Input.GetMouseButtonDown(1))
+
         {
             //정조준 상태 변환
             isFineSightMode = !isFineSightMode;
@@ -97,6 +114,32 @@ public class PlayerFire : MonoBehaviour
         }
     }
 
+
+    IEnumerator RetroActionCoroutine()
+    {
+        Vector3 recoilBack = new Vector3(originPos.x, originPos.y, -currentGun.retroActionForce);
+
+        currentGun.transform.localPosition = originPos;
+
+        //반동시작
+        while (currentGun.transform.localPosition.z <= currentGun.retroActionForce - 0.02f)
+        {
+            currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, recoilBack, 0.5f);
+            yield return null;
+
+        }
+
+        //원위치
+        //while (currentGun.transform.localPosition != originPos)
+        while (currentGun.transform.localPosition.z > originPos.z)
+        {
+            currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, originPos, 0.3f);
+            yield return null;
+
+        }
+
+
+    }
 
     void Start()
     {
@@ -144,6 +187,9 @@ public class PlayerFire : MonoBehaviour
         //마우스 왼쪽 버튼을 누르면 총알 발사
         if (Input.GetMouseButtonDown(0) && !isReload)
         {
+            StopAllCoroutines();
+            StartCoroutine(RetroActionCoroutine());
+
             //총구 효과 플레이
             StartCoroutine(ShootEffectOn(0.05f));
 
@@ -169,6 +215,8 @@ public class PlayerFire : MonoBehaviour
                     //피격 효과 플레이
                     ps2.Play();
 
+                    Enemy.GetComponent<EnemyFSM>().HitEnemy(attackPower);
+
                     //총알 한개 감소
                     currentBulletCount--;
                 }
@@ -188,8 +236,8 @@ public class PlayerFire : MonoBehaviour
 
                 }
             }
-
         }
+
 
         //마우스 휠 누르면 총 연사
         if (Input.GetMouseButton(2) && !isReload)

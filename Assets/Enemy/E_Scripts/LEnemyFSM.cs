@@ -20,7 +20,7 @@ public class LEnemyFSM : MonoBehaviour
     Animator anim;
 
     // 공격 가능 범위
-    public float attackDistance = 2f;
+    public float attackDistance = 25f;
 
     // 이동 속도
     public float moveSpeed = 5f;
@@ -188,6 +188,8 @@ public class LEnemyFSM : MonoBehaviour
         // 만일, 플레이어가 공격 범위 이내에 있다면 플레이어를 공격한다.
         if (Vector3.Distance(transform.position, player.position) < attackDistance)
         {
+            smith.isStopped = true;
+
             // 일정한 시간마다 플레이어를 공격한다.
             currentTime += Time.deltaTime;
             if (currentTime > attackDelay)

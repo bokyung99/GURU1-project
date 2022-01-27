@@ -19,10 +19,10 @@ public class BombAction : MonoBehaviour
         Collider[] cols = Physics.OverlapSphere(transform.position, explosionRadius, 1 << 10);
 
         //저장된 collider 배열에 있는 모든 적들에게 수류탄 데미지를 적용
-        /* for(int i=0; i <cols.Length;i++)
+        for(int i=0; i <cols.Length;i++)
          {
              cols[i].GetComponent<EnemyFSM>().HitEnemy(attackPower);
-         }*/ //몬스터 저장된 이름으로 EnemyFSM->수정해야함
+         } 
 
         //폭발 이펙트 생성
         GameObject eff = Instantiate(bombEffect);
