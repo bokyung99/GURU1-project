@@ -35687,9 +35687,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0803a5b82be7c24478be4f058e23b9e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 2
+  attackDistance: 7
   moveSpeed: 5
-  findDistance: 8
+  findDistance: 20
   attackPower: 1
   moveDistance: 20
   hp: 15
@@ -35752,8 +35752,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1594142070}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 1, z: 2}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 4, y: 1, z: 22.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1001781697}
@@ -35761,7 +35761,7 @@ Transform:
   - {fileID: 1671437981}
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &1594142076
 Animator:
   serializedVersion: 3
