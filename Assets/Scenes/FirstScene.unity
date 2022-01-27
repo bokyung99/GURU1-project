@@ -1113,6 +1113,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewGun_auto
       objectReference: {fileID: 0}
+    - target: {fileID: 167390, guid: d263be518b43c45958a9fabf6650fd2d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 456086, guid: d263be518b43c45958a9fabf6650fd2d, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -36731,11 +36735,7 @@ MonoBehaviour:
   speed: 8
   gravity: -18
   jumpHeight: 1.5
-  groundCheck: {fileID: 332806202}
-  groundDistance: 0.4
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 256
+  isJumping: 0
   footStepSound: {fileID: 8300000, guid: 263f8aaa01d5d0041b082b7b69d9ca02, type: 3}
   footStepDelay: 0.35
 --- !u!143 &1656206105
@@ -36919,8 +36919,8 @@ MonoBehaviour:
   throwPower: 15
   P1_bulletEffect: {fileID: 268975153}
   P2_bulletEffect: {fileID: 2122388288}
-  currentBulletCount: 10
-  maxBulletCount: 10
+  currentBulletCount: 100
+  maxBulletCount: 100
   reloadTime: 1
   eff_Flash:
   - {fileID: 1504687498}
