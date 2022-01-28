@@ -72,7 +72,7 @@ public class PlayerFire : MonoBehaviour
         isReload = true;
 
         /* 재장전 애니메이션 넣는곳 */
-        anim.SetTrigger("reloading");
+        //anim.SetTrigger("reloading");
 
         yield return new WaitForSeconds(reloadTime);
 
