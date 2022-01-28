@@ -22,7 +22,8 @@ public class BombAction : MonoBehaviour
         for(int i=0; i <cols.Length;i++)
          {
              cols[i].GetComponent<EnemyFSM>().HitEnemy(attackPower);
-         } 
+            cols[i].GetComponent<LEnemyFSM>().HitEnemy(attackPower);
+        } 
 
         //Æø¹ß ÀÌÆåÆ® »ý¼º
         GameObject eff = Instantiate(bombEffect);
