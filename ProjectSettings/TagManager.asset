@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - Floor
   - Wall
+  - LEnemy
   layers:
   - Default
   - TransparentFX
