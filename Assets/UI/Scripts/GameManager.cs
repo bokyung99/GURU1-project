@@ -44,6 +44,11 @@ public class GameManager : MonoBehaviour
     // playerHp 클래스 변수
     PlayerHp playerHpMng;
 
+    // 목표 아이템 UI 패널 오브젝트
+    public GameObject ItemPanel;
+
+    PlayerHp playerItem;
+
     void Update()
     {
         // 게임 오버 상태일 때 적용할 코드
@@ -115,7 +120,67 @@ public class GameManager : MonoBehaviour
                 // 게임 상태를 일시 정지 상태로 변경한다.
                 gState = GameState.Pause;
             }
-        } 
+        }
+
+        // tab 키를 눌렀을 때 목표 아이템 습득 현황 UI 켜짐
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            // 만약 이미 습득 현황 UI가 켜진 상황이라면 
+            if (gState == GameState.Pause)
+            {
+                // 옵션 메뉴를 끈다.
+                // 옵션 창을 비활성화한다.
+                ItemPanel.SetActive(false);
+
+                // 게임 속도를 1배속으로 전환한다.
+                Time.timeScale = 1f;
+
+                // 게임 상태를 게임 중 상태로 변경한다.
+                gState = GameState.Run;
+
+            }
+            // 옵션 메뉴가 꺼진 상황이라면
+            else
+            {
+                // 옵션 메뉴를 킨다.
+                // 옵션 창을 활성화한다.
+                ItemPanel.SetActive(true);
+
+                // 게임 속도를 0배속으로 전환한다.
+                Time.timeScale = 0f;
+
+                // 게임 상태를 일시 정지 상태로 변경한다.
+                gState = GameState.Pause;
+            }
+        }
+
+        // 아이템1을 습득했을 때
+        if (playerItem.isItem1 == 1)
+        {
+            // 아이템 패널의 4번째 자식 오브젝트 트랜스폼으로 얻어오기
+            Transform item1 = ItemPanel.transform.GetChild(0);
+
+            // 아이템1 보이게 하기
+            item1.gameObject.SetActive(true);
+        }
+        // 조건식 player -> playerItem.isItem2 으로 수정
+        // 아이템2를 습득했을 때
+        if (playerItem.isItem2 == 1)
+        {
+            // 아이템 패널의 5번째 자식 오브젝트 트랜스폼으로 얻어오기 
+            Transform item2 = ItemPanel.transform.GetChild(1);
+
+            // 아이템2 보이게 하기 
+            item2.gameObject.SetActive(true);
+        }
+        // 조건식 player -> playerItem.isItem3 으로 수정
+        // 아이템3을 습득했을 때
+        if (playerItem.isItem3 == 1)
+        {
+            // 아이템 패널의 6번째 자식 오브젝트 트랜스폼으로 얻어오기
+            Transform item3 = ItemPanel.transform.GetChild(2);
+            item3.gameObject.SetActive(true);
+        }
     }
 
     void Start()
@@ -129,6 +194,8 @@ public class GameManager : MonoBehaviour
 
         // 플레이어 오브젝트를 찾은 후, playreHp 컴포넌트 받아오기
         playerHpMng = GameObject.Find("Player").GetComponent<PlayerHp>();
+
+        playerItem = GameObject.Find("Player").GetComponent<PlayerHp>();
 
     }
 

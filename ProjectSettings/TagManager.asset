@@ -13,6 +13,10 @@ TagManager:
   - Enemy
   - Floor
   - Wall
+  - LEnemy
+  - Item1
+  - Item2
+  - Item3
   layers:
   - Default
   - TransparentFX

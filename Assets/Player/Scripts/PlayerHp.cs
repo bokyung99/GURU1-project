@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerHp : MonoBehaviour
@@ -19,6 +20,14 @@ public class PlayerHp : MonoBehaviour
     int playerMaxHp = 10;
     //hp 슬라이더 변수
     public Slider hpSlider;
+
+    // 아이템 총 습득 수
+    public int itemTotalNum = 0;
+
+    // 아이템1,2,3 습득 현황 확인 변수
+    public int isItem1 = 0;
+    public int isItem2 = 0;
+    public int isItem3 = 0;
 
     //힐팩
     public GameObject hpPack;
@@ -97,6 +106,39 @@ public class PlayerHp : MonoBehaviour
                 Invoke("hpPlus", 2f);
             }
         }
+
+        if (other.tag == "Item1")
+        {
+            isItem1++;
+            itemTotalNum++;
+            Destroy(other.gameObject);
+            if (itemTotalNum == 3)
+            {
+                SceneManager.LoadScene("Ending");
+            }
+        }
+        else if (other.tag == "Item2")
+        {
+            isItem2++;
+            itemTotalNum++;
+            Destroy(other.gameObject);
+            if (itemTotalNum == 3)
+            {
+                SceneManager.LoadScene("Ending");
+            }
+        }
+        else if (other.tag == "Item3")
+        {
+            isItem3++;
+            itemTotalNum++;
+            Destroy(other.gameObject);
+            if (itemTotalNum == 3)
+            {
+                SceneManager.LoadScene("Ending");
+            }
+        }
+
+
     }
     void hpPlus() //(사운드 구현 후 시간 조절)
     {
