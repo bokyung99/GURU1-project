@@ -136,7 +136,7 @@ public class PlayerFire : MonoBehaviour
         //총 위치를 원래대로
         currentGun.transform.localPosition = gunDefaultPos;
         //총 위치를 뒤로(반동)
-        currentGun.transform.Translate(Vector3.back * 0.3f);
+        currentGun.transform.Translate(Vector3.back * 0.1f);
 
     }
 
