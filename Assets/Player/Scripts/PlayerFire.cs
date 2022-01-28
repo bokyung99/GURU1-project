@@ -58,7 +58,12 @@ public class PlayerFire : MonoBehaviour
     //총 데미지
     public int attackPower = 10;
 
+    //트랜스폼 enemy
     Transform Enemy;
+
+    //트랜스폼 lenemy
+    Transform LEnemy;
+
 
 
 
@@ -115,31 +120,6 @@ public class PlayerFire : MonoBehaviour
     }
 
 
-    IEnumerator RetroActionCoroutine()
-    {
-        Vector3 recoilBack = new Vector3(originPos.x, originPos.y, -currentGun.retroActionForce);
-
-        currentGun.transform.localPosition = originPos;
-
-        //반동시작
-        while (currentGun.transform.localPosition.z <= currentGun.retroActionForce - 0.02f)
-        {
-            currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, recoilBack, 0.5f);
-            yield return null;
-
-        }
-
-        //원위치
-        //while (currentGun.transform.localPosition != originPos)
-        while (currentGun.transform.localPosition.z > originPos.z)
-        {
-            currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, originPos, 0.3f);
-            yield return null;
-
-        }
-
-
-    }
 
     void Start()
     {
@@ -147,6 +127,10 @@ public class PlayerFire : MonoBehaviour
         ps1 = P1_bulletEffect.GetComponent<ParticleSystem>();
         //피격 효과2 오브젝트에서 파티클 시스템 컴포넌트 가져오기
         ps2 = P2_bulletEffect.GetComponent<ParticleSystem>();
+
+        Enemy = GameObject.Find("Enemy").transform;
+
+        LEnemy = GameObject.Find("LEnemy").transform;
 
     }
 
@@ -187,8 +171,7 @@ public class PlayerFire : MonoBehaviour
         //마우스 왼쪽 버튼을 누르면 총알 발사
         if (Input.GetMouseButtonDown(0) && !isReload)
         {
-            StopAllCoroutines();
-            StartCoroutine(RetroActionCoroutine());
+            
 
             //총구 효과 플레이
             StartCoroutine(ShootEffectOn(0.05f));
@@ -217,7 +200,25 @@ public class PlayerFire : MonoBehaviour
                     //피격 효과 플레이
                     ps2.Play();
 
+                    //Enemy 공격
                     Enemy.GetComponent<EnemyFSM>().HitEnemy(attackPower);
+
+                    //총알 한개 감소
+                    currentBulletCount--;
+                }
+                else if (hitInfo.transform.tag == "LEnemy")
+                {
+                    //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
+                    P2_bulletEffect.transform.position = hitInfo.point;
+
+                    //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
+                    P2_bulletEffect.transform.forward = hitInfo.normal;
+
+                    //피격 효과 플레이
+                    ps2.Play();
+
+                    //LEnemy 공격
+                    LEnemy.GetComponent<LEnemyFSM>().HitEnemy(attackPower);
 
                     //총알 한개 감소
                     currentBulletCount--;
@@ -240,9 +241,8 @@ public class PlayerFire : MonoBehaviour
             }
         }
 
-
-        //마우스 휠 누르면 총 연사
-        if (Input.GetMouseButton(2) && !isReload)
+        //마우스 왼쪽 꾹 누르면 총 연사
+        else if (Input.GetMouseButton(0) && !isReload)
         {
             //총구 효과 플레이
             StartCoroutine(ShootEffectOn(0.05f));
@@ -268,6 +268,26 @@ public class PlayerFire : MonoBehaviour
 
                     //피격 효과 플레이
                     ps2.Play();
+
+                    //Enemy 공격
+                    Enemy.GetComponent<EnemyFSM>().HitEnemy(attackPower);
+
+                    //총알 한개 감소
+                    currentBulletCount--;
+                }
+                else if (hitInfo.transform.tag == "LEnemy")
+                {
+                    //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
+                    P2_bulletEffect.transform.position = hitInfo.point;
+
+                    //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
+                    P2_bulletEffect.transform.forward = hitInfo.normal;
+
+                    //피격 효과 플레이
+                    ps2.Play();
+
+                    //LEnemy 공격
+                    LEnemy.GetComponent<LEnemyFSM>().HitEnemy(attackPower);
 
                     //총알 한개 감소
                     currentBulletCount--;
