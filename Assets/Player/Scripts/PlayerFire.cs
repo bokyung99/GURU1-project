@@ -61,11 +61,9 @@ public class PlayerFire : MonoBehaviour
     //트랜스폼 enemy
     Transform Enemy;
 
+
     //트랜스폼 lenemy
     Transform LEnemy;
-
-
-
 
 
     //재장전 함수
@@ -74,6 +72,7 @@ public class PlayerFire : MonoBehaviour
         isReload = true;
 
         /* 재장전 애니메이션 넣는곳 */
+        anim.SetTrigger("reloading");
 
         yield return new WaitForSeconds(reloadTime);
 
@@ -128,9 +127,11 @@ public class PlayerFire : MonoBehaviour
         //피격 효과2 오브젝트에서 파티클 시스템 컴포넌트 가져오기
         ps2 = P2_bulletEffect.GetComponent<ParticleSystem>();
 
+
         Enemy = GameObject.Find("Enemy").transform;
 
         LEnemy = GameObject.Find("LEnemy").transform;
+
 
     }
 
