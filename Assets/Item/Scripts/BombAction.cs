@@ -10,8 +10,7 @@ public class BombAction : MonoBehaviour
     //수류탄 데미지
     public int attackPower = 10;
     //폭발 효과 반경
-    public float explosionRadius = 8f;
-
+    public float explosionRadius = 5f;
 
     //충돌 했을 때
     private void OnCollisionEnter(Collision collision)
