@@ -37863,7 +37863,8 @@ MonoBehaviour:
   - {fileID: 782334675}
   - {fileID: 891292374}
   currentGun: {fileID: 781443014}
-  attackPower: 10
+  attackPower: 3
+  setDelay: 2
 --- !u!114 &1656206111
 MonoBehaviour:
   m_ObjectHideFlags: 0

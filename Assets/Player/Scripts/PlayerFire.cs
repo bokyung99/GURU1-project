@@ -54,7 +54,7 @@ public class PlayerFire : MonoBehaviour
   
 
     //총 데미지
-    public int attackPower = 5;
+    public int attackPower = 3;
 
     //트랜스폼 enemy
     Transform Enemy;
@@ -70,6 +70,12 @@ public class PlayerFire : MonoBehaviour
 
     //반동 상태 확인
     bool isRebound = false;
+
+    public int setDelay = 5;
+
+    int delay = 0;
+
+
 
     //재장전 함수
     IEnumerator ReloadCoroutine()
@@ -224,7 +230,6 @@ public class PlayerFire : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !isReload)
         {
             
-
             //총구 효과 플레이
             StartCoroutine(ShootEffectOn(0.05f));
 
@@ -303,83 +308,89 @@ public class PlayerFire : MonoBehaviour
         //마우스 왼쪽 꾹 누르면 총 연사
         else if (Input.GetMouseButton(0) && !isReload)
         {
-            //총구 효과 플레이
-            StartCoroutine(ShootEffectOn(0.05f));
-
-            //레이를 생성한 후 발사될 위치와 진행 방향 설정
-            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-
-            //레이가 부딪힌 대상의 정보를 저장할 변수를 생성
-            RaycastHit hitInfo = new RaycastHit();
-
-            //반동 함수 호출
-            Recoil();
-
-            //반동 되돌리기
-            if (!isRebound)
+            if (delay <= 0)
             {
-                StartCoroutine(Rebound());
+
+                //총구 효과 플레이
+                StartCoroutine(ShootEffectOn(0.05f));
+
+                //레이를 생성한 후 발사될 위치와 진행 방향 설정
+                Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+
+                //레이가 부딪힌 대상의 정보를 저장할 변수를 생성
+                RaycastHit hitInfo = new RaycastHit();
+
+                //반동 함수 호출
+                Recoil();
+
+                //반동 되돌리기
+                if (!isRebound)
+                {
+                    StartCoroutine(Rebound());
+                }
+
+
+                //레이를 발사한 후 만일 부딪힌 물체가 있으면 피격 효과 표시
+                if (Physics.Raycast(ray, out hitInfo))
+                {
+                    //총 발사가 enemy를 맞는다면
+                    if (hitInfo.transform.tag == "Enemy")
+                    {
+                        //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
+                        P2_bulletEffect.transform.position = hitInfo.point;
+
+                        //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
+                        P2_bulletEffect.transform.forward = hitInfo.normal;
+
+                        //피격 효과 플레이
+                        ps2.Play();
+
+
+                        //Enemy 공격
+                        Enemy.GetComponent<EnemyFSM>().HitEnemy(attackPower);
+
+
+
+                        //총알 한개 감소
+                        currentBulletCount--;
+                    }
+                    else if (hitInfo.transform.tag == "LEnemy")
+                    {
+                        //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
+                        P2_bulletEffect.transform.position = hitInfo.point;
+
+                        //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
+                        P2_bulletEffect.transform.forward = hitInfo.normal;
+
+                        //피격 효과 플레이
+                        ps2.Play();
+
+                        //LEnemy 공격
+                        LEnemy.GetComponent<LEnemyFSM>().HitEnemy(attackPower);
+
+                        //총알 한개 감소
+                        currentBulletCount--;
+                    }
+                    else
+                    {
+                        //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
+                        P1_bulletEffect.transform.position = hitInfo.point;
+
+                        //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
+                        P1_bulletEffect.transform.forward = hitInfo.normal;
+
+                        //피격 효과 플레이
+                        ps1.Play();
+
+                        //총알 한개 감소
+                        currentBulletCount--;
+
+                    }
+
+                }
             }
-
-
-            //레이를 발사한 후 만일 부딪힌 물체가 있으면 피격 효과 표시
-            if (Physics.Raycast(ray, out hitInfo))
-            {
-                //총 발사가 enemy를 맞는다면
-                if (hitInfo.transform.tag == "Enemy")
-                {
-                    //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
-                    P2_bulletEffect.transform.position = hitInfo.point;
-
-                    //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
-                    P2_bulletEffect.transform.forward = hitInfo.normal;
-
-                    //피격 효과 플레이
-                    ps2.Play();
-
-
-                    //Enemy 공격
-                    Enemy.GetComponent<EnemyFSM>().HitEnemy(attackPower);
-                  
-                    
-
-                    //총알 한개 감소
-                    currentBulletCount--;
-                }
-                else if (hitInfo.transform.tag == "LEnemy")
-                {
-                    //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
-                    P2_bulletEffect.transform.position = hitInfo.point;
-
-                    //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
-                    P2_bulletEffect.transform.forward = hitInfo.normal;
-
-                    //피격 효과 플레이
-                    ps2.Play();
-
-                    //LEnemy 공격
-                    LEnemy.GetComponent<LEnemyFSM>().HitEnemy(attackPower);
-
-                    //총알 한개 감소
-                    currentBulletCount--;
-                }
-                else
-                {
-                    //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
-                    P1_bulletEffect.transform.position = hitInfo.point;
-
-                    //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
-                    P1_bulletEffect.transform.forward = hitInfo.normal;
-
-                    //피격 효과 플레이
-                    ps1.Play();
-
-                    //총알 한개 감소
-                    currentBulletCount--;
-
-                }
-
-            }
+            if (0 < delay)
+                delay--;
         }
 
         //정조준 함수

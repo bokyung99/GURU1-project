@@ -55,8 +55,7 @@ public class EnemyFSM : MonoBehaviour
     public float moveDistance = 20f;
 
     // 에너미의 체력
-    public int hp = 15;
-
+    public int hp = 500;
     // 에너미의 최대 체력
     int maxHp = 15;
 
