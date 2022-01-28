@@ -180,7 +180,7 @@ public class PlayerFire : MonoBehaviour
 
             //수류탄 오브젝트의 rigidbody컴포넌트 가져오기
             Rigidbody rb = bomb.GetComponent<Rigidbody>();
-            //카메라 정면 방향으로 수류탄에 물리적인 힘 가하기
+            //카메라정면 방향으로 수류탄에 물리적인 힘 가하기
             rb.AddForce(Camera.main.transform.forward * throwPower, ForceMode.Impulse);
 
         }
@@ -205,6 +205,8 @@ public class PlayerFire : MonoBehaviour
 
             //레이가 부딪힌 대상의 정보를 저장할 변수를 생성
             RaycastHit hitInfo = new RaycastHit();
+
+
 
 
             //레이를 발사한 후 만일 부딪힌 물체가 있으면 피격 효과 표시
