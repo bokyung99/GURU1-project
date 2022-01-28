@@ -75,11 +75,16 @@ public class PlayerFire : MonoBehaviour
 
     int delay = 0;
 
+    // 재장전 횟수를 1회로 제한하기 위한 변수
+    int reloadCtrl = 0;
+
 
 
     //재장전 함수
     IEnumerator ReloadCoroutine()
     {
+        // 재장전 1회
+        reloadCtrl++;
         isReload = true;
 
         /* 재장전 애니메이션 넣는곳 */
@@ -89,9 +94,12 @@ public class PlayerFire : MonoBehaviour
 
         yield return new WaitForSeconds(reloadTime);
 
-        currentBulletCount = 10;
+        currentBulletCount = 100;
 
         isReload = false;
+
+        // 재장전 통제 변수 0으로 다시 설정
+        reloadCtrl = 0;
     }
 
     //총구 효과 코루틴 함수
@@ -225,8 +233,8 @@ public class PlayerFire : MonoBehaviour
 
         }
 
-        //만약 총알이 0개 이하면 재장전
-        if (currentBulletCount <= 0)
+        //만약 총알이 0개 이하이고, reloadCtrl가 0일 경우 재장전
+        if (currentBulletCount <= 0 && reloadCtrl == 0)
         {
             StartCoroutine(ReloadCoroutine());
         }
