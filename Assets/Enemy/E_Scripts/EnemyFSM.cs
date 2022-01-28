@@ -276,6 +276,8 @@ public class EnemyFSM : MonoBehaviour
         // 플레이어의 공격력만큼 에너미의 체력을 감소시킨다.
         hp -= hitPower;
 
+        print("hp: " + hp);
+
         // 내비게이션 에이전트의 이동을 멈추고 경로를 초기화한다.
         smith.isStopped = true;
         smith.ResetPath();

@@ -21,8 +21,18 @@ public class BombAction : MonoBehaviour
         //저장된 collider 배열에 있는 모든 적들에게 수류탄 데미지를 적용
         for(int i=0; i <cols.Length;i++)
          {
-             cols[i].GetComponent<EnemyFSM>().HitEnemy(attackPower);
-            cols[i].GetComponent<LEnemyFSM>().HitEnemy(attackPower);
+            EnemyFSM efsm = cols[i].GetComponent<EnemyFSM>();
+            LEnemyFSM lefsm = cols[i].GetComponent<LEnemyFSM>();
+
+            if (efsm != null)
+            {
+                efsm.HitEnemy(attackPower);
+            }
+
+            if (lefsm != null)
+            {
+                lefsm.HitEnemy(attackPower);
+            }
         } 
 
         //폭발 이펙트 생성
