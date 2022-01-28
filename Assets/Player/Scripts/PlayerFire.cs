@@ -18,7 +18,7 @@ public class PlayerFire : MonoBehaviour
     public GameObject bombFactory;
 
     //투척 파워
-    public float throwPower = 15f;
+    public float throwPower = 10f;
 
     //피격 효과1 오브젝트(일반)
     public GameObject P1_bulletEffect;
@@ -51,12 +51,10 @@ public class PlayerFire : MonoBehaviour
     //현재 총 종류
     public Gun currentGun;
 
-    //본래 포지션 값
-    [SerializeField]
-    private Vector3 originPos;
+  
 
     //총 데미지
-    public int attackPower = 10;
+    public int attackPower = 5;
 
     //트랜스폼 enemy
     Transform Enemy;
@@ -67,6 +65,11 @@ public class PlayerFire : MonoBehaviour
 
     Animator anim;
 
+    //총 현재 위치
+    Vector3 gunDefaultPos;
+
+    //반동 상태 확인
+    bool isRebound = false;
 
     //재장전 함수
     IEnumerator ReloadCoroutine()
@@ -76,6 +79,7 @@ public class PlayerFire : MonoBehaviour
         /* 재장전 애니메이션 넣는곳 */
         anim.SetTrigger("reloading");
         print("재장전");
+
 
         yield return new WaitForSeconds(reloadTime);
 
@@ -121,6 +125,49 @@ public class PlayerFire : MonoBehaviour
         }
     }
 
+    //총 현재 위치 저장
+    void Awake()
+    {
+        gunDefaultPos = currentGun.transform.localPosition;
+
+    }
+
+    //반동 함수
+    void Recoil()
+    {
+        //총 위치를 원래대로
+        currentGun.transform.localPosition = gunDefaultPos;
+        //총 위치를 뒤로(반동)
+        currentGun.transform.Translate(Vector3.back * 0.3f);
+
+    }
+
+    //반동 후 다시 돌아오는 함수
+    IEnumerator Rebound()
+    {
+       
+        isRebound = true;
+
+        while(true)
+        {
+            //총 위치를 원래대로 천천히 되돌리기
+            currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, gunDefaultPos, Time.deltaTime * 3.0f);
+
+            //만약 총이 되돌아 오면
+            if (Vector3.Distance(currentGun.transform.localPosition,gunDefaultPos)<0.001f)
+            {
+                //총 위치를 원래의 위치로
+                currentGun.transform.localPosition = gunDefaultPos;
+                isRebound = false;
+
+                break; 
+            }
+            yield return null;
+        }
+
+        yield break;
+
+    }
 
 
     void Start()
@@ -192,7 +239,14 @@ public class PlayerFire : MonoBehaviour
             //레이가 부딪힌 대상의 정보를 저장할 변수를 생성
             RaycastHit hitInfo = new RaycastHit();
 
+            //반동 함수 호출
+            Recoil();
 
+            //반동 되돌리기
+            if(!isRebound)
+            {
+                StartCoroutine(Rebound());
+            }
 
 
             //레이를 발사한 후 만일 부딪힌 물체가 있으면 피격 효과 표시
@@ -263,6 +317,15 @@ public class PlayerFire : MonoBehaviour
             //레이가 부딪힌 대상의 정보를 저장할 변수를 생성
             RaycastHit hitInfo = new RaycastHit();
 
+            //반동 함수 호출
+            Recoil();
+
+            //반동 되돌리기
+            if (!isRebound)
+            {
+                StartCoroutine(Rebound());
+            }
+
 
             //레이를 발사한 후 만일 부딪힌 물체가 있으면 피격 효과 표시
             if (Physics.Raycast(ray, out hitInfo))
@@ -279,8 +342,11 @@ public class PlayerFire : MonoBehaviour
                     //피격 효과 플레이
                     ps2.Play();
 
+
                     //Enemy 공격
                     Enemy.GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                  
+                    
 
                     //총알 한개 감소
                     currentBulletCount--;
