@@ -60,7 +60,7 @@ public class PlayerFire : MonoBehaviour
 
     Transform Enemy;
 
-
+    Animator anim;
 
 
     //재장전 함수
@@ -69,6 +69,7 @@ public class PlayerFire : MonoBehaviour
         isReload = true;
 
         /* 재장전 애니메이션 넣는곳 */
+        anim.SetTrigger("reloading");
 
         yield return new WaitForSeconds(reloadTime);
 
@@ -147,6 +148,9 @@ public class PlayerFire : MonoBehaviour
         ps1 = P1_bulletEffect.GetComponent<ParticleSystem>();
         //피격 효과2 오브젝트에서 파티클 시스템 컴포넌트 가져오기
         ps2 = P2_bulletEffect.GetComponent<ParticleSystem>();
+
+        // 애니메이터 컴포넌트를 anim 변수에 불러온다.
+        anim = GetComponent<Animator>();
 
     }
 
