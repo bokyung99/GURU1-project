@@ -77,7 +77,9 @@ public class PlayerFire : MonoBehaviour
         isReload = true;
 
         /* 재장전 애니메이션 넣는곳 */
-       // anim.SetTrigger("reloading");
+        anim.SetTrigger("reloading");
+        print("재장전");
+
 
         yield return new WaitForSeconds(reloadTime);
 
@@ -176,13 +178,16 @@ public class PlayerFire : MonoBehaviour
         ps2 = P2_bulletEffect.GetComponent<ParticleSystem>();
 
 
-        Enemy = GameObject.Find("Enemy").transform;
+        //Enemy = GameObject.Find("Enemy").transform;
 
         LEnemy = GameObject.Find("LEnemy").transform;
 
         // 애니메이터 컴포넌트를 anim 변수에 불러온다.
         anim = GetComponent<Animator>();
-
+        if (anim)
+        {
+            print("anim loading");
+        }
 
     }
 
