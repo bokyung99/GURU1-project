@@ -222,7 +222,7 @@ public class LEnemyFSM : MonoBehaviour
         // 미사일 인스턴스화
         GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
         Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-        rigidBullet.velocity = transform.forward * 50;
+        rigidBullet.velocity = transform.forward * 100;
 
         yield return new WaitForSeconds(1.5f);
     }
