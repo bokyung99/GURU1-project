@@ -47,6 +47,7 @@ public class PlayerFire : MonoBehaviour
     //정조준 상태 확인 변수
     private bool isFineSightMode = false;
 
+    private bool isShoot = false;
 
     //현재 총 종류
     public Gun currentGun;
@@ -67,16 +68,16 @@ public class PlayerFire : MonoBehaviour
 
     //총 현재 위치
     Vector3 gunDefaultPos;
+    
+    //총 정조준 위치
+    public Vector3 fineSightOriginPos;
 
     //반동 상태 확인
     bool isRebound = false;
 
-    public int setDelay = 5;
-
-    int delay = 0;
-
     // 재장전 횟수를 1회로 제한하기 위한 변수
     int reloadCtrl = 0;
+
 
 
 
@@ -125,34 +126,109 @@ public class PlayerFire : MonoBehaviour
         {
             //정조준 상태 변환
             isFineSightMode = !isFineSightMode;
+            //정조준 애니메이션
+            anim.SetBool("FineSightMode", isFineSightMode);
 
+            
             if (isFineSightMode)
             {
                 //정조준 실행
-                Camera.main.fieldOfView = 15f;
+                Camera.main.fieldOfView = 55f;
+                //정조준 코루틴 실행
+                StartCoroutine(FineSightActivateCoroutine());
+
+
+                //콘솔창에 정조준 모드 입력
+                print("finesightModeON");
             }
             else
             {
                 //정조준 취소
                 Camera.main.fieldOfView = 60f;
+               
+                //정조준 취소 코루틴 실행
+                StartCoroutine(FineSightDeActivateCoroutine());
+
+        
+
+                //콘솔창에 정조준 취소 모드 입력
+                print("finesightModeOFF");
             }
         }
     }
 
-    //총 현재 위치 저장
-    void Awake()
+    //정조준 코루틴
+    IEnumerator FineSightActivateCoroutine()
     {
-        gunDefaultPos = currentGun.transform.localPosition;
+        while(currentGun.transform.localPosition!= fineSightOriginPos)
+        {
+            currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, fineSightOriginPos, 0.4f);
+
+            //만약 총이 되돌아 오면
+            if (Vector3.Distance(currentGun.transform.localPosition, fineSightOriginPos) < 0.01f)
+            {
+                //총 위치를 원래의 위치로
+                currentGun.transform.localPosition = fineSightOriginPos;
+                isRebound = false;
+
+                break;
+            }
+
+            yield return null;
+        }
+
+        yield break;
 
     }
+
+    //정조준 취소 코루틴
+    IEnumerator FineSightDeActivateCoroutine()
+    {
+        while (currentGun.transform.localPosition != gunDefaultPos)
+        {
+            currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, gunDefaultPos, 0.4f);
+
+            //만약 총이 되돌아 오면
+            if (Vector3.Distance(currentGun.transform.localPosition, gunDefaultPos) < 0.01f)
+            {
+                //총 위치를 원래의 위치로
+                currentGun.transform.localPosition = gunDefaultPos;
+                isRebound = false;
+
+                break;
+            }
+
+
+            yield return null;
+        }
+
+        yield break;
+
+    }
+
+
 
     //반동 함수
     void Recoil()
     {
-        //총 위치를 원래대로
-        currentGun.transform.localPosition = gunDefaultPos;
-        //총 위치를 뒤로(반동)
-        currentGun.transform.Translate(Vector3.back * 0.1f);
+        //정조준 상태가 아니라면
+        if (!isFineSightMode)
+        {
+            //총 위치를 원래대로
+            currentGun.transform.localPosition = gunDefaultPos;
+            //총 위치를 뒤로(반동)
+            currentGun.transform.Translate(Vector3.back * 0.1f);
+
+        }
+        //정조준 상태라면
+        else
+        {
+            //총 위치를 원래대로
+            currentGun.transform.localPosition = fineSightOriginPos;
+            //총 위치를 뒤로(반동)
+            currentGun.transform.Translate(Vector3.back * 0.1f);
+        }
+      
 
     }
 
@@ -162,22 +238,48 @@ public class PlayerFire : MonoBehaviour
        
         isRebound = true;
 
-        while(true)
+        //정조준 상태가 아니라면
+        if(!isFineSightMode)
         {
-            //총 위치를 원래대로 천천히 되돌리기
-            currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, gunDefaultPos, Time.deltaTime * 3.0f);
-
-            //만약 총이 되돌아 오면
-            if (Vector3.Distance(currentGun.transform.localPosition,gunDefaultPos)<0.001f)
+            while (true)
             {
-                //총 위치를 원래의 위치로
-                currentGun.transform.localPosition = gunDefaultPos;
-                isRebound = false;
+                //총 위치를 원래대로 천천히 되돌리기
+                currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, gunDefaultPos, Time.deltaTime * 3.0f);
 
-                break; 
+                //만약 총이 되돌아 오면
+                if (Vector3.Distance(currentGun.transform.localPosition, gunDefaultPos) < 0.001f)
+                {
+                    //총 위치를 원래의 위치로
+                    currentGun.transform.localPosition = gunDefaultPos;
+                    isRebound = false;
+
+                    break;
+                }
+                yield return null;
             }
-            yield return null;
+
         }
+        //정조준 상태라면
+        else
+        {
+            while (true)
+            {
+                //총 위치를 원래대로 천천히 되돌리기
+                currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, fineSightOriginPos, Time.deltaTime * 3.0f);
+
+                //만약 총이 되돌아 오면
+                if (Vector3.Distance(currentGun.transform.localPosition, fineSightOriginPos) < 0.001f)
+                {
+                    //총 위치를 원래의 위치로
+                    currentGun.transform.localPosition = fineSightOriginPos;
+                    isRebound = false;
+
+                    break;
+                }
+                yield return null;
+            }
+        }
+       
 
         yield break;
 
@@ -203,6 +305,10 @@ public class PlayerFire : MonoBehaviour
             print("anim loading");
         }
 
+        //총 현재 위치 저장
+        gunDefaultPos = currentGun.transform.localPosition;
+
+
     }
 
     void Update()
@@ -219,6 +325,12 @@ public class PlayerFire : MonoBehaviour
 
     void UpdateA()
     {
+        if(!isReload&&!isShoot&&!isRebound)
+        {
+            //정조준 함수
+            TryFineSight();
+        }
+
         //키보드 R 누르면 수류탄 투척
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -242,7 +354,8 @@ public class PlayerFire : MonoBehaviour
         //마우스 왼쪽 버튼을 누르면 총알 발사
         if (Input.GetMouseButtonDown(0) && !isReload)
         {
-            
+            isShoot = true;
+
             //총구 효과 플레이
             StartCoroutine(ShootEffectOn(0.05f));
 
@@ -316,12 +429,15 @@ public class PlayerFire : MonoBehaviour
 
                 }
             }
+
+            isShoot=false;
         }
 
         //마우스 왼쪽 꾹 누르면 총 연사
         else if (Input.GetMouseButton(0) && !isReload)
         {
-            if (delay <= 0)
+            isShoot= true;
+           
             {
 
                 //총구 효과 플레이
@@ -402,12 +518,11 @@ public class PlayerFire : MonoBehaviour
 
                 }
             }
-            if (0 < delay)
-                delay--;
+
+            isShoot = false;
         }
 
-        //정조준 함수
-        TryFineSight();
+        
     }
 
     void UpdateB()

@@ -37862,7 +37862,7 @@ MonoBehaviour:
   - {fileID: 891292374}
   currentGun: {fileID: 781443014}
   attackPower: 3
-  setDelay: 2
+  fineSightOriginPos: {x: -0.07, y: -1.4, z: -0.42}
 --- !u!114 &1656206111
 MonoBehaviour:
   m_ObjectHideFlags: 0

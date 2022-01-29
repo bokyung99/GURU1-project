@@ -6,7 +6,8 @@ public class Gun : MonoBehaviour
 {
 
     //반동 세기
-    public float retroActionForce; 
+    public float retroActionForce;
+
 
 
 }
