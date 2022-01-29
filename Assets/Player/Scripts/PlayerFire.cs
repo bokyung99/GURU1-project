@@ -293,8 +293,11 @@ public class PlayerFire : MonoBehaviour
         //피격 효과2 오브젝트에서 파티클 시스템 컴포넌트 가져오기
         ps2 = P2_bulletEffect.GetComponent<ParticleSystem>();
 
-
-        Enemy = GameObject.Find("Enemy").transform;
+        // 스폰이 됐을 때 Enemy 찾기
+        if (SpawnManager.spawnCtrl == true)
+        {
+            Enemy = GameObject.Find("Enemy").transform;
+        }
         //LEnemy = GameObject.Find("LEnemy").transform;
 
         // 애니메이터 컴포넌트를 anim 변수에 불러온다.
@@ -389,8 +392,11 @@ public class PlayerFire : MonoBehaviour
                     //피격 효과 플레이
                     ps2.Play();
 
-                    //Enemy 공격
-                    Enemy.GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                    //Enemy가 null이 아닐 때 Enemy 공격
+                    if (Enemy != null)
+                    {
+                        Enemy.GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                    }
 
                     //총알 한개 감소
                     currentBulletCount--;
@@ -474,8 +480,11 @@ public class PlayerFire : MonoBehaviour
                         ps2.Play();
 
 
-                        //Enemy 공격
-                        Enemy.GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                        //Enemy가 null이 아닐 때 Enemy 공격
+                        if (Enemy != null)
+                        {
+                            Enemy.GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                        }
 
 
 
