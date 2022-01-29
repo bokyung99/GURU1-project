@@ -42,7 +42,7 @@ public class LEnemyFSM : MonoBehaviour
     float currentTime = 0;
 
     // 공격 딜레이 시간
-    float attackDelay = 2f;
+    float attackDelay = 1f;
 
     // 에너미 공격력
     public int attackPower = 3;
@@ -287,7 +287,7 @@ public class LEnemyFSM : MonoBehaviour
     public void HitEnemy(int hitPower)
     {
         // 만일, 이미 피격 상태이거나 사망 상태 또는 복귀 상태라면 아무런 처리도 하지 않고 함수를 종료한다.
-        if (m_State == EnemyState.Damaged || m_State == EnemyState.Die || m_State == EnemyState.Return)
+        if (m_State == EnemyState.Die)
         {
             return;
         }
