@@ -81,6 +81,8 @@ public class PlayerFire : MonoBehaviour
 
 
 
+
+
     //재장전 함수
     IEnumerator ReloadCoroutine()
     {
@@ -133,10 +135,9 @@ public class PlayerFire : MonoBehaviour
             if (isFineSightMode)
             {
                 //정조준 실행
-                Camera.main.fieldOfView = 55f;
+                Camera.main.fieldOfView = 40f;
                 //정조준 코루틴 실행
                 StartCoroutine(FineSightActivateCoroutine());
-
 
                 //콘솔창에 정조준 모드 입력
                 print("finesightModeON");
@@ -148,8 +149,6 @@ public class PlayerFire : MonoBehaviour
                
                 //정조준 취소 코루틴 실행
                 StartCoroutine(FineSightDeActivateCoroutine());
-
-        
 
                 //콘솔창에 정조준 취소 모드 입력
                 print("finesightModeOFF");
@@ -226,7 +225,7 @@ public class PlayerFire : MonoBehaviour
             //총 위치를 원래대로
             currentGun.transform.localPosition = fineSightOriginPos;
             //총 위치를 뒤로(반동)
-            currentGun.transform.Translate(Vector3.back * 0.1f);
+            currentGun.transform.Translate(Vector3.back * 0.05f);
         }
       
 
