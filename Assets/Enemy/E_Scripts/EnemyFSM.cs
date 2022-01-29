@@ -55,9 +55,9 @@ public class EnemyFSM : MonoBehaviour
     public float moveDistance = 20f;
 
     // 에너미의 체력
-    public int enemyHp = 500;
+    public int hp = 500;
     // 에너미의 최대 체력
-    int enemyMaxHp = 15;
+    int maxHp = 15;
 
     // 에너미 hp Slider 변수
     public Slider hpSlider;
@@ -119,7 +119,7 @@ public class EnemyFSM : MonoBehaviour
         }
 
         // 현재 hp(%)를 hp 슬라이더의 value에 반영한다.
-        hpSlider.value = (float)enemyHp / (float)enemyMaxHp;
+        hpSlider.value = (float)hp / (float)maxHp;
     }
 
     void Idle()
@@ -236,7 +236,7 @@ public class EnemyFSM : MonoBehaviour
             transform.rotation = originRot;
 
             // hp를 다시 회복한다.
-            enemyHp = enemyMaxHp;
+            hp = maxHp;
 
             m_State = EnemyState.Idle;
             print("상태 전환: Return -> Idle");
@@ -273,16 +273,16 @@ public class EnemyFSM : MonoBehaviour
         }
 
         // 플레이어의 공격력만큼 에너미의 체력을 감소시킨다.
-        enemyHp -= hitPower;
+        hp -= hitPower;
 
-        print("hp: " + enemyHp);
+        print("hp: " + hp);
 
         // 내비게이션 에이전트의 이동을 멈추고 경로를 초기화한다.
         smith.isStopped = true;
         smith.ResetPath();
 
         // 에너미의 체력이 0보다 크면 피격 상태로 전환한다.
-        if (enemyHp > 0)
+        if (hp > 0)
         {
             m_State = EnemyState.Damaged;
             print("상태 전환: Any State -> Damaged");
