@@ -192,9 +192,8 @@ public class PlayerFire : MonoBehaviour
         ps2 = P2_bulletEffect.GetComponent<ParticleSystem>();
 
 
-        //Enemy = GameObject.Find("Enemy").transform;
-
-        LEnemy = GameObject.Find("LEnemy").transform;
+        Enemy = GameObject.Find("Enemy").transform;
+        //LEnemy = GameObject.Find("LEnemy").transform;
 
         // 애니메이터 컴포넌트를 anim 변수에 불러온다.
         anim = GetComponent<Animator>();
