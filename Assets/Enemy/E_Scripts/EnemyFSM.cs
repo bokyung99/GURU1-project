@@ -42,7 +42,7 @@ public class EnemyFSM : MonoBehaviour
     float currentTime = 0;
 
     // 공격 딜레이 시간
-    float attackDelay = 2f;
+    float attackDelay = 1.5f;
 
     // 에너미 공격력
     public int attackPower = 3;
