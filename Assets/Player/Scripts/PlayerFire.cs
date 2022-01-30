@@ -135,7 +135,7 @@ public class PlayerFire : MonoBehaviour
             if (isFineSightMode)
             {
                 //정조준 실행
-                Camera.main.fieldOfView = 40f;
+                Camera.main.fieldOfView = 30f;
                 //정조준 코루틴 실행
                 StartCoroutine(FineSightActivateCoroutine());
 
@@ -391,11 +391,7 @@ public class PlayerFire : MonoBehaviour
                     //피격 효과 플레이
                     ps2.Play();
 
-                    //Enemy가 null이 아닐 때 Enemy 공격
-                    if (Enemy != null)
-                    {
-                        Enemy.GetComponent<EnemyFSM>().HitEnemy(attackPower);
-                    }
+                    Enemy.GetComponent<EnemyFSM>().HitEnemy(attackPower);
 
                     //총알 한개 감소
                     currentBulletCount--;
@@ -478,14 +474,7 @@ public class PlayerFire : MonoBehaviour
                         //피격 효과 플레이
                         ps2.Play();
 
-
-                        //Enemy가 null이 아닐 때 Enemy 공격
-                        if (Enemy != null)
-                        {
-                            Enemy.GetComponent<EnemyFSM>().HitEnemy(attackPower);
-                        }
-
-
+                        Enemy.GetComponent<EnemyFSM>().HitEnemy(attackPower);
 
                         //총알 한개 감소
                         currentBulletCount--;
