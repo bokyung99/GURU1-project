@@ -285,13 +285,6 @@ public class PlayerFire : MonoBehaviour
 
     }
 
-    IEnumerator StartAttack()
-    {
-        yield return new WaitForSeconds(0.1f);
-        anim.SetTrigger("doMalee");
-        
-    }
-
 
     void Start()
     {
@@ -365,11 +358,6 @@ public class PlayerFire : MonoBehaviour
         if (currentBulletCount <= 0 && reloadCtrl == 0)
         {
             StartCoroutine(ReloadCoroutine());
-        }
-
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            StartCoroutine(StartAttack());
         }
 
         //마우스 왼쪽 버튼을 누르면 총알 발사
