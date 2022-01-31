@@ -15793,9 +15793,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints:
-  - {fileID: 2107418494}
-  - {fileID: 980394551}
+  - {fileID: 2107418495}
+  - {fileID: 980394552}
   enemy: {fileID: 1870676575551645746, guid: eb687b2b83d561340bcae12522a9fe78, type: 3}
+  spawnTime: 20
+  curTime: 0
+  enemyCount: 0
+  maxEnemyCount: 2
+  isSpawn: 
 --- !u!4 &745056772
 Transform:
   m_ObjectHideFlags: 0
@@ -21882,7 +21887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 980394552}
   m_Layer: 0
-  m_Name: Point2
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21896,7 +21901,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980394551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.227, y: 0.459, z: 13.77}
+  m_LocalPosition: {x: 22.48, y: 0.459, z: 9.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 745056772}
@@ -51850,7 +51855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2107418495}
   m_Layer: 0
-  m_Name: Point1
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51864,7 +51869,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107418494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.227, y: 0.459, z: 3.52}
+  m_LocalPosition: {x: 23.43, y: 0.459, z: 3.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 745056772}

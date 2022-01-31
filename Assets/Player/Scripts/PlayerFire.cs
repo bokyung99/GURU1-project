@@ -78,6 +78,7 @@ public class PlayerFire : MonoBehaviour
     // 재장전 횟수를 1회로 제한하기 위한 변수
     int reloadCtrl = 0;
 
+    SpawnManager spawnEnemy;
 
 
 
@@ -398,11 +399,10 @@ public class PlayerFire : MonoBehaviour
                     //피격 효과 플레이
                     ps2.Play();
 
+
                     Debug.Log("몬스터 공격1");
-                    if (SpawnManager.spawnCtrl == true)
-                    {
-                        SpawnManager.clone.GetComponent<EnemyFSM>().HitEnemy(attackPower);
-                    }
+                    SpawnManager.clone[SpawnManager.spawnNum].
+                        GetComponent<EnemyFSM>().HitEnemy(attackPower);
                     Debug.Log("몬스터 공격2");
 
                     //총알 한개 감소
@@ -486,10 +486,8 @@ public class PlayerFire : MonoBehaviour
                         //피격 효과 플레이
                         ps2.Play();
 
-                        if (SpawnManager.spawnCtrl == true)
-                        {
-                            SpawnManager.clone.GetComponent<EnemyFSM>().HitEnemy(attackPower);
-                        }
+                        SpawnManager.clone[SpawnManager.spawnNum].
+                            GetComponent<EnemyFSM>().HitEnemy(attackPower);
 
                         //총알 한개 감소
                         currentBulletCount--;
