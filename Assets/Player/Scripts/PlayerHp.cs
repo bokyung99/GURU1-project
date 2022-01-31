@@ -107,7 +107,7 @@ public class PlayerHp : MonoBehaviour
             }
         }
 
-        if (other.tag == "Item1")
+        else if (other.tag == "Item1")
         {
             isItem1++;
             itemTotalNum++;
