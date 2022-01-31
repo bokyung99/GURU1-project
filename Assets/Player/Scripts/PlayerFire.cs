@@ -293,11 +293,18 @@ public class PlayerFire : MonoBehaviour
         ps2 = P2_bulletEffect.GetComponent<ParticleSystem>();
 
         // 스폰이 됐을 때 Enemy 찾기
+        /*
         if (SpawnManager.spawnCtrl == true)
         {
-            Enemy = GameObject.Find("Enemy").transform;
+            Debug.Log("몬스터 찾기");
+            //Enemy = GameObject.Find("Enemy").transform;
+            //Enemy = Resources.Load("E_Prefabs/Enemy", typeof(GameObject)) as Transform;
+            //Enemy = SpawnManager.clone.transform;
+            //SpawnManager spawn;
         }
-        //LEnemy = GameObject.Find("LEnemy").transform;
+
+        */
+        LEnemy = GameObject.Find("LEnemy").transform;
 
         // 애니메이터 컴포넌트를 anim 변수에 불러온다.
         anim = GetComponent<Animator>();
@@ -391,7 +398,12 @@ public class PlayerFire : MonoBehaviour
                     //피격 효과 플레이
                     ps2.Play();
 
-                    Enemy.GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                    Debug.Log("몬스터 공격1");
+                    if (SpawnManager.spawnCtrl == true)
+                    {
+                        SpawnManager.clone.GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                    }
+                    Debug.Log("몬스터 공격2");
 
                     //총알 한개 감소
                     currentBulletCount--;
@@ -474,7 +486,10 @@ public class PlayerFire : MonoBehaviour
                         //피격 효과 플레이
                         ps2.Play();
 
-                        Enemy.GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                        if (SpawnManager.spawnCtrl == true)
+                        {
+                            SpawnManager.clone.GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                        }
 
                         //총알 한개 감소
                         currentBulletCount--;

@@ -7,6 +7,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] spawnPoints;
     public GameObject enemy;
     public static bool spawnCtrl = false;
+    public static GameObject clone;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
+            Debug.Log("몬스터 생성");
             SpawnEnemy();
         }
 
@@ -31,7 +33,7 @@ public class SpawnManager : MonoBehaviour
     {
         spawnCtrl = true;
         int randNum = Random.Range(0, spawnPoints.Length);
-        Instantiate(enemy, spawnPoints[randNum].transform.position,
+        clone = Instantiate(enemy, spawnPoints[randNum].transform.position,
             spawnPoints[randNum].transform.rotation);
     }
 }

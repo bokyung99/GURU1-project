@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
 
         */
 
+        /*
         if (playerHpMng.playerHp <= 0)
         {
             // 게임 오버 메뉴를 킨다
@@ -88,6 +89,8 @@ public class GameManager : MonoBehaviour
             gState = GameState.GameOver;
 
         }
+
+        */
 
             // f1 키를 눌렀을 때 옵션 메뉴 켜짐
             if (Input.GetKeyDown(KeyCode.F1))
@@ -190,7 +193,7 @@ public class GameManager : MonoBehaviour
         gState = GameState.Run;
 
         // 게임 상태 UI 오브젝트에서 Text 컴포넌트를 가져온다.
-        gameText = gameLabel.GetComponent<Text>();
+        //gameText = gameLabel.GetComponent<Text>();
 
         // 플레이어 오브젝트를 찾은 후, playreHp 컴포넌트 받아오기
         playerHpMng = GameObject.Find("Player").GetComponent<PlayerHp>();
