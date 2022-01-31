@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
         */
 
-        /*
+        
         if (playerHpMng.playerHp <= 0)
         {
             // 게임 오버 메뉴를 킨다
@@ -89,8 +89,6 @@ public class GameManager : MonoBehaviour
             gState = GameState.GameOver;
 
         }
-
-        */
 
             // f1 키를 눌렀을 때 옵션 메뉴 켜짐
             if (Input.GetKeyDown(KeyCode.F1))
