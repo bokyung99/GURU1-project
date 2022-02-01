@@ -488,6 +488,7 @@ public class PlayerFire : MonoBehaviour
 
                         SpawnManager.clone[SpawnManager.spawnNum].
                             GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                        Debug.Log("SpawnNum : " + SpawnManager.spawnNum);
 
                         //총알 한개 감소
                         currentBulletCount--;
