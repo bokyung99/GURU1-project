@@ -78,7 +78,6 @@ public class PlayerFire : MonoBehaviour
     // 재장전 횟수를 1회로 제한하기 위한 변수
     int reloadCtrl = 0;
 
-    SpawnManager spawnEnemy;
 
 
 
