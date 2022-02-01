@@ -94,7 +94,6 @@ public class PlayerFire : MonoBehaviour
         anim.SetTrigger("reloading");
         print("ÀçÀåÀü");
 
-
         yield return new WaitForSeconds(reloadTime);
 
         currentBulletCount = 100;
