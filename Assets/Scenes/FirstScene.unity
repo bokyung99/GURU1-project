@@ -15793,9 +15793,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints:
-  - {fileID: 2107418494}
-  - {fileID: 980394551}
+  - {fileID: 2107418495}
+  - {fileID: 980394552}
   enemy: {fileID: 1870676575551645746, guid: eb687b2b83d561340bcae12522a9fe78, type: 3}
+  isSpawn: 
+  spawnTime: 10
+  curTime: 0
+  enemyCount: 0
+  maxEnemyCount: 2
 --- !u!4 &745056772
 Transform:
   m_ObjectHideFlags: 0
@@ -21882,7 +21887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 980394552}
   m_Layer: 0
-  m_Name: Point2
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51850,7 +51855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2107418495}
   m_Layer: 0
-  m_Name: Point1
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

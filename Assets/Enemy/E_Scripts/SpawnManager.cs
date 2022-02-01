@@ -4,36 +4,60 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject[] spawnPoints;
+    public Transform[] spawnPoints;
     public GameObject enemy;
     public static bool spawnCtrl = false;
-    public static GameObject clone;
+    public static GameObject[] clone;
+    public static int spawnNum;
+    public bool[] isSpawn;
+    public static SpawnManager instance;
+    public float spawnTime;
+    public float curTime;
+    public int enemyCount;
+    public int maxEnemyCount;
 
     // Start is called before the first frame update
     void Start()
     {
-        spawnPoints = new GameObject[2];
+        instance = this;
+
+        //spawnPoints = new GameObject[2];
+
+        clone = new GameObject[spawnPoints.Length];
+        isSpawn = new bool[spawnPoints.Length];
+
         for (int i = 0; i < spawnPoints.Length; i++)
         {
-            spawnPoints[i] = transform.GetChild(i).gameObject;
+            //spawnPoints[i] = transform.GetChild(i).gameObject;
+            isSpawn[i] = false;
         }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha0))
+        if (spawnCtrl == false)
         {
-            Debug.Log("몬스터 생성");
-            SpawnEnemy();
+            // 처음에 에너미 기본 생성
         }
 
+        spawnNum = Random.Range(0, spawnPoints.Length);
+
+        if (curTime > spawnTime && enemyCount < maxEnemyCount)
+        {
+            if (!isSpawn[spawnNum])
+            {
+                SpawnEnemy(spawnNum);
+            }
+        }
+        curTime += Time.deltaTime;
     }
 
-    private void SpawnEnemy()
+    private void SpawnEnemy(int num)
     {
+        enemyCount++;
+        curTime = 0;
         spawnCtrl = true;
-        int randNum = Random.Range(0, spawnPoints.Length);
-        clone = Instantiate(enemy, spawnPoints[randNum].transform.position,
-            spawnPoints[randNum].transform.rotation);
+        clone[num] = Instantiate(enemy, spawnPoints[num]);
+        isSpawn[num] = true;
     }
 }
