@@ -32,6 +32,9 @@ public class PlayerHp : MonoBehaviour
     //ÈúÆÑ
     public GameObject hpPack;
 
+    public bool GetHealPack = false;
+    public bool GetItem1 = false;
+
     void Update()
     {
         UpdateB();
@@ -104,6 +107,8 @@ public class PlayerHp : MonoBehaviour
             {
                 //2ÃÊ ÈÄ hpPlus ÇÔ¼ö ½ÇÇà
                 Invoke("hpPlus", 2f);
+
+                GetHealPack = true;
             }
         }
 
@@ -116,6 +121,8 @@ public class PlayerHp : MonoBehaviour
             {
                 SceneManager.LoadScene("Ending");
             }
+
+            GetItem1 = true;
         }
         else if (other.tag == "Item2")
         {
