@@ -303,7 +303,7 @@ public class PlayerFire : MonoBehaviour
         }
 
         */
-        LEnemy = GameObject.Find("LEnemy").transform;
+        //LEnemy = GameObject.Find("LEnemy").transform;
 
         // 애니메이터 컴포넌트를 anim 변수에 불러온다.
         anim = GetComponent<Animator>();
@@ -422,8 +422,20 @@ public class PlayerFire : MonoBehaviour
                     //피격 효과 플레이
                     ps2.Play();
 
-                    //LEnemy 공격
+                    /*LEnemy 공격
                     LEnemy.GetComponent<LEnemyFSM>().HitEnemy(attackPower);
+                    */
+
+                    for (int i = 0; i < LE_SpawnManager.spawnSize; i++)
+                    {
+                        // 만약 clone[i]에 클론이 생성됐고, 레이에 부딪힌 대상이 clone[i]에 생성된 에너미면
+                        if (LE_SpawnManager.clone[i] != null &&
+                            hitInfo.transform == LE_SpawnManager.clone[i].transform)
+                        {
+                            // 그 에너미 공격
+                            LE_SpawnManager.clone[i].GetComponent<LEnemyFSM>().HitEnemy(attackPower);
+                        }
+                    }
 
                     //총알 한개 감소
                     currentBulletCount--;
@@ -515,8 +527,20 @@ public class PlayerFire : MonoBehaviour
                         //피격 효과 플레이
                         ps2.Play();
 
-                        //LEnemy 공격
+                        /*LEnemy 공격
                         LEnemy.GetComponent<LEnemyFSM>().HitEnemy(attackPower);
+                        */
+
+                        for (int i = 0; i < LE_SpawnManager.spawnSize; i++)
+                        {
+                            // 만약 clone[i]에 클론이 생성됐고, 레이에 부딪힌 대상이 clone[i]에 생성된 에너미면
+                            if (LE_SpawnManager.clone[i] != null &&
+                                hitInfo.transform == LE_SpawnManager.clone[i].transform)
+                            {
+                                // 그 에너미 공격
+                                LE_SpawnManager.clone[i].GetComponent<LEnemyFSM>().HitEnemy(attackPower);
+                            }
+                        }
 
                         //총알 한개 감소
                         currentBulletCount--;

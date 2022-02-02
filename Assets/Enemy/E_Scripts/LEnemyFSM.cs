@@ -337,6 +337,8 @@ public class LEnemyFSM : MonoBehaviour
 
         // 2초 동안 기다린 후에 자기 자신을 제거한다.
         yield return new WaitForSeconds(2f);
+        LE_SpawnManager.instance.enemyCount--;
+        LE_SpawnManager.instance.isSpawn[int.Parse(transform.parent.name) - 1] = false;
         print("소멸!");
         Destroy(gameObject);
     }
