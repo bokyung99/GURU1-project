@@ -7004,6 +7004,7 @@ GameObject:
   - component: {fileID: 336260493}
   - component: {fileID: 336260492}
   - component: {fileID: 336260491}
+  - component: {fileID: 336260498}
   - component: {fileID: 336260490}
   - component: {fileID: 336260489}
   - component: {fileID: 336260488}
@@ -7065,6 +7066,7 @@ MonoBehaviour:
   semi: {fileID: 1666886605}
   weapon1UI: {fileID: 729792287}
   weapon2UI: {fileID: 1748128260}
+  getweapon: {fileID: 8300000, guid: 6b7ee8f2ecbb11e439f7050abe8e46e6, type: 3}
 --- !u!114 &336260489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7084,7 +7086,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336260485}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7598bd4f90ce1cf458a9dd9ddcc3cdbc, type: 3}
   m_Name: 
@@ -7096,8 +7098,8 @@ MonoBehaviour:
   throwPower: 15
   P1_bulletEffect: {fileID: 268975153}
   P2_bulletEffect: {fileID: 2122388288}
-  currentBulletCount: 100
-  maxBulletCount: 100
+  currentBulletCount: 50
+  maxBulletCount: 50
   reloadTime: 1
   eff_Flash:
   - {fileID: 1804117160}
@@ -7107,7 +7109,6 @@ MonoBehaviour:
   - {fileID: 1285934447}
   currentGun: {fileID: 1194394048}
   attackPower: 3
-  fineSightOriginPos: {x: -0.07, y: -1.4, z: -0.42}
 --- !u!114 &336260491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7122,7 +7123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 2053165089}
   textHp: {fileID: 897133097}
-  playerHp: 100
+  playerHp: 10
   hpSlider: {fileID: 1663403036}
   itemTotalNum: 0
   isItem1: 0
@@ -7131,6 +7132,8 @@ MonoBehaviour:
   hpPack: {fileID: 1731545936}
   GetHealPack: 0
   GetItem1: 0
+  playerhit: {fileID: 8300000, guid: b46c7675661e40d4a8773bb3ff78851b, type: 3}
+  gethealpack: {fileID: 8300000, guid: b3f047bb5fde2c44e8848d460a3be042, type: 3}
 --- !u!114 &336260492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7177,7 +7180,7 @@ MonoBehaviour:
   jumpHeight: 1.5
   isJumping: 0
   footStepSound: {fileID: 8300000, guid: 263f8aaa01d5d0041b082b7b69d9ca02, type: 3}
-  footStepDelay: 0.35
+  footStepDelay: 0.4
 --- !u!82 &336260495
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7190,7 +7193,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.65
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7312,6 +7315,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -32.701, z: 0}
+--- !u!114 &336260498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336260485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c0aef88d4fba947b41a7fc49e08639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curBullet: {fileID: 1409518042}
+  maxBullet: {fileID: 175920994}
+  firePosition: {fileID: 35715938}
+  bombFactory: {fileID: 3386928725455276746, guid: ebfedbc4c32ac4c45a83e624de22b05a, type: 3}
+  throwPower: 15
+  P1_bulletEffect: {fileID: 268975153}
+  P2_bulletEffect: {fileID: 2122388288}
+  currentBulletCount: 100
+  maxBulletCount: 100
+  reloadTime: 1
+  eff_Flash:
+  - {fileID: 1804117160}
+  - {fileID: 1785400497}
+  - {fileID: 1918754828}
+  - {fileID: 696416253}
+  - {fileID: 1285934447}
+  currentGun: {fileID: 1194394048}
+  attackPower: 7
+  fineSightOriginPos: {x: 0, y: 0, z: 0}
 --- !u!1001 &336331330
 PrefabInstance:
   m_ObjectHideFlags: 0

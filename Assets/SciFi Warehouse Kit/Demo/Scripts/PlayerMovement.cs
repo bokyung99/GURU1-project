@@ -18,10 +18,8 @@ public class PlayerMovement : MonoBehaviour
     // 점프 상태 변수
     public bool isJumping = false;
 
-
-
     public AudioClip footStepSound;
-     public float footStepDelay;
+    public float footStepDelay;
  
      private float nextFootstep = 0;
 
