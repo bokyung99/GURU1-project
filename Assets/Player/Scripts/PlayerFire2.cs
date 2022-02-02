@@ -44,9 +44,6 @@ public class PlayerFire2 : MonoBehaviour
     //총구 효과 오브젝트 배열
     public GameObject[] eff_Flash;
 
-    //정조준 상태 확인 변수
-    private bool isFineSightMode = false;
-
     private bool isShoot = false;
 
     //현재 총 종류
@@ -68,9 +65,6 @@ public class PlayerFire2 : MonoBehaviour
 
     //총 현재 위치
     Vector3 gunDefaultPos;
-    
-    //총 정조준 위치
-    //public Vector3 fineSightOriginPos;
 
     //반동 상태 확인
     bool isRebound = false;
@@ -78,7 +72,10 @@ public class PlayerFire2 : MonoBehaviour
     // 재장전 횟수를 1회로 제한하기 위한 변수
     int reloadCtrl = 0;
 
-
+    //사운드
+    public AudioClip reload;
+    //public AudioClip gunshot;
+    public AudioClip throwbomb;
 
 
 
@@ -93,6 +90,9 @@ public class PlayerFire2 : MonoBehaviour
         /* 재장전 애니메이션 넣는곳 */
         anim.SetTrigger("reloading");
         print("재장전");
+
+        //재장전 사운드
+        GetComponent<AudioSource>().PlayOneShot(reload, reloadTime);
 
         yield return new WaitForSeconds(reloadTime);
 
@@ -304,7 +304,8 @@ public class PlayerFire2 : MonoBehaviour
             Rigidbody rb = bomb.GetComponent<Rigidbody>();
             //카메라정면 방향으로 수류탄에 물리적인 힘 가하기
             rb.AddForce(Camera.main.transform.forward * throwPower, ForceMode.Impulse);
-
+            //수류탄 투척 사운드
+            GetComponent<AudioSource>().PlayOneShot(throwbomb);
         }
 
         //만약 총알이 0개 이하이고, reloadCtrl가 0일 경우 재장전

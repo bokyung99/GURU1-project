@@ -39,6 +39,8 @@ public class PlayerHp : MonoBehaviour
     public AudioClip playerhit;
     //힐팩 습득 사운드
     public AudioClip gethealpack;
+    //아이템 습득 사운드
+    public AudioClip getitem;
 
     void Update()
     {
@@ -58,6 +60,7 @@ public class PlayerHp : MonoBehaviour
 
         //현재 플레이어 hp(%)를 hp 슬라이더의 value에 반영
         hpSlider.value = (float)playerHp / (float)playerMaxHp;
+
         //hp가 0이 되면 게임 오버 나오는 것으로 대체. 플레이어 사라질 시 카메라 사라짐
         if (playerHp == 0)
         {
@@ -121,6 +124,7 @@ public class PlayerHp : MonoBehaviour
 
         else if (other.tag == "Item1")
         {
+            GetComponent<AudioSource>().PlayOneShot(getitem);
             isItem1++;
             itemTotalNum++;
             Destroy(other.gameObject);
@@ -133,6 +137,7 @@ public class PlayerHp : MonoBehaviour
         }
         else if (other.tag == "Item2")
         {
+            GetComponent<AudioSource>().PlayOneShot(getitem);
             isItem2++;
             itemTotalNum++;
             Destroy(other.gameObject);
@@ -143,6 +148,7 @@ public class PlayerHp : MonoBehaviour
         }
         else if (other.tag == "Item3")
         {
+            GetComponent<AudioSource>().PlayOneShot(getitem);
             isItem3++;
             itemTotalNum++;
             Destroy(other.gameObject);

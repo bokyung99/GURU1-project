@@ -129,6 +129,7 @@ MonoBehaviour:
   bombEffect: {fileID: 799448181759178469, guid: 15a48d3716194904cbb5c336195f7ac6, type: 3}
   attackPower: 10
   explosionRadius: 5
+  explode: {fileID: 8300000, guid: 22745c6fcf3991b459153191a7ecad36, type: 3}
 --- !u!1001 &6725437259745543914
 PrefabInstance:
   m_ObjectHideFlags: 0

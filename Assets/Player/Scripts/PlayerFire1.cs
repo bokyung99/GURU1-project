@@ -78,7 +78,10 @@ public class PlayerFire1 : MonoBehaviour
     // 재장전 횟수를 1회로 제한하기 위한 변수
     int reloadCtrl = 0;
 
-
+    //사운드
+    public AudioClip reload;
+    public AudioClip gunshot;
+    public AudioClip throwbomb;
 
 
 
@@ -93,6 +96,9 @@ public class PlayerFire1 : MonoBehaviour
         /* 재장전 애니메이션 넣는곳 */
         anim.SetTrigger("reloading");
         print("재장전");
+
+        //재장전 사운드
+        GetComponent<AudioSource>().PlayOneShot(reload, reloadTime);
 
         yield return new WaitForSeconds(reloadTime);
 
@@ -349,7 +355,8 @@ public class PlayerFire1 : MonoBehaviour
             Rigidbody rb = bomb.GetComponent<Rigidbody>();
             //카메라정면 방향으로 수류탄에 물리적인 힘 가하기
             rb.AddForce(Camera.main.transform.forward * throwPower, ForceMode.Impulse);
-
+            //수류탄 투척 사운드
+            GetComponent<AudioSource>().PlayOneShot(throwbomb);
         }
 
         //만약 총알이 0개 이하이고, reloadCtrl가 0일 경우 재장전
@@ -361,7 +368,10 @@ public class PlayerFire1 : MonoBehaviour
         //마우스 왼쪽 버튼을 누르면 총알 발사
         if (Input.GetMouseButtonDown(0) && !isReload)
         {
+            
+
             isShoot = true;
+
 
             //총구 효과 플레이
             StartCoroutine(ShootEffectOn(0.05f));
@@ -463,7 +473,10 @@ public class PlayerFire1 : MonoBehaviour
         //마우스 왼쪽 꾹 누르면 총 연사
         else if (Input.GetMouseButton(0) && !isReload)
         {
-            isShoot= true;
+            //사운드
+            GetComponent<AudioSource>().PlayOneShot(gunshot,0.2f);
+
+            isShoot = true;
            
             {
 
