@@ -397,11 +397,35 @@ public class PlayerFire : MonoBehaviour
                     //피격 효과 플레이
                     ps2.Play();
 
+                    // 만약 clone[0]에 에너미가 복제됐고, 레이에 부딪힌 게 clone[0]에 있는 대상일 때
+                    if (SpawnManager.clone[0] != null 
+                        && hitInfo.transform == SpawnManager.clone[0].transform)
+                    {
+                        // clone[0]번 공격
+                        SpawnManager.clone[0].GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                    }
 
-                    Debug.Log("몬스터 공격1");
-                    SpawnManager.clone[SpawnManager.spawnNum].
-                        GetComponent<EnemyFSM>().HitEnemy(attackPower);
-                    Debug.Log("몬스터 공격2");
+                    // 만약 clone[1]에 에너미가 복제됐고, 레이에 부딪힌 게 clone[1]에 있는 대상일 때
+                    if (SpawnManager.clone[1] != null 
+                        && hitInfo.transform == SpawnManager.clone[1].transform)
+                    {
+                        // clone[1]번 공격
+                        SpawnManager.clone[1].GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                    }
+
+                    if (SpawnManager.clone[2] != null
+                            && hitInfo.transform == SpawnManager.clone[2].transform)
+                    {
+                        // clone[1]번 공격
+                        SpawnManager.clone[2].GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                    }
+
+                    if (SpawnManager.clone[3] != null
+                        && hitInfo.transform == SpawnManager.clone[3].transform)
+                    {
+                        // clone[1]번 공격
+                        SpawnManager.clone[3].GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                    }
 
                     //총알 한개 감소
                     currentBulletCount--;
@@ -484,9 +508,35 @@ public class PlayerFire : MonoBehaviour
                         //피격 효과 플레이
                         ps2.Play();
 
-                        SpawnManager.clone[SpawnManager.spawnNum].
-                            GetComponent<EnemyFSM>().HitEnemy(attackPower);
-                        Debug.Log("SpawnNum : " + SpawnManager.spawnNum);
+                        // 만약 clone[0]에 에너미가 복제됐고, 레이에 부딪힌 게 clone[0]에 있는 대상일 때
+                        if (SpawnManager.clone[0] != null 
+                            && hitInfo.transform == SpawnManager.clone[0].transform)
+                        {
+                            // clone[0]번 공격
+                            SpawnManager.clone[0].GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                        }
+
+                        if (SpawnManager.clone[1] != null 
+                            && hitInfo.transform == SpawnManager.clone[1].transform)
+                        {
+                            // clone[1]번 공격
+                            SpawnManager.clone[1].GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                        }
+
+                        if (SpawnManager.clone[2] != null
+                            && hitInfo.transform == SpawnManager.clone[2].transform)
+                        {
+                            // clone[1]번 공격
+                            SpawnManager.clone[2].GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                        }
+
+                        if (SpawnManager.clone[3] != null
+                            && hitInfo.transform == SpawnManager.clone[3].transform)
+                        {
+                            // clone[1]번 공격
+                            SpawnManager.clone[3].GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                        }
+
 
                         //총알 한개 감소
                         currentBulletCount--;

@@ -37,7 +37,10 @@ public class SpawnManager : MonoBehaviour
     {
         if (spawnCtrl == false)
         {
-            // 처음에 에너미 기본 생성
+            for (int i = 0; i < spawnPoints.Length; i++)
+            {
+                SpawnEnemy(i);
+            }
         }
 
         spawnNum = Random.Range(0, spawnPoints.Length);

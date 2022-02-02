@@ -214,7 +214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1870676575551645746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 1, z: 4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1870676576717461758}
@@ -257,7 +257,7 @@ MonoBehaviour:
   findDistance: 8
   attackPower: 1
   moveDistance: 20
-  hp: 100
+  hp: 50
   hpSlider: {fileID: 1870676575961959615}
 --- !u!95 &1870676575551645749
 Animator:
