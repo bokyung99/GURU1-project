@@ -397,34 +397,15 @@ public class PlayerFire : MonoBehaviour
                     //피격 효과 플레이
                     ps2.Play();
 
-                    // 만약 clone[0]에 에너미가 복제됐고, 레이에 부딪힌 게 clone[0]에 있는 대상일 때
-                    if (SpawnManager.clone[0] != null 
-                        && hitInfo.transform == SpawnManager.clone[0].transform)
-                    {
-                        // clone[0]번 공격
-                        SpawnManager.clone[0].GetComponent<EnemyFSM>().HitEnemy(attackPower);
-                    }
+                    for (int i = 0; i < SpawnManager.spawnSize; i++){
 
-                    // 만약 clone[1]에 에너미가 복제됐고, 레이에 부딪힌 게 clone[1]에 있는 대상일 때
-                    if (SpawnManager.clone[1] != null 
-                        && hitInfo.transform == SpawnManager.clone[1].transform)
-                    {
-                        // clone[1]번 공격
-                        SpawnManager.clone[1].GetComponent<EnemyFSM>().HitEnemy(attackPower);
-                    }
-
-                    if (SpawnManager.clone[2] != null
-                            && hitInfo.transform == SpawnManager.clone[2].transform)
-                    {
-                        // clone[1]번 공격
-                        SpawnManager.clone[2].GetComponent<EnemyFSM>().HitEnemy(attackPower);
-                    }
-
-                    if (SpawnManager.clone[3] != null
-                        && hitInfo.transform == SpawnManager.clone[3].transform)
-                    {
-                        // clone[1]번 공격
-                        SpawnManager.clone[3].GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                        // 만약 clone[i]에 클론이 생성됐고, 레이에 부딪힌 대상이 clone[i]에 생성된 에너미면
+                        if(SpawnManager.clone[i] != null &&
+                            hitInfo.transform == SpawnManager.clone[i].transform)
+                        {
+                            // 그 에너미 공격
+                            SpawnManager.clone[i].GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                        }
                     }
 
                     //총알 한개 감소
@@ -508,33 +489,15 @@ public class PlayerFire : MonoBehaviour
                         //피격 효과 플레이
                         ps2.Play();
 
-                        // 만약 clone[0]에 에너미가 복제됐고, 레이에 부딪힌 게 clone[0]에 있는 대상일 때
-                        if (SpawnManager.clone[0] != null 
-                            && hitInfo.transform == SpawnManager.clone[0].transform)
+                        for (int i = 0; i < SpawnManager.spawnSize; i++)
                         {
-                            // clone[0]번 공격
-                            SpawnManager.clone[0].GetComponent<EnemyFSM>().HitEnemy(attackPower);
-                        }
-
-                        if (SpawnManager.clone[1] != null 
-                            && hitInfo.transform == SpawnManager.clone[1].transform)
-                        {
-                            // clone[1]번 공격
-                            SpawnManager.clone[1].GetComponent<EnemyFSM>().HitEnemy(attackPower);
-                        }
-
-                        if (SpawnManager.clone[2] != null
-                            && hitInfo.transform == SpawnManager.clone[2].transform)
-                        {
-                            // clone[1]번 공격
-                            SpawnManager.clone[2].GetComponent<EnemyFSM>().HitEnemy(attackPower);
-                        }
-
-                        if (SpawnManager.clone[3] != null
-                            && hitInfo.transform == SpawnManager.clone[3].transform)
-                        {
-                            // clone[1]번 공격
-                            SpawnManager.clone[3].GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                            // 만약 clone[i]에 클론이 생성됐고, 레이에 부딪힌 대상이 clone[i]에 생성된 에너미면
+                            if (SpawnManager.clone[i] != null &&
+                                hitInfo.transform == SpawnManager.clone[i].transform)
+                            {
+                                // 그 에너미 공격
+                                SpawnManager.clone[i].GetComponent<EnemyFSM>().HitEnemy(attackPower);
+                            }
                         }
 
 

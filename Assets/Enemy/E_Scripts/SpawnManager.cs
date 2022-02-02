@@ -15,11 +15,13 @@ public class SpawnManager : MonoBehaviour
     public float curTime;
     public int enemyCount;
     public int maxEnemyCount;
+    public static int spawnSize;
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
+        spawnSize = 14;
 
         //spawnPoints = new GameObject[2];
 
