@@ -1401,7 +1401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 78095460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.78, y: 5.04, z: 14.73}
+  m_LocalPosition: {x: 27.78, y: 5.8, z: 14.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1133792507}
@@ -7125,7 +7125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 2053165089}
   textHp: {fileID: 897133097}
-  playerHp: 10
+  playerHp: 100
   hpSlider: {fileID: 1663403036}
   itemTotalNum: 0
   isItem1: 0
@@ -8881,7 +8881,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1d8ffbb70dc716646abe11dba492a567, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 192a2a8d2468047489e6483501964010, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.125
   m_Pitch: 1
@@ -11852,7 +11852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566623035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.81, y: 5.04, z: 14.73}
+  m_LocalPosition: {x: 38.81, y: 5.84, z: 14.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1133792507}
@@ -34610,7 +34610,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544455817}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.12, y: 5.04, z: 27.52}
+  m_LocalPosition: {x: 26.12, y: 6.68, z: 27.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1133792507}
