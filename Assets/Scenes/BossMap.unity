@@ -6675,12 +6675,12 @@ GameObject:
   - component: {fileID: 336260493}
   - component: {fileID: 336260492}
   - component: {fileID: 336260491}
-  - component: {fileID: 336260490}
   - component: {fileID: 336260489}
-  - component: {fileID: 336260488}
   - component: {fileID: 336260487}
   - component: {fileID: 336260486}
   - component: {fileID: 336260498}
+  - component: {fileID: 336260499}
+  - component: {fileID: 336260500}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -6721,23 +6721,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotCamXAxisSpeed: 5
   rotCamYAxisSpeed: 3
---- !u!114 &336260488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 336260485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bb0a7941c00b1c4389bbefb07d61c04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon2: {fileID: 2115432517}
-  semi: {fileID: 1666886605}
-  weapon1UI: {fileID: 729792287}
-  weapon2UI: {fileID: 1748128260}
-  getweapon: {fileID: 0}
 --- !u!114 &336260489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6750,38 +6733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16aaf1744c40efd45bac7c2035b84883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &336260490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 336260485}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7598bd4f90ce1cf458a9dd9ddcc3cdbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curBullet: {fileID: 1409518042}
-  maxBullet: {fileID: 175920994}
-  firePosition: {fileID: 35715938}
-  bombFactory: {fileID: 3386928725455276746, guid: ebfedbc4c32ac4c45a83e624de22b05a, type: 3}
-  throwPower: 15
-  P1_bulletEffect: {fileID: 268975153}
-  P2_bulletEffect: {fileID: 2122388288}
-  currentBulletCount: 100
-  maxBulletCount: 100
-  reloadTime: 1
-  eff_Flash:
-  - {fileID: 1804117160}
-  - {fileID: 1785400497}
-  - {fileID: 1918754828}
-  - {fileID: 696416253}
-  - {fileID: 1285934447}
-  currentGun: {fileID: 1194394048}
-  attackPower: 3
-  reload: {fileID: 0}
-  throwbomb: {fileID: 0}
 --- !u!114 &336260491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7020,6 +6971,55 @@ MonoBehaviour:
   currentGun: {fileID: 1194394048}
   attackPower: 3
   fineSightOriginPos: {x: -0.07, y: -1.4, z: -0.42}
+--- !u!114 &336260499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336260485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b9905540852374697cda1039661dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curBullet: {fileID: 1409518042}
+  maxBullet: {fileID: 175920994}
+  firePosition: {fileID: 35715938}
+  bombFactory: {fileID: 3386928725455276746, guid: ebfedbc4c32ac4c45a83e624de22b05a, type: 3}
+  throwPower: 15
+  P1_bulletEffect: {fileID: 268975153}
+  P2_bulletEffect: {fileID: 2122388288}
+  currentBulletCount: 50
+  maxBulletCount: 50
+  reloadTime: 1
+  eff_Flash:
+  - {fileID: 1804117160}
+  - {fileID: 1785400497}
+  - {fileID: 1918754828}
+  - {fileID: 696416253}
+  - {fileID: 1285934447}
+  currentGun: {fileID: 1194394048}
+  attackPower: 3
+  reload: {fileID: 8300000, guid: a170e670d31c0724ca855884161c9ab6, type: 3}
+  throwbomb: {fileID: 8300000, guid: 419336aa8912ae0468e104596863a0a1, type: 3}
+--- !u!114 &336260500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336260485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46df3551015b41b469e3b4d954dfb01f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon2: {fileID: 2115432517}
+  semi: {fileID: 1666886605}
+  weapon1UI: {fileID: 729792287}
+  weapon2UI: {fileID: 1748128260}
+  getweapon: {fileID: 8300000, guid: 6b7ee8f2ecbb11e439f7050abe8e46e6, type: 3}
 --- !u!1001 &336331330
 PrefabInstance:
   m_ObjectHideFlags: 0
