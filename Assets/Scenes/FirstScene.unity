@@ -7067,6 +7067,7 @@ MonoBehaviour:
   weapon1UI: {fileID: 729792287}
   weapon2UI: {fileID: 1748128260}
   getweapon: {fileID: 8300000, guid: 6b7ee8f2ecbb11e439f7050abe8e46e6, type: 3}
+  getWeapon: 0
 --- !u!114 &336260489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7348,7 +7349,7 @@ MonoBehaviour:
   - {fileID: 1285934447}
   currentGun: {fileID: 1194394048}
   attackPower: 3
-  fineSightOriginPos: {x: 0, y: 0, z: 0}
+  fineSightOriginPos: {x: -0.07, y: -1.4, z: -0.42}
   reload: {fileID: 8300000, guid: a170e670d31c0724ca855884161c9ab6, type: 3}
   gunshot: {fileID: 8300000, guid: 0cdefa0b4b1c2cd47878719267c3e37f, type: 3}
   throwbomb: {fileID: 8300000, guid: 419336aa8912ae0468e104596863a0a1, type: 3}
