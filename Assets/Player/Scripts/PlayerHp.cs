@@ -14,10 +14,10 @@ public class PlayerHp : MonoBehaviour
     [SerializeField]
     private Text textHp;
 
-    //플레이어 체력 변수 (수정)
-    public int playerHp = 10;
-    //최대 체력 변수 (수정)
-    int playerMaxHp = 10;
+    //플레이어 체력 변수
+    public int playerHp = 100;
+    //최대 체력 변수
+    int playerMaxHp = 100;
     //hp 슬라이더 변수
     public Slider hpSlider;
 
@@ -34,6 +34,13 @@ public class PlayerHp : MonoBehaviour
 
     public bool GetHealPack = false;
     public bool GetItem1 = false;
+
+    //피격 사운드
+    public AudioClip playerhit;
+    //힐팩 습득 사운드
+    public AudioClip gethealpack;
+    //아이템 습득 사운드
+    public AudioClip getitem;
 
     void Update()
     {
@@ -53,6 +60,7 @@ public class PlayerHp : MonoBehaviour
 
         //현재 플레이어 hp(%)를 hp 슬라이더의 value에 반영
         hpSlider.value = (float)playerHp / (float)playerMaxHp;
+
         //hp가 0이 되면 게임 오버 나오는 것으로 대체. 플레이어 사라질 시 카메라 사라짐
         if (playerHp == 0)
         {
@@ -63,11 +71,11 @@ public class PlayerHp : MonoBehaviour
     //플레이어의 피격 함수
     public void E_DamageAction(int E_damage)
     {
-        //에너미의 공격력만큼 플레이어의 체력 감소
-        playerHp -= E_damage;
         //플레이어의 체력이 0보다 크면 피격 효과를 출력
         if (playerHp > 0)
         {
+            //에너미의 공격력만큼 플레이어의 체력 감소
+            playerHp -= E_damage;
             //피격 효과 코루틴을 시작
             StartCoroutine(PlayerHit());
         }
@@ -75,11 +83,11 @@ public class PlayerHp : MonoBehaviour
 
     public void LE_DamageAction(int LE_damage)
     {
-        //에너미의 공격력만큼 플레이어의 체력 감소
-        playerHp -= LE_damage;
         //플레이어의 체력이 0보다 크면 피격 효과를 출력
         if (playerHp > 0)
         {
+            //에너미의 공격력만큼 플레이어의 체력 감소
+            playerHp -= LE_damage;
             //피격 효과 코루틴을 시작
             StartCoroutine(PlayerHit());
         }
@@ -88,6 +96,8 @@ public class PlayerHp : MonoBehaviour
     //피격 효과 코루틴 함수
     IEnumerator PlayerHit()
     {
+        //피격 사운드
+        GetComponent<AudioSource>().PlayOneShot(playerhit, 0.3f);
         //피격 UI 활성화
         hitEffect.SetActive(true);
         //0.3초간 대기
@@ -105,8 +115,8 @@ public class PlayerHp : MonoBehaviour
             //플레이어 체력이 0이 아니고 최대가 아닐 때
             if (playerHp < playerMaxHp && playerHp > 0) 
             {
-                //2초 후 hpPlus 함수 실행
-                Invoke("hpPlus", 2f);
+                //0.5초 후 hpPlus 함수 실행
+                Invoke("hpPlus", 0.5f);
 
                 GetHealPack = true;
             }
@@ -114,6 +124,7 @@ public class PlayerHp : MonoBehaviour
 
         else if (other.tag == "Item1")
         {
+            GetComponent<AudioSource>().PlayOneShot(getitem);
             isItem1++;
             itemTotalNum++;
             Destroy(other.gameObject);
@@ -126,6 +137,7 @@ public class PlayerHp : MonoBehaviour
         }
         else if (other.tag == "Item2")
         {
+            GetComponent<AudioSource>().PlayOneShot(getitem);
             isItem2++;
             itemTotalNum++;
             Destroy(other.gameObject);
@@ -136,6 +148,7 @@ public class PlayerHp : MonoBehaviour
         }
         else if (other.tag == "Item3")
         {
+            GetComponent<AudioSource>().PlayOneShot(getitem);
             isItem3++;
             itemTotalNum++;
             Destroy(other.gameObject);
@@ -144,11 +157,11 @@ public class PlayerHp : MonoBehaviour
                 SceneManager.LoadScene("Ending");
             }
         }
-
-
     }
     void hpPlus() //(사운드 구현 후 시간 조절)
     {
+        //힐 사운드
+        GetComponent<AudioSource>().PlayOneShot(gethealpack, 0.5f);
         //플레이어 체력 회복 (수정)
         playerHp += 1;
         //hpPack 제거

@@ -12,12 +12,16 @@ public class Weapon2 : MonoBehaviour
     //무기 UI
     public Image weapon1UI;
     public Image weapon2UI;
+    //무기 파밍 사운드
+    public AudioClip getweapon;
 
     private void OnTriggerEnter(Collider other)
     {
         //충돌한 게임 오브젝트의 태그가 Weapon일 때
         if (other.CompareTag("Weapon"))
         {
+            //무기 파밍 사운드
+            GetComponent<AudioSource>().PlayOneShot(getweapon);
             //무기 오브젝트 제거
             Destroy(weapon2, 1f);
             //무기 UI 투명도 조절 함수 불러오기
@@ -50,7 +54,12 @@ public class Weapon2 : MonoBehaviour
                 color2.a = 0.5f;
                 weapon2UI.color = color2;
 
+                //무기1
                 semi.SetActive(false);
+
+                //무기1 스크립트만 활성화
+                gameObject.GetComponent<PlayerFire1>().enabled = true;
+                gameObject.GetComponent<PlayerFire2>().enabled = false;
             }
 
             //키보드 숫자 2를 눌렀을 때
@@ -65,7 +74,12 @@ public class Weapon2 : MonoBehaviour
                 color1.a = 0.5f;
                 weapon1UI.color = color1;
 
+                //무기2
                 semi.SetActive(true);
+
+                //무기2 스크립트만 활성화
+                gameObject.GetComponent<PlayerFire1>().enabled = false;
+                gameObject.GetComponent<PlayerFire2>().enabled = true;
             }
         }
     }

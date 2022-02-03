@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BombAction : MonoBehaviour
 {
-    //폭발 이펙트 변수
+    //폭발 이펙트
     public GameObject bombEffect;
 
     //수류탄 데미지
@@ -12,9 +12,12 @@ public class BombAction : MonoBehaviour
     //폭발 효과 반경
     public float explosionRadius = 5f;
 
+
+
     //충돌 했을 때
     private void OnCollisionEnter(Collision collision)
     {
+
         //폭발 효과 반경 내에서 몬스터 오브젝트 collider컴포넌트를 배열에 저장, 원하는 레이어 번호 적기
         Collider[] cols = Physics.OverlapSphere(transform.position, explosionRadius, 1 << 7);
 
@@ -33,7 +36,7 @@ public class BombAction : MonoBehaviour
             {
                 lefsm.HitEnemy(attackPower);
             }
-        } 
+        }
 
         //폭발 이펙트 생성
         GameObject eff = Instantiate(bombEffect);
