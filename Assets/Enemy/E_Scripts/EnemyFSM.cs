@@ -28,7 +28,6 @@ public class EnemyFSM : MonoBehaviour
     //캐릭터 콘트롤러 컴포넌트
     CharacterController cc;
 
-
     // 에너미 상태 변수
     EnemyState m_State;
 
@@ -65,8 +64,13 @@ public class EnemyFSM : MonoBehaviour
     // 내비게이션 에이전트 변수
     NavMeshAgent smith;
 
+    //사운드
+    public AudioClip gunshot;
+    public AudioClip damage;
+    public AudioClip walk;
 
-    // Start is called before the first frame update
+
+
     void Start()
     {
         // 애니메이터 컴포넌트를 anim 변수에 불러온다.
@@ -147,6 +151,8 @@ public class EnemyFSM : MonoBehaviour
         // 만일, 플레이어와의 거리가 공격 범위 밖이라면 플레이어를 향해 이동한다.
         else if (Vector3.Distance(transform.position, player.position) > attackDistance)
         {
+            GetComponent<AudioSource>().PlayOneShot(walk);
+
             // 이동 방향 설정
             //Vector3 dir = (player.position - transform.position).normalized;
 
@@ -183,6 +189,7 @@ public class EnemyFSM : MonoBehaviour
         // 만일, 플레이어가 공격 범위 이내에 있다면 플레이어를 공격한다.
         if (Vector3.Distance(transform.position, player.position) < attackDistance)
         {
+            
             // 일정한 시간마다 플레이어를 공격한다.
             currentTime += Time.deltaTime;
             if (currentTime > attackDelay)
@@ -193,6 +200,7 @@ public class EnemyFSM : MonoBehaviour
 
                 // 공격 애니메이션 플레이
                 anim.SetTrigger("StartAttack");
+                GetComponent<AudioSource>().PlayOneShot(gunshot);
             }
         }
         // 그렇지 않다면, 현재 상태를 이동(Move)으로 전환한다(재추격 실시)
@@ -250,6 +258,7 @@ public class EnemyFSM : MonoBehaviour
     {
         // 피격 상태를 처리하기 위한 코루틴을 실행한다.
         StartCoroutine(DamageProcess());
+        GetComponent<AudioSource>().PlayOneShot(damage);
     }
 
     // 데미지 처리용 코루틴 함수

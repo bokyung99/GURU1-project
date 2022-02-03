@@ -28,7 +28,6 @@ public class LEnemyFSM : MonoBehaviour
     //캐릭터 콘트롤러 컴포넌트
     CharacterController cc;
 
-
     // 에너미 상태 변수
     EnemyState m_State;
 
@@ -70,8 +69,13 @@ public class LEnemyFSM : MonoBehaviour
     public GameObject bullet;
     public Transform bulletPos;
 
+    //사운드
+    public AudioClip gunshot;
+    public AudioClip damage;
+    //public AudioClip walk;
 
-    // Start is called before the first frame update
+    
+
     void Start()
     {
         // 애니메이터 컴포넌트를 anim 변수에 불러온다.
@@ -201,6 +205,7 @@ public class LEnemyFSM : MonoBehaviour
                 // 공격 애니메이션 플레이
                 anim.SetTrigger("StartAttack");
                 StartCoroutine("Shot");
+                GetComponent<AudioSource>().PlayOneShot(gunshot);
             }
         }
         // 그렇지 않다면, 현재 상태를 이동(Move)으로 전환한다(재추격 실시)
@@ -270,6 +275,7 @@ public class LEnemyFSM : MonoBehaviour
     {
         // 피격 상태를 처리하기 위한 코루틴을 실행한다.
         StartCoroutine(DamageProcess());
+        GetComponent<AudioSource>().PlayOneShot(damage);
     }
 
     // 데미지 처리용 코루틴 함수

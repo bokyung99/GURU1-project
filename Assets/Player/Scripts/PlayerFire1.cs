@@ -201,13 +201,9 @@ public class PlayerFire1 : MonoBehaviour
 
                 break;
             }
-
-
             yield return null;
         }
-
         yield break;
-
     }
 
 
@@ -474,7 +470,7 @@ public class PlayerFire1 : MonoBehaviour
         else if (Input.GetMouseButton(0) && !isReload)
         {
             //»ç¿îµå
-            GetComponent<AudioSource>().PlayOneShot(gunshot,0.2f);
+            GetComponent<AudioSource>().PlayOneShot(gunshot);
 
             isShoot = true;
            
