@@ -66,8 +66,7 @@ public class EnemyFSM : MonoBehaviour
 
     //사운드
     public AudioClip gunshot;
-    public AudioClip damage;
-    public AudioClip walk;
+    //public AudioClip walk;
 
 
 
@@ -151,8 +150,7 @@ public class EnemyFSM : MonoBehaviour
         // 만일, 플레이어와의 거리가 공격 범위 밖이라면 플레이어를 향해 이동한다.
         else if (Vector3.Distance(transform.position, player.position) > attackDistance)
         {
-            GetComponent<AudioSource>().PlayOneShot(walk);
-
+            
             // 이동 방향 설정
             //Vector3 dir = (player.position - transform.position).normalized;
 
@@ -181,7 +179,7 @@ public class EnemyFSM : MonoBehaviour
 
             anim.SetTrigger("MoveToAttackDelay");
         }
-
+        //GetComponent<AudioSource>().PlayOneShot(walk);
     }
 
     void Attack()
@@ -258,7 +256,6 @@ public class EnemyFSM : MonoBehaviour
     {
         // 피격 상태를 처리하기 위한 코루틴을 실행한다.
         StartCoroutine(DamageProcess());
-        GetComponent<AudioSource>().PlayOneShot(damage);
     }
 
     // 데미지 처리용 코루틴 함수

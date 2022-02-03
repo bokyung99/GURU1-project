@@ -7112,6 +7112,8 @@ MonoBehaviour:
   attackPower: 7
   reload: {fileID: 8300000, guid: a170e670d31c0724ca855884161c9ab6, type: 3}
   throwbomb: {fileID: 8300000, guid: 419336aa8912ae0468e104596863a0a1, type: 3}
+  enemyhit: {fileID: 8300000, guid: 7fbf165c2cc55a24d9e1790b813333eb, type: 3}
+  lenemyhit: {fileID: 8300000, guid: 7fbf165c2cc55a24d9e1790b813333eb, type: 3}
 --- !u!114 &336260491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7354,6 +7356,8 @@ MonoBehaviour:
   reload: {fileID: 8300000, guid: a170e670d31c0724ca855884161c9ab6, type: 3}
   gunshot: {fileID: 8300000, guid: 0cdefa0b4b1c2cd47878719267c3e37f, type: 3}
   throwbomb: {fileID: 8300000, guid: 419336aa8912ae0468e104596863a0a1, type: 3}
+  enemyhit: {fileID: 8300000, guid: 65e8112ae7b83704d937e5b7b63cbb4e, type: 3}
+  lenemyhit: {fileID: 8300000, guid: 65e8112ae7b83704d937e5b7b63cbb4e, type: 3}
 --- !u!1001 &336331330
 PrefabInstance:
   m_ObjectHideFlags: 0

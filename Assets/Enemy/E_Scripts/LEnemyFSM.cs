@@ -71,7 +71,6 @@ public class LEnemyFSM : MonoBehaviour
 
     //사운드
     public AudioClip gunshot;
-    public AudioClip damage;
     //public AudioClip walk;
 
     
@@ -275,7 +274,6 @@ public class LEnemyFSM : MonoBehaviour
     {
         // 피격 상태를 처리하기 위한 코루틴을 실행한다.
         StartCoroutine(DamageProcess());
-        GetComponent<AudioSource>().PlayOneShot(damage);
     }
 
     // 데미지 처리용 코루틴 함수

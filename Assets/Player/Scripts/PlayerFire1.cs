@@ -82,6 +82,8 @@ public class PlayerFire1 : MonoBehaviour
     public AudioClip reload;
     public AudioClip gunshot;
     public AudioClip throwbomb;
+    public AudioClip enemyhit;
+    public AudioClip lenemyhit;
 
 
 
@@ -469,15 +471,14 @@ public class PlayerFire1 : MonoBehaviour
         //마우스 왼쪽 꾹 누르면 총 연사
         else if (Input.GetMouseButton(0) && !isReload)
         {
-            //사운드
-            GetComponent<AudioSource>().PlayOneShot(gunshot);
-
             isShoot = true;
            
             {
 
                 //총구 효과 플레이
                 StartCoroutine(ShootEffectOn(0.05f));
+                //사운드
+                GetComponent<AudioSource>().PlayOneShot(gunshot);
 
                 //레이를 생성한 후 발사될 위치와 진행 방향 설정
                 Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
@@ -509,6 +510,8 @@ public class PlayerFire1 : MonoBehaviour
 
                         //피격 효과 플레이
                         ps2.Play();
+                        //피격 사운드
+                        //GetComponent<AudioSource>().PlayOneShot(enemyhit);
 
                         for (int i = 0; i < SpawnManager.spawnSize; i++)
                         {
@@ -535,6 +538,8 @@ public class PlayerFire1 : MonoBehaviour
 
                         //피격 효과 플레이
                         ps2.Play();
+                        //피격 사운드
+                        GetComponent<AudioSource>().PlayOneShot(lenemyhit);
 
                         /*LEnemy 공격
                         LEnemy.GetComponent<LEnemyFSM>().HitEnemy(attackPower);
