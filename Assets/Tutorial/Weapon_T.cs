@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Weapon2 : MonoBehaviour
+public class Weapon_T : MonoBehaviour
 {
     //파밍할 무기 오브젝트
     public GameObject weapon2;
@@ -31,10 +31,10 @@ public class Weapon2 : MonoBehaviour
 
             getWeapon = true;
         }
-    
+
     }
 
-     
+
 
     void OnUIImage()
     {
@@ -46,6 +46,10 @@ public class Weapon2 : MonoBehaviour
 
     void Update()
     {
+
+        gameObject.GetComponent<Playerfire_T>().enabled = true;
+        gameObject.GetComponent<Playerfire2_T>().enabled = false;
+
         if (weapon2 == false)
         {
             //키보드 숫자 1을 눌렀을 때
@@ -65,8 +69,8 @@ public class Weapon2 : MonoBehaviour
                 semi.SetActive(false);
 
                 //무기1 스크립트만 활성화
-                gameObject.GetComponent<PlayerFire1>().enabled = true;
-                gameObject.GetComponent<PlayerFire2>().enabled = false;
+                gameObject.GetComponent<Playerfire_T>().enabled = true;
+                gameObject.GetComponent<Playerfire2_T>().enabled = false;
             }
 
             //키보드 숫자 2를 눌렀을 때
@@ -85,8 +89,8 @@ public class Weapon2 : MonoBehaviour
                 semi.SetActive(true);
 
                 //무기2 스크립트만 활성화
-                gameObject.GetComponent<PlayerFire1>().enabled = false;
-                gameObject.GetComponent<PlayerFire2>().enabled = true;
+                gameObject.GetComponent<Playerfire_T>().enabled = false;
+                gameObject.GetComponent<Playerfire2_T>().enabled = true;
             }
         }
     }
