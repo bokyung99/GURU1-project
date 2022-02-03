@@ -18,14 +18,21 @@ public class PlayerMovement : MonoBehaviour
     // 점프 상태 변수
     public bool isJumping = false;
 
+    public AudioClip jumpsound;
     public AudioClip footStepSound;
     public float footStepDelay;
- 
-     private float nextFootstep = 0;
+
+    private float nextFootstep = 0;
+
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space)&&isJumping==false)
+        {
+            GetComponent<AudioSource>().PlayOneShot(jumpsound);
+        }
+
         //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         // 1-1. 만일, 점프 중이었고, 다시 바닥에 착지했다면...
         if (isJumping && controller.collisionFlags == CollisionFlags.Below)

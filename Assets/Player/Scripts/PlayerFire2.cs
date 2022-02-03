@@ -76,6 +76,8 @@ public class PlayerFire2 : MonoBehaviour
     public AudioClip reload;
     //public AudioClip gunshot;
     public AudioClip throwbomb;
+    public AudioClip enemyhit;
+    public AudioClip lenemyhit;
 
 
 
@@ -352,6 +354,8 @@ public class PlayerFire2 : MonoBehaviour
 
                     //피격 효과 플레이
                     ps2.Play();
+                    //피격 사운드
+                    GetComponent<AudioSource>().PlayOneShot(enemyhit);
 
                     for (int i = 0; i < SpawnManager.spawnSize; i++){
 
@@ -377,6 +381,8 @@ public class PlayerFire2 : MonoBehaviour
 
                     //피격 효과 플레이
                     ps2.Play();
+                    //피격 사운드
+                    GetComponent<AudioSource>().PlayOneShot(lenemyhit);
 
                     /*LEnemy 공격
                     LEnemy.GetComponent<LEnemyFSM>().HitEnemy(attackPower);
