@@ -32,7 +32,9 @@ public class PlayerHp : MonoBehaviour
     //힐팩
     public GameObject hpPack;
 
+    //힐팩 습득 확인용 변수(튜토리얼)
     public bool GetHealPack = false;
+    //목표아이템 습득 확인용 변수(튜토리얼)
     public bool GetItem1 = false;
 
     //피격 사운드
@@ -118,6 +120,7 @@ public class PlayerHp : MonoBehaviour
                 //0.5초 후 hpPlus 함수 실행
                 Invoke("hpPlus", 0.5f);
 
+                //힐팩 습득 확인(튜토리얼)
                 GetHealPack = true;
             }
         }
@@ -133,6 +136,7 @@ public class PlayerHp : MonoBehaviour
                 SceneManager.LoadScene("Ending");
             }
 
+            //목표아이템 습득 확인(튜토리얼)
             GetItem1 = true;
         }
         else if (other.tag == "Item2")

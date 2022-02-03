@@ -17,6 +17,8 @@ TagManager:
   - Item1
   - Item2
   - Item3
+  - BossEnemy
+  - popup5
   layers:
   - Default
   - TransparentFX
