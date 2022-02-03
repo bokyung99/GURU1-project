@@ -65,9 +65,7 @@ public class EnemyFSM : MonoBehaviour
     NavMeshAgent smith;
 
     //사운드
-    public AudioClip gunshot;
     //public AudioClip walk;
-
 
 
     void Start()
@@ -198,7 +196,6 @@ public class EnemyFSM : MonoBehaviour
 
                 // 공격 애니메이션 플레이
                 anim.SetTrigger("StartAttack");
-                GetComponent<AudioSource>().PlayOneShot(gunshot);
             }
         }
         // 그렇지 않다면, 현재 상태를 이동(Move)으로 전환한다(재추격 실시)

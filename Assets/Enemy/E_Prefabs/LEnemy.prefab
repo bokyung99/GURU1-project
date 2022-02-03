@@ -405,7 +405,7 @@ MonoBehaviour:
   bullet: {fileID: 2642824838065483661, guid: 39ddbe57246aa5a46ac96ef5aff940bd, type: 3}
   bulletPos: {fileID: 6529521498997327103}
   gunshot: {fileID: 8300000, guid: 08f78eba48bb21c44ac5a74ca84efc83, type: 3}
-  damage: {fileID: 8300000, guid: c873b9e32138c5a459247b866479e5c1, type: 3}
+  walk: {fileID: 8300000, guid: c873b9e32138c5a459247b866479e5c1, type: 3}
 --- !u!143 &6529521499075229461
 CharacterController:
   m_ObjectHideFlags: 0

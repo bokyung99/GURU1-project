@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
          if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) && isGrounded)
             {
-             nextFootstep -= Time.deltaTime;
+            nextFootstep -= Time.deltaTime;
              if (nextFootstep <= 0) 
                 {
                  GetComponent<AudioSource>().PlayOneShot(footStepSound, 0.7f);
