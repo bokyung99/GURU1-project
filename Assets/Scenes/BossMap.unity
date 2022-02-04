@@ -6681,6 +6681,7 @@ GameObject:
   - component: {fileID: 336260498}
   - component: {fileID: 336260499}
   - component: {fileID: 336260500}
+  - component: {fileID: 336260488}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -6721,6 +6722,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotCamXAxisSpeed: 5
   rotCamYAxisSpeed: 3
+--- !u!114 &336260488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336260485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dddd6dbac1ef89643b504ace497d39ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 0}
+  textHp: {fileID: 0}
+  playerHp: 100
+  hpSlider: {fileID: 0}
+  itemTotalNum: 0
+  isItem1: 0
+  isItem2: 0
+  isItem3: 0
+  hpPack1: {fileID: 0}
+  hpPack2: {fileID: 0}
+  hpPack3: {fileID: 0}
+  hpPack4: {fileID: 0}
+  hpPack5: {fileID: 0}
+  GetHealPack: 0
+  GetItem1: 0
+  playerhit: {fileID: 0}
+  gethealpack: {fileID: 0}
+  getitem: {fileID: 0}
 --- !u!114 &336260489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31495,7 +31526,7 @@ GameObject:
   - component: {fileID: 1406979566}
   m_Layer: 11
   m_Name: Environment
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
