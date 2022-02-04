@@ -256,8 +256,13 @@ public class BossEnemyFSM : MonoBehaviour
 
     void Return()
     {
+        float dist = Vector3.Distance(transform.position, originPos);
+
+        print("거리 : " + dist);
+
         // 만일, 초기 위치에서의 거리가 0.1f 이상이라면 초기 위치 쪽으로 이동한다.
-        if (Vector3.Distance(transform.position, originPos) > 0.1f)
+        //if (Vector3.Distance(transform.position, originPos) > 1f)
+        if (dist > 1f)
         {
             //Vector3 dir = (originPos - transform.position).normalized;
             //cc.Move(dir * moveSpeed * Time.deltaTime);
@@ -417,6 +422,7 @@ public class BossEnemyFSM : MonoBehaviour
         runattack = true;
 
         //추가 패턴 공격 에니메이션 넣는 곳
+        anim.SetTrigger("RunAttack");
 
         yield return new WaitForSeconds(1.5f);//돌진해서 다가오는 에니메이션 시간
         boxcollider.enabled = true;
