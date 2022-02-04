@@ -73,6 +73,13 @@ public class BossEnemyFSM : MonoBehaviour
     public GameObject bullet2;
     public Transform bulletPos2;
 
+    //돌격 공격력
+    public int runattackPower = 3;
+    //콜라이더 변수
+    public BoxCollider boxcollider;
+    //돌격 공격 확인용 변수
+    private bool runattack = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -98,11 +105,21 @@ public class BossEnemyFSM : MonoBehaviour
 
         // 내비게이션 에이전트 컴포넌트 받아오기
         smith = GetComponent<NavMeshAgent>();
+
+        //콜라이더 컴포넌트 받아오기
+        boxcollider = GetComponent<BoxCollider>();
+        //콜라이더 비활성화 시키기
+        boxcollider.enabled = false;
+
+        StartCoroutine(Think());
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         // 현재 상태를 체크해 해당 상태별로 정해진 기능을 수행하게 하고 싶다
         switch (m_State)
         {
@@ -188,33 +205,36 @@ public class BossEnemyFSM : MonoBehaviour
 
     void Attack()
     {
-        // 만일, 플레이어가 공격 범위 이내에 있다면 플레이어를 공격한다.
-        if (Vector3.Distance(transform.position, player.position) < attackDistance)
+        if (!runattack)
         {
-            smith.isStopped = true;
-
-            // 일정한 시간마다 플레이어를 공격한다.
-            currentTime += Time.deltaTime;
-            if (currentTime > attackDelay)
+            // 만일, 플레이어가 공격 범위 이내에 있다면 플레이어를 공격한다.
+            if (Vector3.Distance(transform.position, player.position) < attackDistance)
             {
-                player.GetComponent<PlayerHp>().E_DamageAction(attackPower);
-                print("공격");
+                smith.isStopped = true;
+
+                // 일정한 시간마다 플레이어를 공격한다.
+                currentTime += Time.deltaTime;
+                if (currentTime > attackDelay)
+                {
+                    player.GetComponent<PlayerHp>().E_DamageAction(attackPower);
+                    print("공격");
+                    currentTime = 0;
+
+                    // 공격 애니메이션 플레이
+                    anim.SetTrigger("StartAttack");
+                    StartCoroutine("Shot");
+                }
+            }
+            // 그렇지 않다면, 현재 상태를 이동(Move)으로 전환한다(재추격 실시)
+            else
+            {
+                m_State = EnemyState.Move;
+                print("상태 전환: Attack -> Move");
                 currentTime = 0;
 
-                // 공격 애니메이션 플레이
-                anim.SetTrigger("StartAttack");
-                StartCoroutine("Shot");
+                // 이동 애니메이션 플레이
+                anim.SetTrigger("AttackToMove");
             }
-        }
-        // 그렇지 않다면, 현재 상태를 이동(Move)으로 전환한다(재추격 실시)
-        else
-        {
-            m_State = EnemyState.Move;
-            print("상태 전환: Attack -> Move");
-            currentTime = 0;
-
-            // 이동 애니메이션 플레이
-            anim.SetTrigger("AttackToMove");
         }
     }
 
@@ -347,4 +367,61 @@ public class BossEnemyFSM : MonoBehaviour
         print("소멸!");
         Destroy(gameObject);
     }
+
+    //충돌 할 때 돌진공격이 들어가도록
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            player.GetComponent<PlayerHp>().E_DamageAction(runattackPower);
+            print("돌진공격");
+        }
+    }
+
+    //어떤 공격을 할지 생각
+    IEnumerator Think()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        int ranAction = Random.Range(0, 5);
+        switch (ranAction)
+        {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+                StartCoroutine(Think());
+                break;
+            case 4:
+                smith.isStopped = true;
+                StartCoroutine(RunAttack());
+                break;
+
+        }
+
+    }
+
+
+
+
+    //돌진 공격
+    IEnumerator RunAttack()
+    {
+        runattack = true;
+
+        //추가 패턴 공격 에니메이션 넣는 곳
+
+        yield return new WaitForSeconds(1.5f);//돌진해서 다가오는 에니메이션 시간
+        boxcollider.enabled = true;
+
+        yield return new WaitForSeconds(0.3f);//데미지 들어가는 시간
+        boxcollider.enabled = false;
+
+        yield return new WaitForSeconds(1f);//추카패턴 공격 에니메이션 총 시간-2f한 값 
+
+        runattack = false;
+        StartCoroutine(Think());
+    }
+
+
 }

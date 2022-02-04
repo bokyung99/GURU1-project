@@ -6804,6 +6804,7 @@ MonoBehaviour:
   gravity: -18
   jumpHeight: 1.5
   isJumping: 0
+  jumpsound: {fileID: 0}
   footStepSound: {fileID: 8300000, guid: 263f8aaa01d5d0041b082b7b69d9ca02, type: 3}
   footStepDelay: 0.35
 --- !u!82 &336260495
@@ -33933,6 +33934,7 @@ GameObject:
   - component: {fileID: 1545617218}
   - component: {fileID: 1545617217}
   - component: {fileID: 1545617223}
+  - component: {fileID: 1545617224}
   m_Layer: 7
   m_Name: BossEnemy
   m_TagString: Enemy
@@ -33963,6 +33965,8 @@ MonoBehaviour:
   bulletPos1: {fileID: 419375554}
   bullet2: {fileID: 2642824838065483661, guid: 39ddbe57246aa5a46ac96ef5aff940bd, type: 3}
   bulletPos2: {fileID: 1033232710}
+  runattackPower: 5
+  boxcollider: {fileID: 0}
 --- !u!95 &1545617218
 Animator:
   serializedVersion: 3
@@ -34089,6 +34093,19 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &1545617224
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545617216}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 5, z: 2}
+  m_Center: {x: 0, y: 2, z: 1}
 --- !u!1001 &1547820404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36153,6 +36170,7 @@ MonoBehaviour:
   gravity: -18
   jumpHeight: 1.5
   isJumping: 0
+  jumpsound: {fileID: 0}
   footStepSound: {fileID: 8300000, guid: 263f8aaa01d5d0041b082b7b69d9ca02, type: 3}
   footStepDelay: 0.35
 --- !u!143 &1656206105
