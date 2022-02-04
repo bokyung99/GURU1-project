@@ -48,7 +48,7 @@ public class Playerfire2_T : MonoBehaviour
     //정조준 상태 확인 변수
     private bool isFineSightMode = false;
 
-    private bool isShoot = false;
+    //private bool isShoot = false;
 
     //현재 총 종류
     public Gun currentGun;
@@ -235,7 +235,7 @@ public class Playerfire2_T : MonoBehaviour
         //마우스 왼쪽 버튼을 누르면 총알 발사
         if (Input.GetMouseButtonDown(0) && !isReload)
         {
-            isShoot = true;
+            //isShoot = true;
 
             //총구 효과 플레이
             StartCoroutine(ShootEffectOn(0.05f));
@@ -317,7 +317,7 @@ public class Playerfire2_T : MonoBehaviour
                 }
             }
 
-            isShoot = false;
+            //isShoot = false;
         }
     }
 

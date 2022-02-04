@@ -20,6 +20,11 @@ TagManager:
   - BossEnemy
   - popup5
   - Environment
+  - HealPack1
+  - HealPack2
+  - HealPack3
+  - HealPack4
+  - HealPack5
   layers:
   - Default
   - TransparentFX

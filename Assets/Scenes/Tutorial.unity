@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5874198, g: 0.68568504, b: 0.73745996, a: 1}
+  m_IndirectSpecularColor: {r: 0.5875399, g: 0.68564224, b: 0.737737, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -1360,6 +1360,10 @@ PrefabInstance:
     - target: {fileID: 2193389726198121678, guid: f42e2ba6a3ea7054185af4bb0abe4b8a, type: 3}
       propertyPath: m_Name
       value: HealPack
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193389726198121678, guid: f42e2ba6a3ea7054185af4bb0abe4b8a, type: 3}
+      propertyPath: m_TagString
+      value: HealPack1
       objectReference: {fileID: 0}
     - target: {fileID: 2894448474438317789, guid: f42e2ba6a3ea7054185af4bb0abe4b8a, type: 3}
       propertyPath: m_RootOrder
@@ -14197,18 +14201,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1656206103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2acd92cade30fe84eb7114ffb15d8861, type: 3}
+  m_Script: {fileID: 11500000, guid: dddd6dbac1ef89643b504ace497d39ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 2053165089}
   textHp: {fileID: 897133097}
-  playerHp: 10
+  playerHp: 100
   hpSlider: {fileID: 1663403036}
   itemTotalNum: 0
   isItem1: 0
   isItem2: 0
   isItem3: 0
-  hpPack: {fileID: 1731545936}
+  hpPack1: {fileID: 1731545936}
+  hpPack2: {fileID: 0}
+  hpPack3: {fileID: 0}
+  hpPack4: {fileID: 0}
+  hpPack5: {fileID: 0}
   GetHealPack: 0
   GetItem1: 0
   playerhit: {fileID: 8300000, guid: b46c7675661e40d4a8773bb3ff78851b, type: 3}

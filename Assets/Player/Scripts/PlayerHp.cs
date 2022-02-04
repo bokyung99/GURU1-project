@@ -30,7 +30,11 @@ public class PlayerHp : MonoBehaviour
     public int isItem3 = 0;
 
     //힐팩
-    public GameObject hpPack;
+    public GameObject hpPack1;
+    public GameObject hpPack2;
+    public GameObject hpPack3;
+    public GameObject hpPack4;
+    public GameObject hpPack5;
 
     //힐팩 습득 확인용 변수(튜토리얼)
     public bool GetHealPack = false;
@@ -111,17 +115,55 @@ public class PlayerHp : MonoBehaviour
     //충돌 감지
     private void OnTriggerEnter(Collider other)
     {
-        //충돌한 게임 오브젝트의 태그가 HealPack일 때
-        if (other.CompareTag ("HealPack"))
+       
+        if (other.CompareTag ("HealPack1"))
         {
             //플레이어 체력이 0이 아니고 최대가 아닐 때
             if (playerHp < playerMaxHp && playerHp > 0) 
             {
                 //0.5초 후 hpPlus 함수 실행
-                Invoke("hpPlus", 0.5f);
+                Invoke("hpPlus1", 0.5f);
 
-                //힐팩 습득 확인(튜토리얼)
-                GetHealPack = true;
+            }
+        }
+        if (other.CompareTag("HealPack2"))
+        {
+            //플레이어 체력이 0이 아니고 최대가 아닐 때
+            if (playerHp < playerMaxHp && playerHp > 0)
+            {
+                //0.5초 후 hpPlus 함수 실행
+                Invoke("hpPlus2", 0.5f);
+
+            }
+        }
+        if (other.CompareTag("HealPack3"))
+        {
+            //플레이어 체력이 0이 아니고 최대가 아닐 때
+            if (playerHp < playerMaxHp && playerHp > 0)
+            {
+                //0.5초 후 hpPlus 함수 실행
+                Invoke("hpPlus3", 0.5f);
+
+            }
+        }
+        if (other.CompareTag("HealPack4"))
+        {
+            //플레이어 체력이 0이 아니고 최대가 아닐 때
+            if (playerHp < playerMaxHp && playerHp > 0)
+            {
+                //0.5초 후 hpPlus 함수 실행
+                Invoke("hpPlus4", 0.5f);
+
+            }
+        }
+        if (other.CompareTag("HealPack5"))
+        {
+            //플레이어 체력이 0이 아니고 최대가 아닐 때
+            if (playerHp < playerMaxHp && playerHp > 0)
+            {
+                //0.5초 후 hpPlus 함수 실행
+                Invoke("hpPlus5", 0.5f);
+
             }
         }
 
@@ -162,13 +204,49 @@ public class PlayerHp : MonoBehaviour
             }
         }
     }
-    void hpPlus() //(사운드 구현 후 시간 조절)
+    void hpPlus1()
     {
         //힐 사운드
         GetComponent<AudioSource>().PlayOneShot(gethealpack, 1.0f);
-        //플레이어 체력 회복 (수정)
-        playerHp += 1;
+        //플레이어 체력 회복
+        playerHp += 10;
         //hpPack 제거
-        Destroy(hpPack);
+        Destroy(hpPack1);
+    }
+    void hpPlus2()
+    {
+        //힐 사운드
+        GetComponent<AudioSource>().PlayOneShot(gethealpack, 1.0f);
+        //플레이어 체력 회복
+        playerHp += 10;
+        //hpPack 제거
+        Destroy(hpPack2);
+    }
+    void hpPlus3()
+    {
+        //힐 사운드
+        GetComponent<AudioSource>().PlayOneShot(gethealpack, 1.0f);
+        //플레이어 체력 회복
+        playerHp += 10;
+        //hpPack 제거
+        Destroy(hpPack3);
+    }
+    void hpPlus4()
+    {
+        //힐 사운드
+        GetComponent<AudioSource>().PlayOneShot(gethealpack, 1.0f);
+        //플레이어 체력 회복
+        playerHp += 10;
+        //hpPack 제거
+        Destroy(hpPack4);
+    }
+    void hpPlus5()
+    {
+        //힐 사운드
+        GetComponent<AudioSource>().PlayOneShot(gethealpack, 1.0f);
+        //플레이어 체력 회복
+        playerHp += 10;
+        //hpPack 제거
+        Destroy(hpPack5);
     }
 }
