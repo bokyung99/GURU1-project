@@ -5,29 +5,12 @@ using UnityEngine.UI;
 
 public class BE_Weapon2 : MonoBehaviour
 {
-    //파밍할 무기 오브젝트
-    public GameObject weapon2;
     //플레이어 무기 오브젝트
     public GameObject semi;
     //무기 UI
     public Image weapon1UI;
     public Image weapon2UI;
-    //무기 파밍 사운드
-    public AudioClip getweapon;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //충돌한 게임 오브젝트의 태그가 Weapon일 때
-        if (other.CompareTag("Weapon"))
-        {
-            //무기 파밍 사운드
-            GetComponent<AudioSource>().PlayOneShot(getweapon);
-            //무기 오브젝트 제거
-            Destroy(weapon2, 1f);
-            //무기 UI 투명도 조절 함수 불러오기
-            Invoke("OnUIImage", 1f);
-        }
-    }
 
     void OnUIImage()
     {
@@ -39,8 +22,6 @@ public class BE_Weapon2 : MonoBehaviour
 
     void Update()
     {
-        if (weapon2 == false)
-        {
             //키보드 숫자 1을 눌렀을 때
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
@@ -83,4 +64,3 @@ public class BE_Weapon2 : MonoBehaviour
             }
         }
     }
-}
