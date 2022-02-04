@@ -23,6 +23,9 @@ public class SpawnManager : MonoBehaviour
         instance = this;
         spawnSize = 14;
 
+        // 다시 시작하거나 다른 씬에서 넘어올 때도, 몬스터 배치되도록
+        spawnCtrl = false;
+
         //spawnPoints = new GameObject[2];
 
         clone = new GameObject[spawnPoints.Length];
