@@ -77,7 +77,6 @@ public class PlayerFire2 : MonoBehaviour
     public AudioClip gunshot;
     public AudioClip throwbomb;
     public AudioClip enemyhit;
-    public AudioClip lenemyhit;
 
 
 
@@ -307,7 +306,7 @@ public class PlayerFire2 : MonoBehaviour
             //카메라정면 방향으로 수류탄에 물리적인 힘 가하기
             rb.AddForce(Camera.main.transform.forward * throwPower, ForceMode.Impulse);
             //수류탄 투척 사운드
-            GetComponent<AudioSource>().PlayOneShot(throwbomb);
+            GetComponent<AudioSource>().PlayOneShot(throwbomb, 1.0f);
         }
 
         //만약 총알이 0개 이하이고, reloadCtrl가 0일 경우 재장전
@@ -323,6 +322,8 @@ public class PlayerFire2 : MonoBehaviour
 
             //총구 효과 플레이
             StartCoroutine(ShootEffectOn(0.05f));
+            //사운드
+            GetComponent<AudioSource>().PlayOneShot(gunshot, 0.8f);
 
             //레이를 생성한 후 발사될 위치와 진행 방향 설정
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
@@ -334,7 +335,7 @@ public class PlayerFire2 : MonoBehaviour
             Recoil();
 
             //반동 되돌리기
-            if(!isRebound)
+            if (!isRebound)
             {
                 StartCoroutine(Rebound());
             }
@@ -355,12 +356,13 @@ public class PlayerFire2 : MonoBehaviour
                     //피격 효과 플레이
                     ps2.Play();
                     //피격 사운드
-                    GetComponent<AudioSource>().PlayOneShot(enemyhit);
+                    GetComponent<AudioSource>().PlayOneShot(enemyhit,0.2f);
 
-                    for (int i = 0; i < SpawnManager.spawnSize; i++){
+                    for (int i = 0; i < SpawnManager.spawnSize; i++)
+                    {
 
                         // 만약 clone[i]에 클론이 생성됐고, 레이에 부딪힌 대상이 clone[i]에 생성된 에너미면
-                        if(SpawnManager.clone[i] != null &&
+                        if (SpawnManager.clone[i] != null &&
                             hitInfo.transform == SpawnManager.clone[i].transform)
                         {
                             // 그 에너미 공격
@@ -382,7 +384,7 @@ public class PlayerFire2 : MonoBehaviour
                     //피격 효과 플레이
                     ps2.Play();
                     //피격 사운드
-                    GetComponent<AudioSource>().PlayOneShot(lenemyhit);
+                    GetComponent<AudioSource>().PlayOneShot(enemyhit,0.2f);
 
                     /*LEnemy 공격
                     LEnemy.GetComponent<LEnemyFSM>().HitEnemy(attackPower);
@@ -415,123 +417,11 @@ public class PlayerFire2 : MonoBehaviour
 
                     //총알 한개 감소
                     currentBulletCount--;
-
-                }
-            }
-
-            isShoot=false;
-        }
-
-        //마우스 왼쪽 꾹 누르면 총 연사
-        else if (Input.GetMouseButton(0) && !isReload)
-        {
-            isShoot= true;
-           
-            {
-
-                //총구 효과 플레이
-                StartCoroutine(ShootEffectOn(0.05f));
-                //사운드
-                GetComponent<AudioSource>().PlayOneShot(gunshot);
-
-                //레이를 생성한 후 발사될 위치와 진행 방향 설정
-                Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-
-                //레이가 부딪힌 대상의 정보를 저장할 변수를 생성
-                RaycastHit hitInfo = new RaycastHit();
-
-                //반동 함수 호출
-                Recoil();
-
-                //반동 되돌리기
-                if (!isRebound)
-                {
-                    StartCoroutine(Rebound());
-                }
-
-
-                //레이를 발사한 후 만일 부딪힌 물체가 있으면 피격 효과 표시
-                if (Physics.Raycast(ray, out hitInfo))
-                {
-                    //총 발사가 enemy를 맞는다면
-                    if (hitInfo.transform.tag == "Enemy")
-                    {
-                        //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
-                        P2_bulletEffect.transform.position = hitInfo.point;
-
-                        //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
-                        P2_bulletEffect.transform.forward = hitInfo.normal;
-
-                        //피격 효과 플레이
-                        ps2.Play();
-
-                        for (int i = 0; i < SpawnManager.spawnSize; i++)
-                        {
-                            // 만약 clone[i]에 클론이 생성됐고, 레이에 부딪힌 대상이 clone[i]에 생성된 에너미면
-                            if (SpawnManager.clone[i] != null &&
-                                hitInfo.transform == SpawnManager.clone[i].transform)
-                            {
-                                // 그 에너미 공격
-                                SpawnManager.clone[i].GetComponent<EnemyFSM>().HitEnemy(attackPower);
-                            }
-                        }
-
-
-                        //총알 한개 감소
-                        currentBulletCount--;
-                    }
-                    else if (hitInfo.transform.tag == "LEnemy")
-                    {
-                        //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
-                        P2_bulletEffect.transform.position = hitInfo.point;
-
-                        //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
-                        P2_bulletEffect.transform.forward = hitInfo.normal;
-
-                        //피격 효과 플레이
-                        ps2.Play();
-
-                        /*LEnemy 공격
-                        LEnemy.GetComponent<LEnemyFSM>().HitEnemy(attackPower);
-                        */
-
-                        for (int i = 0; i < LE_SpawnManager.spawnSize; i++)
-                        {
-                            // 만약 clone[i]에 클론이 생성됐고, 레이에 부딪힌 대상이 clone[i]에 생성된 에너미면
-                            if (LE_SpawnManager.clone[i] != null &&
-                                hitInfo.transform == LE_SpawnManager.clone[i].transform)
-                            {
-                                // 그 에너미 공격
-                                LE_SpawnManager.clone[i].GetComponent<LEnemyFSM>().HitEnemy(attackPower);
-                            }
-                        }
-
-                        //총알 한개 감소
-                        currentBulletCount--;
-                    }
-                    else
-                    {
-                        //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
-                        P1_bulletEffect.transform.position = hitInfo.point;
-
-                        //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
-                        P1_bulletEffect.transform.forward = hitInfo.normal;
-
-                        //피격 효과 플레이
-                        ps1.Play();
-
-                        //총알 한개 감소
-                        currentBulletCount--;
-
-                    }
-
                 }
             }
 
             isShoot = false;
         }
-
-        
     }
 
     void UpdateB()

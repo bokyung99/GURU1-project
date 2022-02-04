@@ -99,7 +99,7 @@ public class PlayerHp : MonoBehaviour
     IEnumerator PlayerHit()
     {
         //피격 사운드
-        GetComponent<AudioSource>().PlayOneShot(playerhit, 0.3f);
+        GetComponent<AudioSource>().PlayOneShot(playerhit, 0.5f);
         //피격 UI 활성화
         hitEffect.SetActive(true);
         //0.3초간 대기
@@ -127,7 +127,7 @@ public class PlayerHp : MonoBehaviour
 
         else if (other.tag == "Item1")
         {
-            GetComponent<AudioSource>().PlayOneShot(getitem);
+            GetComponent<AudioSource>().PlayOneShot(getitem,1.0f);
             isItem1++;
             itemTotalNum++;
             Destroy(other.gameObject);
@@ -141,7 +141,7 @@ public class PlayerHp : MonoBehaviour
         }
         else if (other.tag == "Item2")
         {
-            GetComponent<AudioSource>().PlayOneShot(getitem);
+            GetComponent<AudioSource>().PlayOneShot(getitem, 1.0f);
             isItem2++;
             itemTotalNum++;
             Destroy(other.gameObject);
@@ -152,7 +152,7 @@ public class PlayerHp : MonoBehaviour
         }
         else if (other.tag == "Item3")
         {
-            GetComponent<AudioSource>().PlayOneShot(getitem);
+            GetComponent<AudioSource>().PlayOneShot(getitem, 1.0f);
             isItem3++;
             itemTotalNum++;
             Destroy(other.gameObject);
@@ -165,7 +165,7 @@ public class PlayerHp : MonoBehaviour
     void hpPlus() //(사운드 구현 후 시간 조절)
     {
         //힐 사운드
-        GetComponent<AudioSource>().PlayOneShot(gethealpack, 0.5f);
+        GetComponent<AudioSource>().PlayOneShot(gethealpack, 1.0f);
         //플레이어 체력 회복 (수정)
         playerHp += 1;
         //hpPack 제거

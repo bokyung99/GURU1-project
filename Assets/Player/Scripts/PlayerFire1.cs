@@ -83,7 +83,6 @@ public class PlayerFire1 : MonoBehaviour
     public AudioClip gunshot;
     public AudioClip throwbomb;
     public AudioClip enemyhit;
-    public AudioClip lenemyhit;
 
 
 
@@ -354,7 +353,7 @@ public class PlayerFire1 : MonoBehaviour
             //카메라정면 방향으로 수류탄에 물리적인 힘 가하기
             rb.AddForce(Camera.main.transform.forward * throwPower, ForceMode.Impulse);
             //수류탄 투척 사운드
-            GetComponent<AudioSource>().PlayOneShot(throwbomb);
+            GetComponent<AudioSource>().PlayOneShot(throwbomb,1.0f);
         }
 
         //만약 총알이 0개 이하이고, reloadCtrl가 0일 경우 재장전
@@ -366,8 +365,6 @@ public class PlayerFire1 : MonoBehaviour
         //마우스 왼쪽 버튼을 누르면 총알 발사
         if (Input.GetMouseButtonDown(0) && !isReload)
         {
-            
-
             isShoot = true;
 
 
@@ -404,6 +401,8 @@ public class PlayerFire1 : MonoBehaviour
 
                     //피격 효과 플레이
                     ps2.Play();
+                    //피격 사운드
+                    //GetComponent<AudioSource>().PlayOneShot(enemyhit, 0.1f);
 
                     for (int i = 0; i < SpawnManager.spawnSize; i++){
 
@@ -429,6 +428,8 @@ public class PlayerFire1 : MonoBehaviour
 
                     //피격 효과 플레이
                     ps2.Play();
+                    //피격 사운드
+                    //GetComponent<AudioSource>().PlayOneShot(enemyhit, 0.1f);
 
                     /*LEnemy 공격
                     LEnemy.GetComponent<LEnemyFSM>().HitEnemy(attackPower);
@@ -474,11 +475,10 @@ public class PlayerFire1 : MonoBehaviour
             isShoot = true;
            
             {
-
                 //총구 효과 플레이
                 StartCoroutine(ShootEffectOn(0.05f));
                 //사운드
-                GetComponent<AudioSource>().PlayOneShot(gunshot);
+                GetComponent<AudioSource>().PlayOneShot(gunshot,0.5f);
 
                 //레이를 생성한 후 발사될 위치와 진행 방향 설정
                 Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
@@ -511,7 +511,7 @@ public class PlayerFire1 : MonoBehaviour
                         //피격 효과 플레이
                         ps2.Play();
                         //피격 사운드
-                        //GetComponent<AudioSource>().PlayOneShot(enemyhit);
+                        GetComponent<AudioSource>().PlayOneShot(enemyhit, 0.1f);
 
                         for (int i = 0; i < SpawnManager.spawnSize; i++)
                         {
@@ -539,7 +539,7 @@ public class PlayerFire1 : MonoBehaviour
                         //피격 효과 플레이
                         ps2.Play();
                         //피격 사운드
-                        GetComponent<AudioSource>().PlayOneShot(lenemyhit);
+                        GetComponent<AudioSource>().PlayOneShot(enemyhit, 0.1f);
 
                         /*LEnemy 공격
                         LEnemy.GetComponent<LEnemyFSM>().HitEnemy(attackPower);

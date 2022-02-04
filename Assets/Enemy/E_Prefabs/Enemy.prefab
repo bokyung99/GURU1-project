@@ -260,9 +260,6 @@ MonoBehaviour:
   moveDistance: 20
   hp: 50
   hpSlider: {fileID: 1870676575961959615}
-  gunshot: {fileID: 8300000, guid: 08f78eba48bb21c44ac5a74ca84efc83, type: 3}
-  damage: {fileID: 8300000, guid: 65e8112ae7b83704d937e5b7b63cbb4e, type: 3}
-  walk: {fileID: 8300000, guid: c873b9e32138c5a459247b866479e5c1, type: 3}
 --- !u!95 &1870676575551645749
 Animator:
   serializedVersion: 3
