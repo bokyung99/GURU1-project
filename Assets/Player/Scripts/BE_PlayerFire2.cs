@@ -70,9 +70,9 @@ public class BE_PlayerFire2 : MonoBehaviour
 
     //사운드
     public AudioClip reload;
-    //public AudioClip gunshot;
+    public AudioClip gunshot;
     public AudioClip throwbomb;
-
+    public AudioClip benemyhit;
 
 
 
@@ -112,95 +112,6 @@ public class BE_PlayerFire2 : MonoBehaviour
         //이펙트 오브젝트 비활성화
         eff_Flash[num].SetActive(false);
     }
-
-    /*
-    //정조준 함수
-    private void TryFineSight()
-    {
-        //마우스 오른쪽 버튼을 누르면 정조준
-
-        if(Input.GetMouseButtonDown(1))
-
-        {
-            //정조준 상태 변환
-            isFineSightMode = !isFineSightMode;
-            //정조준 애니메이션
-            anim.SetBool("FineSightMode", isFineSightMode);
-
-            
-            if (isFineSightMode)
-            {
-                //정조준 실행
-                Camera.main.fieldOfView = 30f;
-                //정조준 코루틴 실행
-                StartCoroutine(FineSightActivateCoroutine());
-
-                //콘솔창에 정조준 모드 입력
-                print("finesightModeON");
-            }
-            else
-            {
-                //정조준 취소
-                Camera.main.fieldOfView = 60f;
-               
-                //정조준 취소 코루틴 실행
-                StartCoroutine(FineSightDeActivateCoroutine());
-
-                //콘솔창에 정조준 취소 모드 입력
-                print("finesightModeOFF");
-            }
-        }
-    }
-
-    //정조준 코루틴
-    IEnumerator FineSightActivateCoroutine()
-    {
-        while(currentGun.transform.localPosition!= fineSightOriginPos)
-        {
-            currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, fineSightOriginPos, 0.4f);
-
-            //만약 총이 되돌아 오면
-            if (Vector3.Distance(currentGun.transform.localPosition, fineSightOriginPos) < 0.01f)
-            {
-                //총 위치를 원래의 위치로
-                currentGun.transform.localPosition = fineSightOriginPos;
-                isRebound = false;
-
-                break;
-            }
-
-            yield return null;
-        }
-
-        yield break;
-
-    }
-
-    //정조준 취소 코루틴
-    IEnumerator FineSightDeActivateCoroutine()
-    {
-        while (currentGun.transform.localPosition != gunDefaultPos)
-        {
-            currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, gunDefaultPos, 0.4f);
-
-            //만약 총이 되돌아 오면
-            if (Vector3.Distance(currentGun.transform.localPosition, gunDefaultPos) < 0.01f)
-            {
-                //총 위치를 원래의 위치로
-                currentGun.transform.localPosition = gunDefaultPos;
-                isRebound = false;
-
-                break;
-            }
-
-
-            yield return null;
-        }
-
-        yield break;
-
-    }
-    */
 
 
     //반동 함수
@@ -303,7 +214,7 @@ public class BE_PlayerFire2 : MonoBehaviour
             //카메라정면 방향으로 수류탄에 물리적인 힘 가하기
             rb.AddForce(Camera.main.transform.forward * throwPower, ForceMode.Impulse);
             //수류탄 투척 사운드
-            GetComponent<AudioSource>().PlayOneShot(throwbomb);
+            GetComponent<AudioSource>().PlayOneShot(throwbomb, 1.0f);
         }
 
         //만약 총알이 0개 이하이고, reloadCtrl가 0일 경우 재장전
@@ -319,6 +230,8 @@ public class BE_PlayerFire2 : MonoBehaviour
 
             //총구 효과 플레이
             StartCoroutine(ShootEffectOn(0.05f));
+            //사운드
+            GetComponent<AudioSource>().PlayOneShot(gunshot, 0.8f);
 
             //레이를 생성한 후 발사될 위치와 진행 방향 설정
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
@@ -350,6 +263,8 @@ public class BE_PlayerFire2 : MonoBehaviour
 
                     //피격 효과 플레이
                     ps2.Play();
+                    //피격 사운드
+                    GetComponent<AudioSource>().PlayOneShot(benemyhit, 0.3f);
 
                     BossEnemy.GetComponent<BossEnemyFSM>().HitEnemy(attackPower);
 
@@ -376,77 +291,6 @@ public class BE_PlayerFire2 : MonoBehaviour
 
             isShoot = false;
         }
-
-        //마우스 왼쪽 꾹 누르면 총 연사
-        else if (Input.GetMouseButton(0) && !isReload)
-        {
-            isShoot = true;
-
-            {
-
-                //총구 효과 플레이
-                StartCoroutine(ShootEffectOn(0.05f));
-
-                //레이를 생성한 후 발사될 위치와 진행 방향 설정
-                Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-
-                //레이가 부딪힌 대상의 정보를 저장할 변수를 생성
-                RaycastHit hitInfo = new RaycastHit();
-
-                //반동 함수 호출
-                Recoil();
-
-                //반동 되돌리기
-                if (!isRebound)
-                {
-                    StartCoroutine(Rebound());
-                }
-
-
-                //레이를 발사한 후 만일 부딪힌 물체가 있으면 피격 효과 표시
-                if (Physics.Raycast(ray, out hitInfo))
-                {
-                    //총 발사가 enemy를 맞는다면
-                    if (hitInfo.transform.tag == "Enemy")
-                    {
-                        //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
-                        P2_bulletEffect.transform.position = hitInfo.point;
-
-                        //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
-                        P2_bulletEffect.transform.forward = hitInfo.normal;
-
-                        //피격 효과 플레이
-                        ps2.Play();
-
-                        BossEnemy.GetComponent<BossEnemyFSM>().HitEnemy(attackPower);
-
-
-                        //총알 한개 감소
-                        currentBulletCount--;
-                    }
-                   
-                    else
-                    {
-                        //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
-                        P1_bulletEffect.transform.position = hitInfo.point;
-
-                        //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
-                        P1_bulletEffect.transform.forward = hitInfo.normal;
-
-                        //피격 효과 플레이
-                        ps1.Play();
-
-                        //총알 한개 감소
-                        currentBulletCount--;
-
-                    }
-
-                }
-            }
-
-            isShoot = false;
-        }
-
 
     }
 

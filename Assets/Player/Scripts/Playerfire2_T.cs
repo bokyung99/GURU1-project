@@ -121,8 +121,6 @@ public class Playerfire2_T : MonoBehaviour
         eff_Flash[num].SetActive(false);
     }
 
- 
-  
 
     //반동 함수
     void Recoil()
@@ -134,11 +132,7 @@ public class Playerfire2_T : MonoBehaviour
             currentGun.transform.localPosition = gunDefaultPos;
             //총 위치를 뒤로(반동)
             currentGun.transform.Translate(Vector3.back * 0.1f);
-
         }
-       
-
-
     }
 
     //반동 후 다시 돌아오는 함수
@@ -166,10 +160,7 @@ public class Playerfire2_T : MonoBehaviour
                 }
                 yield return null;
             }
-
         }
-       
-
         yield break;
 
     }
