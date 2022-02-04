@@ -7664,7 +7664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &422448702
 Transform:
   m_ObjectHideFlags: 0
@@ -33000,6 +33000,7 @@ MonoBehaviour:
   gravity: -18
   jumpHeight: 1.5
   isJumping: 0
+  jumpsound: {fileID: 0}
   footStepSound: {fileID: 8300000, guid: 263f8aaa01d5d0041b082b7b69d9ca02, type: 3}
   footStepDelay: 0.35
 --- !u!143 &1656206105
@@ -33194,7 +33195,10 @@ MonoBehaviour:
   - {fileID: 891292374}
   currentGun: {fileID: 781443014}
   attackPower: 3
-  fineSightOriginPos: {x: -0.07, y: -1.4, z: -0.42}
+  reload: {fileID: 0}
+  gunshot: {fileID: 0}
+  throwbomb: {fileID: 0}
+  enemyhit: {fileID: 0}
 --- !u!114 &1656206111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33216,6 +33220,11 @@ MonoBehaviour:
   isItem2: 0
   isItem3: 0
   hpPack: {fileID: 0}
+  GetHealPack: 0
+  GetItem1: 0
+  playerhit: {fileID: 0}
+  gethealpack: {fileID: 0}
+  getitem: {fileID: 0}
 --- !u!114 &1656206112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33274,7 +33283,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon2: {fileID: 2115432517}
+  semi: {fileID: 0}
+  weapon1UI: {fileID: 0}
   weapon2UI: {fileID: 1748128260}
+  getweapon: {fileID: 0}
+  getWeapon: 0
 --- !u!4 &1657226097 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5725000371507048362, guid: b2452a5c2cd649a4db9eebcd16f7b155, type: 3}

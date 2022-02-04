@@ -65,8 +65,7 @@ public class EnemyFSM : MonoBehaviour
     NavMeshAgent smith;
 
     //»ç¿îµå
-    //public AudioClip walk;
-
+    public AudioClip walk;
 
     void Start()
     {

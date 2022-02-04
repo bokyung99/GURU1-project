@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)&&isJumping==false)
         {
-            GetComponent<AudioSource>().PlayOneShot(jumpsound);
+            GetComponent<AudioSource>().PlayOneShot(jumpsound,0.7f);
         }
 
         //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -65,12 +65,13 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) && isGrounded)
-            {
+        //if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) && isGrounded)
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W))
+        {
             nextFootstep -= Time.deltaTime;
              if (nextFootstep <= 0) 
                 {
-                 GetComponent<AudioSource>().PlayOneShot(footStepSound, 0.7f);
+                 GetComponent<AudioSource>().PlayOneShot(footStepSound, 1.0f);
                  nextFootstep += footStepDelay;
                 }
              }
