@@ -44,11 +44,17 @@ public class Weapon_T : MonoBehaviour
         weapon2UI.color = color2;
     }
 
+    void Start()
+    {
+        gameObject.GetComponent<Playerfire_T>().enabled = true;
+        gameObject.GetComponent<Playerfire2_T>().enabled = false;
+    }
+
+
     void Update()
     {
 
-        gameObject.GetComponent<Playerfire_T>().enabled = true;
-        gameObject.GetComponent<Playerfire2_T>().enabled = false;
+       
 
         if (weapon2 == false)
         {
