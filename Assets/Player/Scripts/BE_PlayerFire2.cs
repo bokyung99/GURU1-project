@@ -260,6 +260,7 @@ public class BE_PlayerFire2 : MonoBehaviour
 
         */
         //LEnemy = GameObject.Find("LEnemy").transform;
+        BossEnemy = GameObject.Find("BossEnemy").transform;
 
 
         // 애니메이터 컴포넌트를 anim 변수에 불러온다.
@@ -350,17 +351,7 @@ public class BE_PlayerFire2 : MonoBehaviour
                     //피격 효과 플레이
                     ps2.Play();
 
-                    for (int i = 0; i < SpawnManager.spawnSize; i++)
-                    {
-
-                        // 만약 clone[i]에 클론이 생성됐고, 레이에 부딪힌 대상이 clone[i]에 생성된 에너미면
-                        if (SpawnManager.clone[i] != null &&
-                            hitInfo.transform == SpawnManager.clone[i].transform)
-                        {
-                            // 그 에너미 공격
-                            SpawnManager.clone[i].GetComponent<BossEnemyFSM>().HitEnemy(attackPower);
-                        }
-                    }
+                    BossEnemy.GetComponent<BossEnemyFSM>().HitEnemy(attackPower);
 
                     //총알 한개 감소
                     currentBulletCount--;
@@ -427,16 +418,7 @@ public class BE_PlayerFire2 : MonoBehaviour
                         //피격 효과 플레이
                         ps2.Play();
 
-                        for (int i = 0; i < SpawnManager.spawnSize; i++)
-                        {
-                            // 만약 clone[i]에 클론이 생성됐고, 레이에 부딪힌 대상이 clone[i]에 생성된 에너미면
-                            if (SpawnManager.clone[i] != null &&
-                                hitInfo.transform == SpawnManager.clone[i].transform)
-                            {
-                                // 그 에너미 공격
-                                SpawnManager.clone[i].GetComponent<BossEnemyFSM>().HitEnemy(attackPower);
-                            }
-                        }
+                        BossEnemy.GetComponent<BossEnemyFSM>().HitEnemy(attackPower);
 
 
                         //총알 한개 감소
