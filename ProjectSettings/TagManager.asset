@@ -19,6 +19,7 @@ TagManager:
   - Item3
   - BossEnemy
   - popup5
+  - Environment
   layers:
   - Default
   - TransparentFX
