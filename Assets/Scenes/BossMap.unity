@@ -33965,7 +33965,7 @@ MonoBehaviour:
   bulletPos1: {fileID: 419375554}
   bullet2: {fileID: 2642824838065483661, guid: 39ddbe57246aa5a46ac96ef5aff940bd, type: 3}
   bulletPos2: {fileID: 1033232710}
-  runattackPower: 5
+  runattackPower: 3
   boxcollider: {fileID: 0}
 --- !u!95 &1545617218
 Animator:

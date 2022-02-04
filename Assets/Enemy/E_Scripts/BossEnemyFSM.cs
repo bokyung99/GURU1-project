@@ -118,7 +118,7 @@ public class BossEnemyFSM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
 
         // 현재 상태를 체크해 해당 상태별로 정해진 기능을 수행하게 하고 싶다
         switch (m_State)
@@ -390,7 +390,7 @@ public class BossEnemyFSM : MonoBehaviour
             case 1:
             case 2:
             case 3:
-                StartCoroutine(Think());
+                StartCoroutine(Wait());
                 break;
             case 4:
                 smith.isStopped = true;
@@ -399,6 +399,13 @@ public class BossEnemyFSM : MonoBehaviour
 
         }
 
+    }
+
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1.5f);
+        StartCoroutine(Think());
     }
 
 
