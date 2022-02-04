@@ -5,6 +5,8 @@ using UnityEngine;
 public class popup5 : MonoBehaviour
 {
     public bool popup5On = false;
+    public bool popup7On = false;
+    public bool popup9On = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,5 +14,14 @@ public class popup5 : MonoBehaviour
         {
             popup5On = true;
         }
+        else if (other.tag == "popup7")
+        {
+            popup7On = true;
+        }
+        else if (other.tag == "popup9")
+        {
+            popup9On = true;
+        }
+
     }
 }

@@ -125,6 +125,8 @@ public class PlayerHp : MonoBehaviour
                 Invoke("hpPlus1", 0.5f);
 
             }
+            //ÈúÆÑ ½Àµæ È®ÀÎ(Æ©Åä¸®¾ó)
+            GetHealPack = true;
         }
         if (other.CompareTag("HealPack2"))
         {

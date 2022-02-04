@@ -25,6 +25,8 @@ TagManager:
   - HealPack3
   - HealPack4
   - HealPack5
+  - popup7
+  - popup9
   layers:
   - Default
   - TransparentFX
