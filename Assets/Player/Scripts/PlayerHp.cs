@@ -210,8 +210,16 @@ public class PlayerHp : MonoBehaviour
     {
         //힐 사운드
         GetComponent<AudioSource>().PlayOneShot(gethealpack, 1.0f);
-        //플레이어 체력 회복
-        playerHp += 10;
+        if (playerHp + 10 <= playerMaxHp)
+        {
+            //플레이어 체력 회복
+            playerHp += 10;
+        }
+        
+        if (playerHp + 10 > playerMaxHp)
+        {
+            playerHp = playerMaxHp;
+        }
         //hpPack 제거
         Destroy(hpPack1);
     }
@@ -219,8 +227,16 @@ public class PlayerHp : MonoBehaviour
     {
         //힐 사운드
         GetComponent<AudioSource>().PlayOneShot(gethealpack, 1.0f);
-        //플레이어 체력 회복
-        playerHp += 10;
+        if (playerHp + 10 <= playerMaxHp)
+        {
+            //플레이어 체력 회복
+            playerHp += 10;
+        }
+
+        if (playerHp + 10 > playerMaxHp)
+        {
+            playerHp = playerMaxHp;
+        }
         //hpPack 제거
         Destroy(hpPack2);
     }
@@ -228,8 +244,16 @@ public class PlayerHp : MonoBehaviour
     {
         //힐 사운드
         GetComponent<AudioSource>().PlayOneShot(gethealpack, 1.0f);
-        //플레이어 체력 회복
-        playerHp += 10;
+        if (playerHp + 10 <= playerMaxHp)
+        {
+            //플레이어 체력 회복
+            playerHp += 10;
+        }
+
+        if (playerHp + 10 > playerMaxHp)
+        {
+            playerHp = playerMaxHp;
+        }
         //hpPack 제거
         Destroy(hpPack3);
     }
@@ -237,8 +261,16 @@ public class PlayerHp : MonoBehaviour
     {
         //힐 사운드
         GetComponent<AudioSource>().PlayOneShot(gethealpack, 1.0f);
-        //플레이어 체력 회복
-        playerHp += 10;
+        if (playerHp + 10 <= playerMaxHp)
+        {
+            //플레이어 체력 회복
+            playerHp += 10;
+        }
+
+        if (playerHp + 10 > playerMaxHp)
+        {
+            playerHp = playerMaxHp;
+        }
         //hpPack 제거
         Destroy(hpPack4);
     }
@@ -246,8 +278,16 @@ public class PlayerHp : MonoBehaviour
     {
         //힐 사운드
         GetComponent<AudioSource>().PlayOneShot(gethealpack, 1.0f);
-        //플레이어 체력 회복
-        playerHp += 10;
+        if (playerHp + 10 <= playerMaxHp)
+        {
+            //플레이어 체력 회복
+            playerHp += 10;
+        }
+
+        if (playerHp + 10 > playerMaxHp)
+        {
+            playerHp = playerMaxHp;
+        }
         //hpPack 제거
         Destroy(hpPack5);
     }
