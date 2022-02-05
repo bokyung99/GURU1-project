@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 0211e71b2ebb8d145b12ba629f0ce318
+  - enabled: 1
+    path: Assets/Scenes/(cinematic) FirstScene.unity
+    guid: d19703ee2a69370468f3c021d7a139a4
   m_configObjects: {}

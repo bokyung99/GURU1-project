@@ -6,16 +6,19 @@ using UnityEngine.SceneManagement;
 public class NextStage : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("(cinematic) FirstScene");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            SceneManager.LoadScene("FirstScene");
+            SceneManager.LoadScene("(cinematic) FirstScene");
         }
     }
 }
