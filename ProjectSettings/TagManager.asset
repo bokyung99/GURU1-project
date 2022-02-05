@@ -27,6 +27,7 @@ TagManager:
   - HealPack5
   - popup7
   - popup9
+  - bosscollider
   layers:
   - Default
   - TransparentFX
