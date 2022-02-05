@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
@@ -373,6 +374,8 @@ public class BossEnemyFSM : MonoBehaviour
         yield return new WaitForSeconds(2f);
         print("소멸!");
         Destroy(gameObject);
+        SceneManager.LoadScene("Ending");
+        
     }
 
     //충돌 할 때 돌진공격이 들어가도록

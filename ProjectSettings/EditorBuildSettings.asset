@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TitleMenu.unity
     guid: dab52a771d551ca40930496e8e13757a
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 38c82f64d1732de42b7535b526849d7d
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
@@ -20,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/(cinematic) FirstScene.unity
     guid: d19703ee2a69370468f3c021d7a139a4
+  - enabled: 1
+    path: Assets/Scenes/BossMap.unity
+    guid: 8fc1c243b2316464582c6482026611c9
   m_configObjects: {}

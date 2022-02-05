@@ -177,7 +177,7 @@ public class PlayerHp : MonoBehaviour
             Destroy(other.gameObject);
             if (itemTotalNum == 3)
             {
-                SceneManager.LoadScene("Ending");
+                SceneManager.LoadScene("BossMap");
             }
 
             //목표아이템 습득 확인(튜토리얼)
@@ -191,7 +191,7 @@ public class PlayerHp : MonoBehaviour
             Destroy(other.gameObject);
             if (itemTotalNum == 3)
             {
-                SceneManager.LoadScene("Ending");
+                SceneManager.LoadScene("BossMap");
             }
         }
         else if (other.tag == "Item3")
@@ -202,7 +202,7 @@ public class PlayerHp : MonoBehaviour
             Destroy(other.gameObject);
             if (itemTotalNum == 3)
             {
-                SceneManager.LoadScene("Ending");
+                SceneManager.LoadScene("BossMap");
             }
         }
     }
