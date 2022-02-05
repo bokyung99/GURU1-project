@@ -227,7 +227,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         // 현재 씬 번호를 다시 로드한다.
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Tutorial");
     }
 
     // 게임 종료 옵션
