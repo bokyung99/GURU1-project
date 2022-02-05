@@ -71,7 +71,6 @@ public class LEnemyFSM : MonoBehaviour
 
     //»ç¿îµå
     public AudioClip gunshot;
-    //public AudioClip walk;
 
     
 
@@ -183,7 +182,6 @@ public class LEnemyFSM : MonoBehaviour
 
             anim.SetTrigger("MoveToAttackDelay");
         }
-        //GetComponent<AudioSource>().PlayOneShot(walk);
     }
 
     void Attack()

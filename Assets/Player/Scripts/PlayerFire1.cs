@@ -82,7 +82,6 @@ public class PlayerFire1 : MonoBehaviour
     public AudioClip reload;
     public AudioClip gunshot;
     public AudioClip throwbomb;
-    public AudioClip enemyhit;
 
     //연사 딜레이 변수
     public int setDelay = 2;
@@ -403,8 +402,6 @@ public class PlayerFire1 : MonoBehaviour
 
                     //피격 효과 플레이
                     ps2.Play();
-                    //피격 사운드
-                    //GetComponent<AudioSource>().PlayOneShot(enemyhit, 0.1f);
 
                     for (int i = 0; i < SpawnManager.spawnSize; i++){
 
@@ -430,8 +427,6 @@ public class PlayerFire1 : MonoBehaviour
 
                     //피격 효과 플레이
                     ps2.Play();
-                    //피격 사운드
-                    //GetComponent<AudioSource>().PlayOneShot(enemyhit, 0.1f);
 
                     /*LEnemy 공격
                     LEnemy.GetComponent<LEnemyFSM>().HitEnemy(attackPower);
@@ -518,8 +513,6 @@ public class PlayerFire1 : MonoBehaviour
 
                             //피격 효과 플레이
                             ps2.Play();
-                            //피격 사운드
-                            GetComponent<AudioSource>().PlayOneShot(enemyhit, 0.1f);
 
                             for (int i = 0; i < SpawnManager.spawnSize; i++)
                             {
@@ -546,8 +539,6 @@ public class PlayerFire1 : MonoBehaviour
 
                             //피격 효과 플레이
                             ps2.Play();
-                            //피격 사운드
-                            GetComponent<AudioSource>().PlayOneShot(enemyhit, 0.1f);
 
                             /*LEnemy 공격
                             LEnemy.GetComponent<LEnemyFSM>().HitEnemy(attackPower);

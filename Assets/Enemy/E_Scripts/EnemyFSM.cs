@@ -64,8 +64,6 @@ public class EnemyFSM : MonoBehaviour
     // 내비게이션 에이전트 변수
     NavMeshAgent smith;
 
-    //사운드
-    public AudioClip walk;
 
     void Start()
     {
@@ -176,7 +174,6 @@ public class EnemyFSM : MonoBehaviour
 
             anim.SetTrigger("MoveToAttackDelay");
         }
-        //GetComponent<AudioSource>().PlayOneShot(walk);
     }
 
     void Attack()

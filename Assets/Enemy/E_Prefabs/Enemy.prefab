@@ -260,6 +260,7 @@ MonoBehaviour:
   moveDistance: 20
   hp: 50
   hpSlider: {fileID: 1870676575961959615}
+  walk: {fileID: 8300000, guid: c873b9e32138c5a459247b866479e5c1, type: 3}
 --- !u!95 &1870676575551645749
 Animator:
   serializedVersion: 3

@@ -81,7 +81,6 @@ public class Playerfire_T : MonoBehaviour
     public AudioClip reload;
     public AudioClip gunshot;
     public AudioClip throwbomb;
-    public AudioClip enemyhit;
 
 
     //연사 딜레이 변수
@@ -494,8 +493,6 @@ public class Playerfire_T : MonoBehaviour
 
                             //피격 효과 플레이
                             ps2.Play();
-                            //피격 사운드
-                            GetComponent<AudioSource>().PlayOneShot(enemyhit, 0.1f);
 
                             //Enemy 공격
                             Enemy.GetComponent<Enemy_T>().HitEnemy(attackPower);
@@ -514,8 +511,6 @@ public class Playerfire_T : MonoBehaviour
 
                             //피격 효과 플레이
                             ps2.Play();
-                            //피격 사운드
-                            GetComponent<AudioSource>().PlayOneShot(enemyhit, 0.1f);
 
                             //LEnemy 공격
                             // LEnemy.GetComponent<LEnemyFSM>().HitEnemy(attackPower);
