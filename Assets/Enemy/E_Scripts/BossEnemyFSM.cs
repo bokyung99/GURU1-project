@@ -81,7 +81,9 @@ public class BossEnemyFSM : MonoBehaviour
     //돌격 공격 확인용 변수
     private bool runattack = false;
 
-
+    //사운드
+    public AudioSource bwalk;
+    public AudioClip bgunshot;
 
 
     // Start is called before the first frame update
@@ -193,6 +195,9 @@ public class BossEnemyFSM : MonoBehaviour
 
             // 내비게이션의 목적지를 플레이어의 위치로 설정한다.
             smith.destination = player.position;
+
+            bwalk.Play();
+
         }
         else
         {
@@ -217,6 +222,7 @@ public class BossEnemyFSM : MonoBehaviour
 
                 // 일정한 시간마다 플레이어를 공격한다.
                 currentTime += Time.deltaTime;
+                
                 if (currentTime > attackDelay)
                 {
                     player.GetComponent<PlayerHp>().E_DamageAction(attackPower);
@@ -226,6 +232,8 @@ public class BossEnemyFSM : MonoBehaviour
                     // 공격 애니메이션 플레이
                     anim.SetTrigger("StartAttack");
                     StartCoroutine("Shot");
+                    //사운드
+                    GetComponent<AudioSource>().PlayOneShot(bgunshot, 0.3f);
                 }
             }
             // 그렇지 않다면, 현재 상태를 이동(Move)으로 전환한다(재추격 실시)
