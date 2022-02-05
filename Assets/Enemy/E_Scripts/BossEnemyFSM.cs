@@ -110,7 +110,7 @@ public class BossEnemyFSM : MonoBehaviour
         smith = GetComponent<NavMeshAgent>();
 
         //콜라이더 컴포넌트 받아오기
-        boxcollider = GetComponent<BoxCollider>();
+        boxcollider = GameObject.Find("collider").GetComponent<BoxCollider>();
         //콜라이더 비활성화 시키기
         boxcollider.enabled = false;
 
@@ -381,7 +381,7 @@ public class BossEnemyFSM : MonoBehaviour
     //충돌 할 때 돌진공격이 들어가도록
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
+        if (other.tag == "bosscollider")
         {
             player.GetComponent<PlayerHp>().E_DamageAction(runattackPower);
             print("돌진공격");
@@ -400,7 +400,8 @@ public class BossEnemyFSM : MonoBehaviour
             case 1:
             case 2:
             case 3:
-                StartCoroutine(Wait());
+                m_State = EnemyState.Move;
+                StartCoroutine(Think());
                 break;
             case 4:
                 smith.isStopped = true;
@@ -409,13 +410,6 @@ public class BossEnemyFSM : MonoBehaviour
 
         }
 
-    }
-
-
-    IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(1.5f);
-        StartCoroutine(Think());
     }
 
 
