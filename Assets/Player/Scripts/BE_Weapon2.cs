@@ -11,7 +11,6 @@ public class BE_Weapon2 : MonoBehaviour
     public Image weapon1UI;
     public Image weapon2UI;
 
-
     void OnUIImage()
     {
         //무기 UI 투명도 0.5로 조절
