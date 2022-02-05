@@ -6734,10 +6734,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dddd6dbac1ef89643b504ace497d39ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffect: {fileID: 0}
-  textHp: {fileID: 0}
+  hitEffect: {fileID: 2053165089}
+  textHp: {fileID: 897133097}
   playerHp: 100
-  hpSlider: {fileID: 0}
+  hpSlider: {fileID: 1663403036}
   itemTotalNum: 0
   isItem1: 0
   isItem2: 0
@@ -6749,9 +6749,9 @@ MonoBehaviour:
   hpPack5: {fileID: 0}
   GetHealPack: 0
   GetItem1: 0
-  playerhit: {fileID: 0}
-  gethealpack: {fileID: 0}
-  getitem: {fileID: 0}
+  playerhit: {fileID: 8300000, guid: b46c7675661e40d4a8773bb3ff78851b, type: 3}
+  gethealpack: {fileID: 8300000, guid: b3f047bb5fde2c44e8848d460a3be042, type: 3}
+  getitem: {fileID: 8300000, guid: 5e5683d79cefd4e43bfb9f56f321339f, type: 3}
 --- !u!114 &336260489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6776,20 +6776,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2acd92cade30fe84eb7114ffb15d8861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffect: {fileID: 2053165089}
-  textHp: {fileID: 897133097}
-  playerHp: 100
-  hpSlider: {fileID: 1663403036}
-  itemTotalNum: 0
-  isItem1: 0
-  isItem2: 0
-  isItem3: 0
-  hpPack: {fileID: 0}
-  GetHealPack: 0
-  GetItem1: 0
-  playerhit: {fileID: 8300000, guid: b46c7675661e40d4a8773bb3ff78851b, type: 3}
-  gethealpack: {fileID: 8300000, guid: b3f047bb5fde2c44e8848d460a3be042, type: 3}
-  getitem: {fileID: 8300000, guid: 5e5683d79cefd4e43bfb9f56f321339f, type: 3}
 --- !u!114 &336260492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7007,6 +6993,7 @@ MonoBehaviour:
   gunshot: {fileID: 8300000, guid: 0cdefa0b4b1c2cd47878719267c3e37f, type: 3}
   throwbomb: {fileID: 8300000, guid: 419336aa8912ae0468e104596863a0a1, type: 3}
   benemyhit: {fileID: 0}
+  setDelay: 2
 --- !u!114 &336260499
 MonoBehaviour:
   m_ObjectHideFlags: 0
