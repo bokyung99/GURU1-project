@@ -31,7 +31,7 @@ public class TitleManager : MonoBehaviour
     public void GameStart()
     {
         // 시작하기 버튼 누르면 인게임으로 넘어감
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("Intro");
     }
 
     // 게임 종료 옵션
