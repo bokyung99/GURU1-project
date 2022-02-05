@@ -79,7 +79,7 @@ public class BossEnemyFSM : MonoBehaviour
     //콜라이더 변수
     public BoxCollider boxcollider;
     //돌격 공격 확인용 변수
-    private bool runattack = false;
+    public bool runattack = false;
 
     //사운드
     public AudioSource bwalk;
@@ -112,9 +112,7 @@ public class BossEnemyFSM : MonoBehaviour
         smith = GetComponent<NavMeshAgent>();
 
         //콜라이더 컴포넌트 받아오기
-        boxcollider = GameObject.Find("collider").GetComponent<BoxCollider>();
-        //콜라이더 비활성화 시키기
-        boxcollider.enabled = false;
+        boxcollider = GetComponent<BoxCollider>();
 
         StartCoroutine(Think());
 
@@ -196,10 +194,10 @@ public class BossEnemyFSM : MonoBehaviour
             // 내비게이션의 목적지를 플레이어의 위치로 설정한다.
             smith.destination = player.position;
 
-            bwalk.Play();
+            //bwalk.Play();
 
         }
-        else
+       /* else
         {
             m_State = EnemyState.Attack;
             print("상태 전환: Move -> Attack");
@@ -207,34 +205,33 @@ public class BossEnemyFSM : MonoBehaviour
             currentTime = attackDelay;
 
             anim.SetTrigger("MoveToAttackDelay");
-        }
+        }*/
 
     }
 
     void Attack()
     {
-        if (!runattack)
-        {
+       
             // 만일, 플레이어가 공격 범위 이내에 있다면 플레이어를 공격한다.
             if (Vector3.Distance(transform.position, player.position) < attackDistance)
             {
                 smith.isStopped = true;
 
                 // 일정한 시간마다 플레이어를 공격한다.
-                currentTime += Time.deltaTime;
+              //  currentTime += Time.deltaTime;
                 
-                if (currentTime > attackDelay)
-                {
+               // if (currentTime > attackDelay)
+                //{
                     player.GetComponent<PlayerHp>().E_DamageAction(attackPower);
                     print("공격");
-                    currentTime = 0;
+                   // currentTime = 0;
 
                     // 공격 애니메이션 플레이
                     anim.SetTrigger("StartAttack");
                     StartCoroutine("Shot");
                     //사운드
                     GetComponent<AudioSource>().PlayOneShot(bgunshot, 0.3f);
-                }
+                //}
             }
             // 그렇지 않다면, 현재 상태를 이동(Move)으로 전환한다(재추격 실시)
             else
@@ -246,7 +243,8 @@ public class BossEnemyFSM : MonoBehaviour
                 // 이동 애니메이션 플레이
                 anim.SetTrigger("AttackToMove");
             }
-        }
+        
+        StartCoroutine(Think());
     }
 
     IEnumerator Shot()
@@ -386,33 +384,26 @@ public class BossEnemyFSM : MonoBehaviour
         
     }
 
-    //충돌 할 때 돌진공격이 들어가도록
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "bosscollider")
-        {
-            player.GetComponent<PlayerHp>().E_DamageAction(runattackPower);
-            print("돌진공격");
-        }
-    }
 
     //어떤 공격을 할지 생각
     IEnumerator Think()
     {
         yield return new WaitForSeconds(0.1f);
 
-        int ranAction = Random.Range(0, 5);
+        int ranAction = Random.Range(0, 4);
         switch (ranAction)
         {
+
             case 0:
-            case 1:
-            case 2:
-            case 3:
-                m_State = EnemyState.Move;
-                StartCoroutine(Think());
+                Attack();
                 break;
-            case 4:
-                smith.isStopped = true;
+            case 1:
+                Attack();
+                break;
+            case 2:
+                Attack();
+                break;
+            case 3:
                 StartCoroutine(RunAttack());
                 break;
 
@@ -426,22 +417,24 @@ public class BossEnemyFSM : MonoBehaviour
     //돌진 공격
     IEnumerator RunAttack()
     {
-        runattack = true;
 
-        //추가 패턴 공격 에니메이션 넣는 곳
-        anim.SetTrigger("RunAttack");
+        if (Vector3.Distance(transform.position, player.position) < attackDistance)
+        {
+            smith.isStopped = true;
+            runattack = true;
+            //추가 패턴 공격 에니메이션 넣는 곳
+            anim.SetTrigger("RunAttack");
+            print("돌진공격");
+            yield return new WaitForSeconds(1f);//돌진해서 다가오는 에니메이션 시간
+            runattack = false;
+        }
 
-        yield return new WaitForSeconds(1.5f);//돌진해서 다가오는 에니메이션 시간
-        boxcollider.enabled = true;
-
-        yield return new WaitForSeconds(0.3f);//데미지 들어가는 시간
-        boxcollider.enabled = false;
-
-        yield return new WaitForSeconds(1f);//추카패턴 공격 에니메이션 총 시간-2f한 값 
-
-        runattack = false;
+        yield return new WaitForSeconds(1f);
         StartCoroutine(Think());
     }
 
 
 }
+
+
+

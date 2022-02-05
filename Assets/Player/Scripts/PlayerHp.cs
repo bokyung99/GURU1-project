@@ -205,6 +205,13 @@ public class PlayerHp : MonoBehaviour
                 SceneManager.LoadScene("BossMap");
             }
         }
+        //보스 에니미와 충돌 할 때 돌진공격이 들어가도록   
+        if (other.tag == "BossEnemy")
+        {
+            if (GameObject.Find("BossEnemy").GetComponent<BossEnemyFSM>().runattack)
+            { E_DamageAction(5); }
+
+        }
     }
     void hpPlus1()
     {
