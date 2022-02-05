@@ -216,7 +216,7 @@ public class PlayerHp : MonoBehaviour
             playerHp += 10;
         }
         
-        if (playerHp + 10 > playerMaxHp)
+        else if (playerHp + 10 > playerMaxHp)
         {
             playerHp = playerMaxHp;
         }
@@ -233,7 +233,7 @@ public class PlayerHp : MonoBehaviour
             playerHp += 10;
         }
 
-        if (playerHp + 10 > playerMaxHp)
+        else if (playerHp + 10 > playerMaxHp)
         {
             playerHp = playerMaxHp;
         }
@@ -250,7 +250,7 @@ public class PlayerHp : MonoBehaviour
             playerHp += 10;
         }
 
-        if (playerHp + 10 > playerMaxHp)
+        else if (playerHp + 10 > playerMaxHp)
         {
             playerHp = playerMaxHp;
         }
@@ -267,7 +267,7 @@ public class PlayerHp : MonoBehaviour
             playerHp += 10;
         }
 
-        if (playerHp + 10 > playerMaxHp)
+        else if (playerHp + 10 > playerMaxHp)
         {
             playerHp = playerMaxHp;
         }
@@ -284,7 +284,7 @@ public class PlayerHp : MonoBehaviour
             playerHp += 10;
         }
 
-        if (playerHp + 10 > playerMaxHp)
+        else if (playerHp + 10 > playerMaxHp)
         {
             playerHp = playerMaxHp;
         }
