@@ -34009,11 +34009,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e0f24bf13e1cd4fa33d7351b67b49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 12
+  attackDistance: 15
   nearAttackDistance: 7
   moveSpeed: 5
   findDistance: 20
-  attackPower: 3
+  attackPower: 5
   moveDistance: 20
   hp: 500
   hpSlider: {fileID: 346785201}
@@ -34021,7 +34021,7 @@ MonoBehaviour:
   bulletPos1: {fileID: 419375554}
   bullet2: {fileID: 2642824838065483661, guid: 39ddbe57246aa5a46ac96ef5aff940bd, type: 3}
   bulletPos2: {fileID: 1033232710}
-  runattackPower: 5
+  runattackPower: 10
   boxcollider: {fileID: 0}
   runattack: 0
   bwalk: {fileID: 0}
