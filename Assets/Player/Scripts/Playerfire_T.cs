@@ -84,7 +84,7 @@ public class Playerfire_T : MonoBehaviour
 
 
     //연사 딜레이 변수
-    public int setDelay = 10;
+    public int setDelay = 5;
     private int delay = 0;
 
 

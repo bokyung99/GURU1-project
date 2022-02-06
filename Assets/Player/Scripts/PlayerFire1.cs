@@ -84,8 +84,11 @@ public class PlayerFire1 : MonoBehaviour
     public AudioClip throwbomb;
 
     //연사 딜레이 변수
-    public int setDelay = 2;
+    public int setDelay = 5;
     private int delay = 0;
+
+    //수류탄 소지 카운트 변수
+    public int BombbearCount = 12;
 
 
     //재장전 함수
@@ -345,16 +348,24 @@ public class PlayerFire1 : MonoBehaviour
         //키보드 R 누르면 수류탄 투척
         if (Input.GetKeyDown(KeyCode.R))
         {
-            //수류탄 오브젝트 생성 후 수류탄의 생성위치를 발사 위치로
-            GameObject bomb = Instantiate(bombFactory);
-            bomb.transform.position = firePosition.transform.position;
+            //소지 수류탄이 있을 때
+            if (BombbearCount > 0)
+            {
+                //수류탄 하나 사용
+                BombbearCount--;
 
-            //수류탄 오브젝트의 rigidbody컴포넌트 가져오기
-            Rigidbody rb = bomb.GetComponent<Rigidbody>();
-            //카메라정면 방향으로 수류탄에 물리적인 힘 가하기
-            rb.AddForce(Camera.main.transform.forward * throwPower, ForceMode.Impulse);
-            //수류탄 투척 사운드
-            GetComponent<AudioSource>().PlayOneShot(throwbomb,0.8f);
+                //수류탄 오브젝트 생성 후 수류탄의 생성위치를 발사 위치로
+                GameObject bomb = Instantiate(bombFactory);
+                bomb.transform.position = firePosition.transform.position;
+
+                //수류탄 오브젝트의 rigidbody컴포넌트 가져오기
+                Rigidbody rb = bomb.GetComponent<Rigidbody>();
+                //카메라정면 방향으로 수류탄에 물리적인 힘 가하기
+                rb.AddForce(Camera.main.transform.forward * throwPower, ForceMode.Impulse);
+                //수류탄 투척 사운드
+                GetComponent<AudioSource>().PlayOneShot(throwbomb, 0.8f);
+            }
+           
         }
 
         //만약 총알이 0개 이하이고, reloadCtrl가 0일 경우 재장전
@@ -477,7 +488,7 @@ public class PlayerFire1 : MonoBehaviour
 
                 isShoot = true;
 
-                {
+                
                     //총구 효과 플레이
                     StartCoroutine(ShootEffectOn(0.05f));
                     //사운드
@@ -575,7 +586,7 @@ public class PlayerFire1 : MonoBehaviour
                         }
 
                     }
-                }
+                
 
                 isShoot = false;
             }
