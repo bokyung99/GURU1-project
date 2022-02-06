@@ -17,6 +17,8 @@ public class EndingMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(playTime);
         gameClearOpt.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        QuitGame();
     }
 
     // 게임 종료 옵션
