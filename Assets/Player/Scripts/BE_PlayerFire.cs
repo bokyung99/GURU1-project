@@ -78,7 +78,6 @@ public class BE_PlayerFire : MonoBehaviour
     public AudioClip reload;
     public AudioClip gunshot;
     public AudioClip throwbomb;
-    public AudioClip benemyhit;
 
 
     //연사 딜레이 변수
@@ -96,6 +95,9 @@ public class BE_PlayerFire : MonoBehaviour
         /* 재장전 애니메이션 넣는곳 */
         anim.SetTrigger("reloading");
         print("재장전");
+
+        //재장전 사운드
+        GetComponent<AudioSource>().PlayOneShot(reload, 0.5f);
 
         yield return new WaitForSeconds(reloadTime);
 
@@ -445,7 +447,7 @@ public class BE_PlayerFire : MonoBehaviour
                     //총구 효과 플레이
                     StartCoroutine(ShootEffectOn(0.05f));
                     //사운드
-                    GetComponent<AudioSource>().PlayOneShot(gunshot, 0.3f);
+                    GetComponent<AudioSource>().PlayOneShot(gunshot, 0.2f);
 
                     //레이를 생성한 후 발사될 위치와 진행 방향 설정
                     Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
@@ -478,8 +480,6 @@ public class BE_PlayerFire : MonoBehaviour
 
                             //피격 효과 플레이
                             ps2.Play();
-                            //피격 사운드
-                            GetComponent<AudioSource>().PlayOneShot(benemyhit, 0.3f);
 
                             BossEnemy.GetComponent<BossEnemyFSM>().HitEnemy(attackPower);
 
