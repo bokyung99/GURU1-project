@@ -389,7 +389,7 @@ public class BE_PlayerFire : MonoBehaviour
             if (Physics.Raycast(ray, out hitInfo))
             {
                 //총 발사가 enemy를 맞는다면
-                if (hitInfo.transform.tag == "Enemy")
+                if (hitInfo.transform.tag == "BossEnemy")
                 {
                     Debug.Log("부딪힘");
                     //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
@@ -467,7 +467,7 @@ public class BE_PlayerFire : MonoBehaviour
                     if (Physics.Raycast(ray, out hitInfo))
                     {
                         //총 발사가 enemy를 맞는다면
-                        if (hitInfo.transform.tag == "Enemy")
+                        if (hitInfo.transform.tag == "BossEnemy")
                         {
                             Debug.Log("부딪힘");
                             //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
