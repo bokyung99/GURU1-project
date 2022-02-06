@@ -100,7 +100,7 @@ public class Playerfire_T : MonoBehaviour
         print("재장전");
 
         //재장전 사운드
-        GetComponent<AudioSource>().PlayOneShot(reload, reloadTime);
+        GetComponent<AudioSource>().PlayOneShot(reload, 0.5f);
 
         yield return new WaitForSeconds(reloadTime);
 
@@ -444,7 +444,7 @@ public class Playerfire_T : MonoBehaviour
                     //총구 효과 플레이
                     StartCoroutine(ShootEffectOn(0.05f));
                     //사운드
-                    GetComponent<AudioSource>().PlayOneShot(gunshot, 0.3f);
+                    GetComponent<AudioSource>().PlayOneShot(gunshot, 0.2f);
 
                     //레이를 생성한 후 발사될 위치와 진행 방향 설정
                     Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
