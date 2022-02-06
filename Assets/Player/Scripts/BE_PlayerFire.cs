@@ -369,18 +369,18 @@ public class BE_PlayerFire : MonoBehaviour
             }
         }
 
+
+    }
+
+    void FixedUpdate()
+    {
         //만약 총알이 0개 이하이고, reloadCtrl가 0일 경우 재장전
         if (currentBulletCount <= 0 && reloadCtrl == 0)
         {
             StartCoroutine(ReloadCoroutine());
         }
 
-        
 
-    }
-
-    void FixedUpdate()
-    {
         //마우스 왼쪽 버튼을 누르면 총알 발사
         if (Input.GetMouseButtonDown(0) && !isReload)
         {
