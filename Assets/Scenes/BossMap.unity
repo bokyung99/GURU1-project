@@ -7135,8 +7135,8 @@ MonoBehaviour:
   reload: {fileID: 8300000, guid: a170e670d31c0724ca855884161c9ab6, type: 3}
   gunshot: {fileID: 8300000, guid: 0cdefa0b4b1c2cd47878719267c3e37f, type: 3}
   throwbomb: {fileID: 8300000, guid: 419336aa8912ae0468e104596863a0a1, type: 3}
-  benemyhit: {fileID: 0}
-  setDelay: 2
+  setDelay: 5
+  BombbearCount: 10
 --- !u!114 &336260499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7170,7 +7170,6 @@ MonoBehaviour:
   reload: {fileID: 8300000, guid: a170e670d31c0724ca855884161c9ab6, type: 3}
   gunshot: {fileID: 8300000, guid: cc7ef8ad8b1e3d64aa8b74b7f850b3ce, type: 3}
   throwbomb: {fileID: 8300000, guid: 419336aa8912ae0468e104596863a0a1, type: 3}
-  benemyhit: {fileID: 0}
 --- !u!114 &336260500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33841,7 +33840,6 @@ MonoBehaviour:
   runattackPower: 10
   boxcollider: {fileID: 0}
   runattack: 0
-  bwalk: {fileID: 8300000, guid: c873b9e32138c5a459247b866479e5c1, type: 3}
   bgunshot: {fileID: 8300000, guid: 37025960c61b77245872d410c9640b6b, type: 3}
 --- !u!95 &1545617218
 Animator:
