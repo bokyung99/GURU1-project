@@ -84,7 +84,7 @@ public class Playerfire_T : MonoBehaviour
 
 
     //연사 딜레이 변수
-    public int setDelay = 2;
+    public int setDelay = 10;
     private int delay = 0;
 
 
@@ -439,7 +439,7 @@ public class Playerfire_T : MonoBehaviour
 
                 isShoot = true;
 
-                {
+                
 
                     //총구 효과 플레이
                     StartCoroutine(ShootEffectOn(0.05f));
@@ -501,7 +501,7 @@ public class Playerfire_T : MonoBehaviour
                         }
 
                     }
-                }
+                
 
                 isShoot = false;
             }

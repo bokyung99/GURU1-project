@@ -11,7 +11,9 @@ public class UI : MonoBehaviour
     //이동키 카운트
     public int count = 4;
     private int tabcount = 2;
-
+    private int alphacount = 2;
+    private int f1count = 2;
+    private int finesightcount = 2;
 
     void Update()
     {
@@ -113,6 +115,10 @@ public class UI : MonoBehaviour
             //숫자키패드 1 또는 2를 누르면
             if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2))
             {
+                alphacount--;
+            }
+            if(alphacount<=0)
+            {
                 popUpIndex++;
             }
 
@@ -126,9 +132,14 @@ public class UI : MonoBehaviour
 
             }
         }
+        //튜토리얼 7: 메뉴 조작/F1키
         else if (popUpIndex == 8)
         {
             if(Input.GetKeyDown(KeyCode.F1))
+            {
+                f1count--;
+            }
+            if(f1count<=0)
             {
                 popUpIndex++;
             }
@@ -138,8 +149,12 @@ public class UI : MonoBehaviour
         {
             if (GameObject.Find("Player").GetComponent<popup5>().popup9On)
             {
-                popUpIndex++;
+                finesightcount--;
 
+            }
+            if(finesightcount<=0)
+            {
+                popUpIndex++;
             }
         }
         else if (popUpIndex == 10)
