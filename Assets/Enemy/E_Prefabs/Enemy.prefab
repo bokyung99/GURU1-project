@@ -258,7 +258,7 @@ MonoBehaviour:
   findDistance: 8
   attackPower: 6
   moveDistance: 20
-  hp: 20
+  hp: 25
   hpSlider: {fileID: 1870676575961959615}
 --- !u!95 &1870676575551645749
 Animator:

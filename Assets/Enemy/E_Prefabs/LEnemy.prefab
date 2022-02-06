@@ -400,7 +400,7 @@ MonoBehaviour:
   findDistance: 11
   attackPower: 2
   moveDistance: 8
-  hp: 20
+  hp: 30
   hpSlider: {fileID: 6529521498719670041}
   bullet: {fileID: 2642824838065483661, guid: 39ddbe57246aa5a46ac96ef5aff940bd, type: 3}
   bulletPos: {fileID: 6529521498997327103}
