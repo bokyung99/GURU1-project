@@ -395,12 +395,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0803a5b82be7c24478be4f058e23b9e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 5
+  attackDistance: 6
   moveSpeed: 3
-  findDistance: 10
-  attackPower: 1
-  moveDistance: 7
-  hp: 10
+  findDistance: 11
+  attackPower: 2
+  moveDistance: 8
+  hp: 25
   hpSlider: {fileID: 6529521498719670041}
   bullet: {fileID: 2642824838065483661, guid: 39ddbe57246aa5a46ac96ef5aff940bd, type: 3}
   bulletPos: {fileID: 6529521498997327103}
