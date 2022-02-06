@@ -7136,7 +7136,7 @@ MonoBehaviour:
   reload: {fileID: 8300000, guid: a170e670d31c0724ca855884161c9ab6, type: 3}
   gunshot: {fileID: 8300000, guid: 0cdefa0b4b1c2cd47878719267c3e37f, type: 3}
   throwbomb: {fileID: 8300000, guid: 419336aa8912ae0468e104596863a0a1, type: 3}
-  setDelay: 5
+  setDelay: 25
   BombbearCount: 10
 --- !u!114 &336260499
 MonoBehaviour:

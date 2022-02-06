@@ -375,71 +375,83 @@ public class BE_PlayerFire : MonoBehaviour
             StartCoroutine(ReloadCoroutine());
         }
 
+        
+
+    }
+
+    void FixedUpdate()
+    {
         //마우스 왼쪽 버튼을 누르면 총알 발사
         if (Input.GetMouseButtonDown(0) && !isReload)
         {
-            isShoot = true;
-
-            //총구 효과 플레이
-            StartCoroutine(ShootEffectOn(0.05f));
-
-            //레이를 생성한 후 발사될 위치와 진행 방향 설정
-            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-
-            //레이가 부딪힌 대상의 정보를 저장할 변수를 생성
-            RaycastHit hitInfo = new RaycastHit();
-
-            //반동 함수 호출
-            Recoil();
-
-            //반동 되돌리기
-            if (!isRebound)
+            //딜레이가 걸려있지 않을 때만 발사
+            if (delay <= 0)
             {
-                StartCoroutine(Rebound());
-            }
+                //발사했다면 딜레이가 생긴다
+                delay = setDelay;
+                isShoot = true;
 
+                //총구 효과 플레이
+                StartCoroutine(ShootEffectOn(0.05f));
 
-            //레이를 발사한 후 만일 부딪힌 물체가 있으면 피격 효과 표시
-            if (Physics.Raycast(ray, out hitInfo))
-            {
-                //총 발사가 enemy를 맞는다면
-                if (hitInfo.transform.tag == "BossEnemy")
+                //레이를 생성한 후 발사될 위치와 진행 방향 설정
+                Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+
+                //레이가 부딪힌 대상의 정보를 저장할 변수를 생성
+                RaycastHit hitInfo = new RaycastHit();
+
+                //반동 함수 호출
+                Recoil();
+
+                //반동 되돌리기
+                if (!isRebound)
                 {
-                    Debug.Log("부딪힘");
-                    //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
-                    P2_bulletEffect.transform.position = hitInfo.point;
-
-                    //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
-                    P2_bulletEffect.transform.forward = hitInfo.normal;
-
-                    //피격 효과 플레이
-                    ps2.Play();
-
-                    BossEnemy.GetComponent<BossEnemyFSM>().HitEnemy(attackPower);
-
-                    //총알 한개 감소
-                    currentBulletCount--;
+                    StartCoroutine(Rebound());
                 }
 
-                else
+
+                //레이를 발사한 후 만일 부딪힌 물체가 있으면 피격 효과 표시
+                if (Physics.Raycast(ray, out hitInfo))
                 {
-                    //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
-                    P1_bulletEffect.transform.position = hitInfo.point;
+                    //총 발사가 enemy를 맞는다면
+                    if (hitInfo.transform.tag == "BossEnemy")
+                    {
+                        Debug.Log("부딪힘");
+                        //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
+                        P2_bulletEffect.transform.position = hitInfo.point;
 
-                    //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
-                    P1_bulletEffect.transform.forward = hitInfo.normal;
+                        //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
+                        P2_bulletEffect.transform.forward = hitInfo.normal;
 
-                    //피격 효과 플레이
-                    ps1.Play();
+                        //피격 효과 플레이
+                        ps2.Play();
 
-                    //총알 한개 감소
-                    currentBulletCount--;
+                        BossEnemy.GetComponent<BossEnemyFSM>().HitEnemy(attackPower);
+
+                        //총알 한개 감소
+                        currentBulletCount--;
+                    }
+
+                    else
+                    {
+                        //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
+                        P1_bulletEffect.transform.position = hitInfo.point;
+
+                        //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
+                        P1_bulletEffect.transform.forward = hitInfo.normal;
+
+                        //피격 효과 플레이
+                        ps1.Play();
+
+                        //총알 한개 감소
+                        currentBulletCount--;
+
+                    }
 
                 }
 
+                isShoot = false;
             }
-
-            isShoot = false;
 
         }
 
@@ -521,7 +533,7 @@ public class BE_PlayerFire : MonoBehaviour
 
                 isShoot = false;
             }
-           
+
         }
 
         //딜레이가 있다면 매 프레임을 줄인다.
@@ -529,7 +541,6 @@ public class BE_PlayerFire : MonoBehaviour
         {
             delay--;
         }
-
 
     }
 
