@@ -12,6 +12,10 @@ public class BE_PlayerFire : MonoBehaviour
     [SerializeField]
     private Text maxBullet;
 
+    //현재 폭탄 개수
+    [SerializeField]
+    private Text curBomb;
+
     //발사 위치
     public GameObject firePosition;
     //투척 무기
@@ -538,5 +542,11 @@ public class BE_PlayerFire : MonoBehaviour
         //int 변수 maxBulletCount string으로 변환
         string mBC = maxBulletCount.ToString();
         maxBullet.text = mBC;
+
+        // int형 변수 BombbearCount를 string으로 변환
+        string BbC = BombbearCount.ToString();
+
+        // 남은 폭탄 개수를 텍스트로 나타내기
+        curBomb.text = BbC;
     }
 }
