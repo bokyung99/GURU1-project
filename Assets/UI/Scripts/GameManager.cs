@@ -218,7 +218,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         // 현재 씬 번호를 다시 로드한다.
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("FirstScene");
     }
 
     public void RestartTutorial()
