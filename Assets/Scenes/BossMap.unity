@@ -1322,6 +1322,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 82733094844891520, guid: f9e1a0158e9f7a545a16fa7c2aa7be4e, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 1554161176115921225, guid: f9e1a0158e9f7a545a16fa7c2aa7be4e, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1462,6 +1466,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 82733094844891520, guid: f9e1a0158e9f7a545a16fa7c2aa7be4e, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 1554161176115921225, guid: f9e1a0158e9f7a545a16fa7c2aa7be4e, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -4132,6 +4140,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 2240568445028064769, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 6257800485735965347, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -5024,6 +5036,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 2240568445028064769, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 6257800485735965347, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -5285,6 +5301,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 9124384731083942822, guid: aae952dc76387e84287a598d901b120d, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aae952dc76387e84287a598d901b120d, type: 3}
 --- !u!4 &265844811 stripped
@@ -5551,6 +5571,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 9124384731083942822, guid: aae952dc76387e84287a598d901b120d, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aae952dc76387e84287a598d901b120d, type: 3}
 --- !u!4 &274528947 stripped
@@ -5710,6 +5734,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 9124384731083942822, guid: aae952dc76387e84287a598d901b120d, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aae952dc76387e84287a598d901b120d, type: 3}
 --- !u!4 &278898581 stripped
@@ -8306,6 +8334,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 2240568445028064769, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 6257800485735965347, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -8420,6 +8452,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2551797605179523640, guid: 4f019145598ea474b899ca25a03acd09, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 3167031632194995179, guid: 4f019145598ea474b899ca25a03acd09, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -8768,6 +8804,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 2240568445028064769, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 6257800485735965347, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -10553,7 +10593,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1823272722}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: RestartGame
+        m_MethodName: RestartBoss
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12814,6 +12854,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 82733094844891520, guid: f9e1a0158e9f7a545a16fa7c2aa7be4e, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 1554161176115921225, guid: f9e1a0158e9f7a545a16fa7c2aa7be4e, type: 3}
       propertyPath: m_RootOrder
       value: 30
@@ -14787,6 +14831,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 82733094844891520, guid: f9e1a0158e9f7a545a16fa7c2aa7be4e, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 1554161176115921225, guid: f9e1a0158e9f7a545a16fa7c2aa7be4e, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -15039,6 +15087,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 2240568445028064769, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 6257800485735965347, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -16142,6 +16194,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 9124384731083942822, guid: aae952dc76387e84287a598d901b120d, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aae952dc76387e84287a598d901b120d, type: 3}
 --- !u!1 &771783324
@@ -16244,6 +16300,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 2240568445028064769, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 6257800485735965347, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -17125,6 +17185,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 82733094844891520, guid: f9e1a0158e9f7a545a16fa7c2aa7be4e, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 1554161176115921225, guid: f9e1a0158e9f7a545a16fa7c2aa7be4e, type: 3}
       propertyPath: m_RootOrder
       value: 38
@@ -17845,6 +17909,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2551797605179523640, guid: 4f019145598ea474b899ca25a03acd09, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 3167031632194995179, guid: 4f019145598ea474b899ca25a03acd09, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -18070,6 +18138,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 9124384731083942822, guid: aae952dc76387e84287a598d901b120d, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aae952dc76387e84287a598d901b120d, type: 3}
 --- !u!4 &839188154 stripped
@@ -18218,6 +18290,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2551797605179523640, guid: 4f019145598ea474b899ca25a03acd09, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 3167031632194995179, guid: 4f019145598ea474b899ca25a03acd09, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -18265,6 +18341,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 2240568445028064769, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 6257800485735965347, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -18646,6 +18726,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 2240568445028064769, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 6257800485735965347, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -21212,6 +21296,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 2240568445028064769, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 6257800485735965347, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -21969,6 +22057,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 2240568445028064769, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 6257800485735965347, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -23415,6 +23507,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 2240568445028064769, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 6257800485735965347, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -23506,6 +23602,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 2240568445028064769, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 6257800485735965347, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -25871,6 +25971,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 9124384731083942822, guid: aae952dc76387e84287a598d901b120d, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aae952dc76387e84287a598d901b120d, type: 3}
 --- !u!4 &1157630665 stripped
@@ -30666,6 +30770,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2551797605179523640, guid: 4f019145598ea474b899ca25a03acd09, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 3167031632194995179, guid: 4f019145598ea474b899ca25a03acd09, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -32689,6 +32797,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2551797605179523640, guid: 4f019145598ea474b899ca25a03acd09, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 3167031632194995179, guid: 4f019145598ea474b899ca25a03acd09, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -32715,6 +32827,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 2240568445028064769, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 6257800485735965347, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -33096,6 +33212,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 82733094844891520, guid: f9e1a0158e9f7a545a16fa7c2aa7be4e, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 1554161176115921225, guid: f9e1a0158e9f7a545a16fa7c2aa7be4e, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -35855,6 +35975,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 9124384731083942822, guid: aae952dc76387e84287a598d901b120d, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aae952dc76387e84287a598d901b120d, type: 3}
 --- !u!4 &1639745735 stripped
@@ -37630,6 +37754,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 82733094844891520, guid: f9e1a0158e9f7a545a16fa7c2aa7be4e, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 1554161176115921225, guid: f9e1a0158e9f7a545a16fa7c2aa7be4e, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -37749,6 +37877,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 2240568445028064769, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 6257800485735965347, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -38420,6 +38552,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2551797605179523640, guid: 4f019145598ea474b899ca25a03acd09, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 3167031632194995179, guid: 4f019145598ea474b899ca25a03acd09, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -41510,6 +41646,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2551797605179523640, guid: 4f019145598ea474b899ca25a03acd09, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 3167031632194995179, guid: 4f019145598ea474b899ca25a03acd09, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -47930,6 +48070,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 9124384731083942822, guid: aae952dc76387e84287a598d901b120d, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aae952dc76387e84287a598d901b120d, type: 3}
 --- !u!4 &1965819040 stripped
@@ -48014,6 +48158,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 2240568445028064769, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 6257800485735965347, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -57613,6 +57761,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 2240568445028064769, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 6257800485735965347, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
       propertyPath: m_Name
       value: Floor Tile
@@ -58677,6 +58829,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589737902}
     m_Modifications:
+    - target: {fileID: 82733094844891520, guid: f9e1a0158e9f7a545a16fa7c2aa7be4e, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 1554161176115921225, guid: f9e1a0158e9f7a545a16fa7c2aa7be4e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -58937,6 +59093,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 9124384731083942822, guid: aae952dc76387e84287a598d901b120d, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aae952dc76387e84287a598d901b120d, type: 3}
 --- !u!1001 &6242528119089653085
@@ -59355,6 +59515,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2551797605179523640, guid: 4f019145598ea474b899ca25a03acd09, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3678eef42b772ba4c95c149a0aa2cbab, type: 2}
     - target: {fileID: 3167031632194995179, guid: 4f019145598ea474b899ca25a03acd09, type: 3}
       propertyPath: m_Name
       value: Floor Tile

@@ -230,6 +230,15 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
     }
 
+    public void RestartBoss()
+    {
+        // 게임 속도를 1배속으로 전환한다.
+        Time.timeScale = 1f;
+        // 현재 씬 번호를 다시 로드한다.
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("BossMap");
+    }
+
     // 게임 종료 옵션
     public void QuitGame()
     {
