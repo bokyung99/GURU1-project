@@ -650,13 +650,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1869271343013507811, guid: eb687b2b83d561340bcae12522a9fe78, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1870676575551645746, guid: eb687b2b83d561340bcae12522a9fe78, type: 3}
       propertyPath: m_Name
       value: Enemy2
       objectReference: {fileID: 0}
     - target: {fileID: 1870676575551645750, guid: eb687b2b83d561340bcae12522a9fe78, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 1870676575551645750, guid: eb687b2b83d561340bcae12522a9fe78, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4258,13 +4262,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1869271343013507811, guid: eb687b2b83d561340bcae12522a9fe78, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1870676575551645746, guid: eb687b2b83d561340bcae12522a9fe78, type: 3}
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1870676575551645750, guid: eb687b2b83d561340bcae12522a9fe78, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 1870676575551645750, guid: eb687b2b83d561340bcae12522a9fe78, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5071,13 +5079,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1869271343013507811, guid: eb687b2b83d561340bcae12522a9fe78, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1870676575551645746, guid: eb687b2b83d561340bcae12522a9fe78, type: 3}
       propertyPath: m_Name
       value: Enemy1
       objectReference: {fileID: 0}
     - target: {fileID: 1870676575551645750, guid: eb687b2b83d561340bcae12522a9fe78, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1870676575551645750, guid: eb687b2b83d561340bcae12522a9fe78, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7425,7 +7437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 428174, guid: 37e803394624a5c48ae5f13fd212ac0b, type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 428174, guid: 37e803394624a5c48ae5f13fd212ac0b, type: 3}
       propertyPath: m_LocalScale.x
@@ -8139,7 +8151,7 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1025470574
 GameObject:
@@ -14243,7 +14255,10 @@ MonoBehaviour:
   jumpHeight: 1.5
   isJumping: 0
   jumpsound: {fileID: 8300000, guid: 6aeefb601c305f64487cebdfacae5b6c, type: 3}
-  footStepSound: {fileID: 8300000, guid: 551d550ab98e3cc4bb7793e752fe8628, type: 3}
+  footStepSound1: {fileID: 8300000, guid: adf6356301a9fc14aaa03c2cfac83816, type: 3}
+  footStepSound2: {fileID: 8300000, guid: 09305e4eb78a4cf4ebee70c4b976fa18, type: 3}
+  footStepSound3: {fileID: 8300000, guid: 837b2ac0dee4b2e49b7c4229129a2cd2, type: 3}
+  footStepSound4: {fileID: 8300000, guid: 9cd93e6b4948e0c4abc089546af87c38, type: 3}
   footStepDelay: 0.35
 --- !u!143 &1656206105
 CharacterController:
@@ -14540,7 +14555,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656206103}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 539334812fb56a84488051e1a469fb3f, type: 3}
   m_Name: 
@@ -14552,8 +14567,8 @@ MonoBehaviour:
   throwPower: 10
   P1_bulletEffect: {fileID: 268975153}
   P2_bulletEffect: {fileID: 2122388288}
-  currentBulletCount: 100
-  maxBulletCount: 100
+  currentBulletCount: 50
+  maxBulletCount: 50
   reloadTime: 1
   eff_Flash:
   - {fileID: 1504687498}
@@ -14596,7 +14611,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 79e85dbc35e94d846937183708dcae4b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -14692,7 +14707,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4111b72ba979d774494cc3a088faeafd, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 1
   Mute: 0

@@ -329,7 +329,7 @@ public class Playerfire_T : MonoBehaviour
         }
 
         UpdateA();
-        //UpdateB();
+        UpdateB();
     }
 
     void UpdateA()
@@ -408,23 +408,6 @@ public class Playerfire_T : MonoBehaviour
                     //총알 한개 감소
                     currentBulletCount--;
                 }
-                else if (hitInfo.transform.tag == "LEnemy")
-                {
-                    //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
-                    P2_bulletEffect.transform.position = hitInfo.point;
-
-                    //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
-                    P2_bulletEffect.transform.forward = hitInfo.normal;
-
-                    //피격 효과 플레이
-                    ps2.Play();
-
-                    //LEnemy 공격
-                    // LEnemy.GetComponent<LEnemyFSM>().HitEnemy(attackPower);
-
-                    //총알 한개 감소
-                    currentBulletCount--;
-                }
                 else
                 {
                     //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
@@ -497,23 +480,6 @@ public class Playerfire_T : MonoBehaviour
                             //Enemy 공격
                             Enemy.GetComponent<Enemy_T>().HitEnemy(attackPower);
 
-
-                            //총알 한개 감소
-                            currentBulletCount--;
-                        }
-                        else if (hitInfo.transform.tag == "LEnemy")
-                        {
-                            //피격 효과의 위치를 레이가 부딪힌 지점으로 이동
-                            P2_bulletEffect.transform.position = hitInfo.point;
-
-                            //피격 효과의 forward방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
-                            P2_bulletEffect.transform.forward = hitInfo.normal;
-
-                            //피격 효과 플레이
-                            ps2.Play();
-
-                            //LEnemy 공격
-                            // LEnemy.GetComponent<LEnemyFSM>().HitEnemy(attackPower);
 
                             //총알 한개 감소
                             currentBulletCount--;

@@ -19,7 +19,10 @@ public class PlayerMovement : MonoBehaviour
     public bool isJumping = false;
 
     public AudioClip jumpsound;
-    public AudioClip footStepSound;
+    public AudioClip footStepSound1;
+    public AudioClip footStepSound2;
+    public AudioClip footStepSound3;
+    public AudioClip footStepSound4;
     public float footStepDelay;
 
     private float nextFootstep = 0;
@@ -28,9 +31,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)&&isJumping==false)
+        if (Input.GetKeyDown(KeyCode.Space) && isJumping == false)
         {
-            GetComponent<AudioSource>().PlayOneShot(jumpsound,0.7f);
+            GetComponent<AudioSource>().PlayOneShot(jumpsound, 0.7f);
         }
 
         //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -55,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(motion * speed * Time.deltaTime);
 
         // 점프 상태가 아닐 때 점프 가능함 (무한 점프 X)
-        if(Input.GetButtonDown("Jump") && !isJumping)
+        if (Input.GetButtonDown("Jump") && !isJumping)
         {
             // 점프 상태로 전환
             isJumping = true;
@@ -65,17 +68,44 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        //if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) && isGrounded)
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.A))
         {
             nextFootstep -= Time.deltaTime;
-             if (nextFootstep <= 0) 
-                {
-                 GetComponent<AudioSource>().PlayOneShot(footStepSound, 1.0f);
-                 nextFootstep += footStepDelay;
-                }
-             }
-         }
+            if (nextFootstep <= 0)
+            {
+                GetComponent<AudioSource>().PlayOneShot(footStepSound1, 1.0f);
+                nextFootstep += footStepDelay;
+            }
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            nextFootstep -= Time.deltaTime;
+            if (nextFootstep <= 0)
+            {
+                GetComponent<AudioSource>().PlayOneShot(footStepSound2, 1.0f);
+                nextFootstep += footStepDelay;
+            }
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            nextFootstep -= Time.deltaTime;
+            if (nextFootstep <= 0)
+            {
+                GetComponent<AudioSource>().PlayOneShot(footStepSound3, 1.0f);
+                nextFootstep += footStepDelay;
+            }
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            nextFootstep -= Time.deltaTime;
+            if (nextFootstep <= 0)
+            {
+                GetComponent<AudioSource>().PlayOneShot(footStepSound4, 1.0f);
+                nextFootstep += footStepDelay;
+            }
+        }
+    }
 }
 
 

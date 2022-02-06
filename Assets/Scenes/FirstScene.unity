@@ -12511,7 +12511,10 @@ MonoBehaviour:
   jumpHeight: 1.5
   isJumping: 0
   jumpsound: {fileID: 8300000, guid: ebf192045f8751245829d86987245e7d, type: 3}
-  footStepSound: {fileID: 8300000, guid: 263f8aaa01d5d0041b082b7b69d9ca02, type: 3}
+  footStepSound1: {fileID: 8300000, guid: 263f8aaa01d5d0041b082b7b69d9ca02, type: 3}
+  footStepSound2: {fileID: 8300000, guid: 263f8aaa01d5d0041b082b7b69d9ca02, type: 3}
+  footStepSound3: {fileID: 8300000, guid: 263f8aaa01d5d0041b082b7b69d9ca02, type: 3}
+  footStepSound4: {fileID: 8300000, guid: 263f8aaa01d5d0041b082b7b69d9ca02, type: 3}
   footStepDelay: 0.4
 --- !u!82 &336260495
 AudioSource:
