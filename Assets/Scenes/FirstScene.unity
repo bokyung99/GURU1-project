@@ -22233,7 +22233,7 @@ MonoBehaviour:
   - {fileID: 1758359537}
   enemy: {fileID: 1870676575551645746, guid: eb687b2b83d561340bcae12522a9fe78, type: 3}
   isSpawn: 
-  spawnTime: 30
+  spawnTime: 10
   curTime: 0
   enemyCount: 0
   maxEnemyCount: 14
@@ -33195,7 +33195,7 @@ MonoBehaviour:
   - {fileID: 37299506}
   LEnemy: {fileID: 6529521499075229460, guid: 8ab67846e0c4cea4d8d1f0ab226247bd, type: 3}
   isSpawn: 
-  spawnTime: 40
+  spawnTime: 15
   curTime: 0
   enemyCount: 0
   maxEnemyCount: 9
