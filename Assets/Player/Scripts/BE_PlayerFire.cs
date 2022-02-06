@@ -33,9 +33,9 @@ public class BE_PlayerFire : MonoBehaviour
     ParticleSystem ps2;
 
     //현재 탄알집에 남아있는 총알의 개수
-    public int currentBulletCount = 10;
-    //최대 총알의 개수 (수정)
-    public int maxBulletCount = 10;
+    public int currentBulletCount = 60;
+    //최대 총알의 개수
+    public int maxBulletCount = 60;
     //재장전 속도
     public float reloadTime = 1.0f;
     //재장전 할 때 총 발사 x
@@ -99,7 +99,7 @@ public class BE_PlayerFire : MonoBehaviour
 
         yield return new WaitForSeconds(reloadTime);
 
-        currentBulletCount = 100;
+        currentBulletCount = 60;
 
         isReload = false;
 

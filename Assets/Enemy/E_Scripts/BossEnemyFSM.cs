@@ -320,7 +320,7 @@ public class BossEnemyFSM : MonoBehaviour
     {
         // 피격 모션 시간만큼 기다린다
         yield return new WaitForSeconds(1.0f);
-
+       
         // 현재 상태를 이동 상태로 전환한다.
         m_State = EnemyState.Move;
         print("상태 전환: Damaged -> Move");
@@ -336,7 +336,7 @@ public class BossEnemyFSM : MonoBehaviour
         }
 
         // 플레이어의 공격력만큼 에너미의 체력을 감소시킨다.
-        hp -= hitPower;
+        //hp -= hitPower;
 
         // 내비게이션 에이전트의 이동을 멈추고 경로를 초기화한다.
         smith.isStopped = true;
@@ -351,6 +351,8 @@ public class BossEnemyFSM : MonoBehaviour
             // 피격 애니메이션을 플레이한다.
             anim.SetTrigger("Damaged");
             Damaged();
+            // 플레이어의 공격력만큼 에너미의 체력을 감소시킨다.
+            hp -= hitPower;
         }
         // 그렇지 않다면 죽음 상태로 전환한다.
         else
