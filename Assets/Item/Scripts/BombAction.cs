@@ -26,6 +26,7 @@ public class BombAction : MonoBehaviour
          {
             EnemyFSM efsm = cols[i].GetComponent<EnemyFSM>();
             LEnemyFSM lefsm = cols[i].GetComponent<LEnemyFSM>();
+            BossEnemyFSM befsm = cols[i].GetComponent<BossEnemyFSM>();
 
             if (efsm != null)
             {
@@ -35,6 +36,10 @@ public class BombAction : MonoBehaviour
             if (lefsm != null)
             {
                 lefsm.HitEnemy(attackPower);
+            }
+            if (befsm != null)
+            {
+                befsm.HitEnemy(attackPower);
             }
         }
 
