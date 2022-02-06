@@ -100,7 +100,7 @@ public class PlayerFire1 : MonoBehaviour
         print("재장전");
 
         //재장전 사운드
-        GetComponent<AudioSource>().PlayOneShot(reload, reloadTime);
+        GetComponent<AudioSource>().PlayOneShot(reload, 0.5f);
 
         yield return new WaitForSeconds(reloadTime);
 
@@ -354,7 +354,7 @@ public class PlayerFire1 : MonoBehaviour
             //카메라정면 방향으로 수류탄에 물리적인 힘 가하기
             rb.AddForce(Camera.main.transform.forward * throwPower, ForceMode.Impulse);
             //수류탄 투척 사운드
-            GetComponent<AudioSource>().PlayOneShot(throwbomb,1.0f);
+            GetComponent<AudioSource>().PlayOneShot(throwbomb,0.8f);
         }
 
         //만약 총알이 0개 이하이고, reloadCtrl가 0일 경우 재장전
@@ -481,7 +481,7 @@ public class PlayerFire1 : MonoBehaviour
                     //총구 효과 플레이
                     StartCoroutine(ShootEffectOn(0.05f));
                     //사운드
-                    GetComponent<AudioSource>().PlayOneShot(gunshot, 0.3f);
+                    GetComponent<AudioSource>().PlayOneShot(gunshot, 0.2f);
 
                     //레이를 생성한 후 발사될 위치와 진행 방향 설정
                     Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);

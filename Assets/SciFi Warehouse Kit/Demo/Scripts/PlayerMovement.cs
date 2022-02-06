@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isJumping == false)
         {
-            GetComponent<AudioSource>().PlayOneShot(jumpsound, 0.7f);
+            GetComponent<AudioSource>().PlayOneShot(jumpsound, 0.5f);
         }
 
         //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
