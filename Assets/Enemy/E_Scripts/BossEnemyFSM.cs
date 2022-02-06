@@ -23,6 +23,8 @@ public class BossEnemyFSM : MonoBehaviour
     // 공격 가능 범위
     public float attackDistance = 25f;
 
+    public float nearAttackDistance;
+
     // 이동 속도
     public float moveSpeed = 5f;
 
@@ -398,7 +400,7 @@ public class BossEnemyFSM : MonoBehaviour
                 Attack();
                 break;
             case 1:
-                Attack();
+                StartCoroutine(RunAttack());
                 break;
             case 2:
                 Attack();
@@ -418,12 +420,13 @@ public class BossEnemyFSM : MonoBehaviour
     IEnumerator RunAttack()
     {
 
-        if (Vector3.Distance(transform.position, player.position) < attackDistance)
+        if (Vector3.Distance(transform.position, player.position) < nearAttackDistance)
         {
             smith.isStopped = true;
             runattack = true;
             //추가 패턴 공격 에니메이션 넣는 곳
             anim.SetTrigger("RunAttack");
+            player.GetComponent<PlayerHp>().E_DamageAction(runattackPower);
             print("돌진공격");
             yield return new WaitForSeconds(1f);//돌진해서 다가오는 에니메이션 시간
             runattack = false;
