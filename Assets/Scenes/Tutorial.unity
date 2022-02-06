@@ -1569,7 +1569,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 60
 --- !u!222 &175920995
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11639,7 +11639,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 60
 --- !u!222 &1409518043
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14442,8 +14442,8 @@ MonoBehaviour:
   throwPower: 15
   P1_bulletEffect: {fileID: 268975153}
   P2_bulletEffect: {fileID: 2122388288}
-  currentBulletCount: 100
-  maxBulletCount: 100
+  currentBulletCount: 60
+  maxBulletCount: 60
   reloadTime: 1
   eff_Flash:
   - {fileID: 1504687498}
@@ -14567,8 +14567,8 @@ MonoBehaviour:
   throwPower: 10
   P1_bulletEffect: {fileID: 268975153}
   P2_bulletEffect: {fileID: 2122388288}
-  currentBulletCount: 50
-  maxBulletCount: 50
+  currentBulletCount: 30
+  maxBulletCount: 30
   reloadTime: 1
   eff_Flash:
   - {fileID: 1504687498}

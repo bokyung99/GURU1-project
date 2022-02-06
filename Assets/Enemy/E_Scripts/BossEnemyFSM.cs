@@ -84,7 +84,7 @@ public class BossEnemyFSM : MonoBehaviour
     public bool runattack = false;
 
     //사운드
-    public AudioSource bwalk;
+    public AudioClip bwalk;
     public AudioClip bgunshot;
 
 
@@ -167,6 +167,9 @@ public class BossEnemyFSM : MonoBehaviour
 
     void Move()
     {
+        //사운드
+        GetComponent<AudioSource>().PlayOneShot(bwalk, 0.3f);
+
         // 만일 현재 위치가 초기 위치에서 이동 가능 범위를 넘어간다면...
         if (Vector3.Distance(transform.position, originPos) > moveDistance)
         {
@@ -196,7 +199,6 @@ public class BossEnemyFSM : MonoBehaviour
             // 내비게이션의 목적지를 플레이어의 위치로 설정한다.
             smith.destination = player.position;
 
-            //bwalk.Play();
 
         }
        /* else

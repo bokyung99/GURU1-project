@@ -33841,7 +33841,7 @@ MonoBehaviour:
   runattackPower: 10
   boxcollider: {fileID: 0}
   runattack: 0
-  bwalk: {fileID: 0}
+  bwalk: {fileID: 8300000, guid: c873b9e32138c5a459247b866479e5c1, type: 3}
   bgunshot: {fileID: 8300000, guid: 37025960c61b77245872d410c9640b6b, type: 3}
 --- !u!95 &1545617218
 Animator:
@@ -33992,14 +33992,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 0
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
