@@ -79,9 +79,6 @@ public class EnemyFSM : MonoBehaviour
         // 캐릭터 콘트롤러 컴포넌트 받아오기
         cc = GetComponent<CharacterController>();
 
-        // 자신의 초기 위치 저장하기
-        originPos = transform.position;
-
         // 자신의 초기 위치와 회전 값을 저장하기
         originPos = transform.position;
         originRot = transform.rotation;
@@ -208,8 +205,12 @@ public class EnemyFSM : MonoBehaviour
 
     void Return()
     {
+        float dist = Vector3.Distance(transform.position, originPos);
+
+        print("거리 : " + dist);
+
         // 만일, 초기 위치에서의 거리가 0.1f 이상이라면 초기 위치 쪽으로 이동한다.
-        if (Vector3.Distance(transform.position, originPos) > 0.1f)
+        if (dist > 0.6f)
         {
             //Vector3 dir = (originPos - transform.position).normalized;
             //cc.Move(dir * moveSpeed * Time.deltaTime);
@@ -236,6 +237,7 @@ public class EnemyFSM : MonoBehaviour
 
             // hp를 다시 회복한다.
             hp = maxHp;
+            print("어디가 문제야");
 
             m_State = EnemyState.Idle;
             print("상태 전환: Return -> Idle");

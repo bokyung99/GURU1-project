@@ -104,7 +104,7 @@ public class PlayerFire1 : MonoBehaviour
 
         yield return new WaitForSeconds(reloadTime);
 
-        currentBulletCount = 100;
+        currentBulletCount = 60;
 
         isReload = false;
 

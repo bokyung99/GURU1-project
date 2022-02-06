@@ -231,8 +231,12 @@ public class LEnemyFSM : MonoBehaviour
 
     void Return()
     {
+        float dist = Vector3.Distance(transform.position, originPos);
+
+        print("거리 : " + dist);
+
         // 만일, 초기 위치에서의 거리가 0.1f 이상이라면 초기 위치 쪽으로 이동한다.
-        if (Vector3.Distance(transform.position, originPos) > 0.1f)
+        if (dist > 1.16f)
         {
             //Vector3 dir = (originPos - transform.position).normalized;
             //cc.Move(dir * moveSpeed * Time.deltaTime);
