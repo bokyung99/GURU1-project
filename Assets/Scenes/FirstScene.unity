@@ -12745,7 +12745,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336260485}
-  m_LocalRotation: {x: 0, y: -0.28151256, z: 0, w: 0.95955753}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.46, y: 1.7, z: 3.36}
   m_LocalScale: {x: 1, y: 1.7, z: 1}
   m_Children:
@@ -12757,7 +12757,7 @@ Transform:
   - {fileID: 1460850960}
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: -32.701, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &336260498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56243,6 +56243,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 336260497}
     m_Modifications:
+    - target: {fileID: 123398, guid: 52d7c5ee3e0cf43d9b5aab3e5df17e7d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 142272, guid: 52d7c5ee3e0cf43d9b5aab3e5df17e7d, type: 3}
       propertyPath: m_Name
       value: NewGun_semi
@@ -56301,7 +56305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9596676, guid: 52d7c5ee3e0cf43d9b5aab3e5df17e7d, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400676, guid: 52d7c5ee3e0cf43d9b5aab3e5df17e7d, type: 3}
