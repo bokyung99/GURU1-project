@@ -14,6 +14,15 @@ public class StartTutorial : MonoBehaviour
         
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Tutorial");
+        }
+        
+    }
+
     IEnumerator goTutorial()
     {
         yield return new WaitForSeconds(playTime);
